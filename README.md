@@ -10,11 +10,11 @@
 
 ---
 
-## 📱 프로젝트 소개
+##  프로젝트 소개
 
 **GURU2**는 사용자가 하루의 감정과 일기를 기록하면, AI(Gemini API)가 감정을 분석하고 오늘 실천 가능한 행동을 제안하는 **감정 코칭 애플리케이션**입니다.
 
-### 🎯 핵심 기능
+###  핵심 기능
 -  **간편한 일기 작성**: 감정 선택 후 간단한 메모로 하루 기록
 -  **AI 감정 분석**: Gemini API를 활용한 감정 핵심 요약 및 트리거 분석
 -  **실천 행동 제안**: AI가 제안하는 구체적이고 실천 가능한 행동 가이드
@@ -23,14 +23,14 @@
 -  **사진으로 저장**: AI 분석 결과 카드를 이미지로 저장 (아날로그 다꾸용)
 -  **비회원 모드**: 로그인 없이도 로컬 저장으로 바로 시작 가능
 
-### 🌟 차별점
+###  차별점
 - **밤하늘 컨셉**: 차분하고 안정감 있는 녹색 + 밤하늘 디자인
 - **치료 목적이 아닌 일상 보조 도구**: 부담 없이 매일 사용 가능한 가벼운 인터페이스
 - **비침습적 데이터 수집**: 회원가입 없이도 사용 가능한 프라이버시 친화적 설계
 
 ---
 
-## 👥 팀 구성
+##  팀 구성
 
 | 역할 | 이름 | 담당 |
 |------|------|------|
@@ -53,7 +53,7 @@
 
 ---
 
-## 🏗️ 기술 스택
+##  기술 스택
 
 ### Frontend (Android)
 - **Language**: Kotlin
@@ -79,7 +79,7 @@
 
 ---
 
-## 📂 프로젝트 구조
+##  프로젝트 구조
 ```
 GURU2-Android-Team04-android/
 ├── app/
@@ -112,7 +112,7 @@ GURU2-Android-Team04-android/
 
 ---
 
-## 🎨 화면 구성
+##  화면 구성
 
 ### 1. 온보딩 & 인증
 - ✅ 스플래시 화면
@@ -146,7 +146,7 @@ GURU2-Android-Team04-android/
 
 ---
 
-## 🚀 시작하기
+##  시작하기
 
 ### Prerequisites
 ```bash
@@ -182,7 +182,7 @@ Run 버튼 (▶) 클릭 → 기기 선택 → OK
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 ```gradle
 dependencies {
     // AndroidX
@@ -316,7 +316,7 @@ Response:
 
 ---
 
-## 🤝 기여하기
+##  기여하기
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -337,19 +337,19 @@ chore: 빌드 설정 변경
 
 ---
 
-## 📄 라이선스
+##  라이선스
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📞 문의
+##  문의
 
 **프로젝트 링크**: [https://github.com/yeongcho/GURU2-Android-Team04](https://github.com/yeongcho/GURU2-Android-Team04)
 
 ---
 
-## 🎓 참고 자료
+##  참고 자료
 
 - [Android Developers Documentation](https://developer.android.com/)
 - [Kotlin Documentation](https://kotlinlang.org/docs/home.html)
