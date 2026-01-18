@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_nav_home"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/navigation_diary"
+        android:icon="@drawable/ic_nav_diary"
+        android:title="일기장" />
+
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_nav_calendar"
+        android:title="캘린더" />
+
+    <item
+        android:id="@+id/navigation_mypage"
+        android:icon="@drawable/ic_nav_mypage"
+        android:title="마이페이지" />
+
+</menu>

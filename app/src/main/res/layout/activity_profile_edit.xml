@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CEC8BB"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:rotation="180"
+        android:src="@drawable/ic_nav_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/card_dark_navy" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/handwriting_font"
+        android:text="프로필 편집"
+        android:textColor="@color/card_dark_navy"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_profile_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="5dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <ImageView
+            android:id="@+id/iv_profile_edit"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_circle_gray"
+            android:elevation="10dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_icon_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_badge_frame"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_badge_emotion_log"
+            android:elevation="11dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_profile_edit"
+            app:layout_constraintEnd_toEndOf="@id/iv_profile_edit"
+            app:layout_constraintStart_toStartOf="@id/iv_profile_edit"
+            app:layout_constraintTop_toTopOf="@id/iv_profile_edit" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_circle_gray"
+            android:backgroundTint="@color/card_dark_navy"
+            android:elevation="12dp"
+            android:padding="7dp"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintBottom_toBottomOf="@id/iv_profile_edit"
+            app:layout_constraintEnd_toEndOf="@id/iv_profile_edit"
+            app:tint="@color/white" />
+
+
+        <ImageView
+            android:id="@+id/iv_badge_1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:src="@drawable/ic_badge_emotion_log"
+            app:layout_constraintCircle="@id/iv_profile_edit"
+            app:layout_constraintCircleAngle="0"
+            app:layout_constraintCircleRadius="165dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv_badge_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:src="@drawable/ic_badge_wine"
+            app:layout_constraintCircle="@id/iv_profile_edit"
+            app:layout_constraintCircleAngle="60"
+            app:layout_constraintCircleRadius="165dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv_badge_3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:src="@drawable/ic_badge_traveler"
+            app:layout_constraintCircle="@id/iv_profile_edit"
+            app:layout_constraintCircleAngle="120"
+            app:layout_constraintCircleRadius="165dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv_badge_4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:src="@drawable/ic_badge_start"
+            app:layout_constraintCircle="@id/iv_profile_edit"
+            app:layout_constraintCircleAngle="180"
+            app:layout_constraintCircleRadius="165dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv_badge_5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:src="@drawable/ic_badge_month"
+            app:layout_constraintCircle="@id/iv_profile_edit"
+            app:layout_constraintCircleAngle="240"
+            app:layout_constraintCircleRadius="165dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv_badge_6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:src="@drawable/ic_badge_three_days"
+            app:layout_constraintCircle="@id/iv_profile_edit"
+            app:layout_constraintCircleAngle="300"
+            app:layout_constraintCircleRadius="165dp"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/layout_profile_image">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/handwriting_font"
+            android:text="닉네임"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_rounded_white"
+            android:fontFamily="@font/handwriting_font"
+            android:hint="닉네임을 입력하세요"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/handwriting_font"
+            android:text="나의 한줄 다짐"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_bio"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_rounded_white"
+            android:fontFamily="@font/handwriting_font"
+            android:hint="나에게 해주고 싶은 말"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save_profile"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_rounded_white"
+        android:backgroundTint="@color/card_dark_navy"
+        android:fontFamily="@font/handwriting_font"
+        android:text="저장하기"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
