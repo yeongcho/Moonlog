@@ -7,19 +7,31 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="GURU2AndroidTeam04android"
+        android:label="GURU2"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU2AndroidTeam04android">
 
+        <!-- 스플래시를 시작 화면으로 설정 -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 온보딩 Activity -->
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false" />
+
+        <!-- 기존 MainActivity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
 
     </application>
 

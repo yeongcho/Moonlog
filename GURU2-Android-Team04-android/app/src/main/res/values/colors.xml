@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 기본 색상 -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- 주요 색상 -->
+    <color name="primary_green">#4CAF50</color>
+    <color name="secondary_pink">#FF6B9D</color>
+    <color name="night_sky_blue">#1A237E</color>
+
+    <!-- 배경 -->
+    <color name="background">#F5F5F5</color>
+
+    <!-- 텍스트 -->
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_600">#757575</color>
+
+    <!-- 경고 -->
+    <color name="red_500">#F44336</color>
 </resources>

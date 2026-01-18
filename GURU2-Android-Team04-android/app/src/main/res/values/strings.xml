@@ -1,3 +1,41 @@
 <resources>
-    <string name="app_name">GURU2-Android-Team04-android</string>
+    <string name="app_name">GURU2</string>
+
+    <!-- 온보딩 -->
+    <string name="onboarding_title">마음껏, 일기쓰기♪</string>
+    <string name="btn_login">로그인</string>
+    <string name="btn_signup">회원가입</string>
+    <string name="btn_guest_start">비회원으로 시작하기</string>
+
+    <!-- 로그인 -->
+    <string name="hint_username">아이디</string>
+    <string name="hint_password">비밀번호</string>
+    <string name="hint_nickname">닉네임</string>
+    <string name="hint_password_confirm">비밀번호 확인</string>
+    <string name="error_empty_username">아이디를 입력해주세요</string>
+    <string name="error_empty_password">비밀번호를 입력해주세요</string>
+    <string name="error_password_mismatch">비밀번호가 일치하지 않습니다</string>
+    <string name="signup_link">계정이 없으신가요? 회원가입</string>
+
+    <!-- 비회원 안내 -->
+    <string name="guest_title">비회원으로 시작하시나요?</string>
+    <string name="guest_info">· 일기는 로컬에만 저장됩니다\n· 로그인 후 일기 모아보기 불가\n· 사진으로 내보내기 가능</string>
+    <string name="btn_back">돌아가기</string>
+
+    <!-- 마이페이지 -->
+    <string name="menu_emotion_graph">나의 감정 변화</string>
+    <string name="menu_account_info">계정 정보</string>
+    <string name="btn_delete_account">회원 탈퇴</string>
+    <string name="badge_count">획득한 뱃지: %d개</string>
+
+    <!-- 계정 정보 -->
+    <string name="label_nickname">닉네임</string>
+    <string name="label_username">아이디</string>
+    <string name="label_joined_date">가입일</string>
+
+    <!-- 다이얼로그 -->
+    <string name="dialog_delete_title">회원 탈퇴</string>
+    <string name="dialog_delete_message">정말로 탈퇴하시겠습니까?\n\n모든 데이터가 삭제되며 복구할 수 없습니다.</string>
+    <string name="btn_delete">탈퇴</string>
+    <string name="btn_cancel">취소</string>
 </resources>
