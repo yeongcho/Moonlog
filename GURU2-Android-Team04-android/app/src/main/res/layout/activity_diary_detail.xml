@@ -1,3 +1,13 @@
+<!--
+Figma: 일기 상세 보기 (Diary Detail Screen)
+설명: 작성된 일기의 상세 내용을 확인하는 화면
+구성:
+  - 상단: 뒤로가기 버튼 + 날짜 표시
+  - 중간: 일기 내용 카드 (감정 아이콘, 태그, 일기 본문)
+  - 하단: AI 분석 카드 (마음지기의 감정 분석 메시지, 해시태그)
+용도: 캘린더에서 선택한 날짜의 일기 내용과 AI 분석 결과 표시
+기능: 일기 내용 조회, AI 감정 분석 결과 확인
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,3 +1,20 @@
+<!--
+Figma: 캘린더 메인 화면 (Calendar Fragment - Main Container)
+설명: 캘린더 기능의 메인 컨테이너 화면 (탭 전환 기능 포함)
+구성:
+  - 상단 헤더: 이전/다음 달 이동 버튼 + 현재 월 표시 + 마스코트 이미지
+  - 탭 레이아웃: "캘린더" / "리스트" 탭 전환
+  - ViewPager2: 캘린더 그리드 뷰 / 리스트 뷰를 스와이프로 전환
+용도:
+  - 월별 일기 작성 현황 확인
+  - 캘린더 그리드 뷰와 리스트 뷰 전환
+기능:
+  - 이전/다음 달 이동
+  - 캘린더/리스트 탭 전환
+  - 스와이프로 뷰 전환
+주의: 이 파일은 컨테이너 역할만 하며, 실제 캘린더 내용은
+      fragment_calendar_grid.xml과 fragment_calendar_list.xml에 구현됨
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"

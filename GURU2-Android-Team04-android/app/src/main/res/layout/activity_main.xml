@@ -1,3 +1,10 @@
+<!--
+Figma: 메인 화면 (Main Activity)
+설명: 앱의 메인 컨테이너 화면으로 하단 네비게이션을 통해 다양한 Fragment 전환
+구성: Fragment Container (상단 영역) + Bottom Navigation (하단 네비게이션 바)
+용도: 홈, 캘린더, 프로필 등 주요 기능 화면들을 담는 컨테이너 역할
+네비게이션: Home, Calendar, Profile 등의 탭으로 화면 전환
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,3 +1,23 @@
+<!--
+Figma: 캘린더 - 그리드 뷰 (Calendar Grid View)
+설명: 월별 캘린더를 그리드 형식으로 표시하는 화면 (7일 x 5주 형태)
+구성:
+  - 상단: 캘린더 상단바 (layout_calendar_top include)
+  - 중앙: 캘린더 그리드 카드 (7x5 GridView로 날짜 표시)
+  - 하단: 월간 마음 그래프 영역
+    * "월간 마음 그래프" 타이틀
+    * 감정 통계 텍스트 (예: "이번 달은 기쁨을 가장 많이 느꼈어요!")
+    * 그래프 이미지 (감정별 통계 시각화)
+용도:
+  - 한 달 전체 일기 작성 현황을 한눈에 확인
+  - 각 날짜별 감정 아이콘 표시
+  - 월간 감정 통계 그래프 확인
+기능:
+  - 날짜 클릭 시 해당 날짜의 일기 상세보기로 이동
+  - 감정별 색상/아이콘으로 시각화
+  - 월간 감정 통계 그래프 표시
+연관: item_calendar_day.xml (각 날짜 셀의 레이아웃)
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"

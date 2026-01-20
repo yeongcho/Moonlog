@@ -1,3 +1,32 @@
+<!--
+Figma: 캘린더 상단바 레이아웃 (Calendar Top Bar - Reusable Component)
+설명: 캘린더 화면에서 재사용되는 상단바 컴포넌트 (include로 사용)
+구성:
+  - 중앙: 월 타이틀 이미지 (iv_month_title)
+    * 월별 이미지 리소스 (예: month_1, month_2, ... month_12)
+    * 각 월을 시각적으로 표현하는 이미지 또는 타이포그래피
+    * 높이 80dp, 비율 유지하며 중앙 정렬
+  - 우측: 공유 버튼 (btn_share)
+    * 현재 보고 있는 월의 캘린더/통계를 공유하는 기능
+    * 아이콘 크기: 40dp x 40dp
+    * 투명한 ripple 효과 (selectableItemBackgroundBorderless)
+용도:
+  - 캘린더 화면 상단에 일관된 디자인 제공
+  - 월 정보 시각화 및 공유 기능 제공
+사용 위치:
+  - fragment_calendar_grid.xml에서 <include> 태그로 삽입
+  - 다른 캘린더 관련 화면에서도 재사용 가능
+기능:
+  - iv_month_title: 현재 월에 맞는 이미지 동적으로 변경 (month_1 ~ month_12)
+  - btn_share: 클릭 시 공유 기능 실행 (SNS, 메신저 등으로 캘린더 이미지 공유)
+디자인 특징:
+  - 패딩 16dp로 여백 확보
+  - 중앙 정렬된 월 이미지로 시각적 강조
+  - 우측 상단 공유 버튼으로 추가 기능 제공
+재사용성:
+  - 여러 캘린더 화면에서 동일한 상단바를 사용하기 위한 모듈화된 레이아웃
+  - include 태그 사용 예시: <include layout="@layout/layout_calendar_top" />
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

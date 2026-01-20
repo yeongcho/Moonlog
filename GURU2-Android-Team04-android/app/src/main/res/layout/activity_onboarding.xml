@@ -1,3 +1,24 @@
+<!--
+Figma: 온보딩 화면 / 시작 화면 (Onboarding Screen)
+설명: 앱 설치 후 처음 실행하거나 로그아웃 상태에서 보이는 초기 진입 화면
+구성:
+  - 상단: 마스코트 캐릭터 이미지 (고양이 캐릭터)
+  - 중앙: 환영 문구 "안녕하세요, 처음이시군요."
+  - 하단: 2개의 버튼
+    * 로그인/회원가입 버튼 (파란색, #6E79DB)
+    * 비회원 시작 버튼 (분홍색, #BC4C95)
+용도:
+  - 신규 사용자에게 앱 첫 인상 제공
+  - 로그인/회원가입 또는 비회원 모드 선택
+기능:
+  - "로그인/회원가입" 버튼: 로그인 다이얼로그(dialog_login.xml)로 이동
+  - "비회원 시작" 버튼: 메인 화면으로 바로 진입 (로그인 없이 체험 가능)
+디자인 특징:
+  - 둥근 버튼 (cornerRadius: 50dp)
+  - 버튼에 stroke 테두리 적용
+  - 마스코트 중심의 친근한 디자인
+화면 전환: 스플래시(activity_splash.xml) → 온보딩(현재 화면) → 로그인/메인
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"

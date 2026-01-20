@@ -1,3 +1,19 @@
+<!--
+Figma: 캘린더 날짜 아이템 (Calendar Day Item)
+설명: 캘린더 그리드 뷰에서 사용되는 개별 날짜 셀 레이아웃
+구성:
+  - 날짜 텍스트 (tv_day): 좌측 상단에 날짜 숫자 표시 (1~31)
+  - 감정 아이콘 (iv_calendar_emotion): 중앙에 해당 날짜의 감정 아이콘 표시
+용도:
+  - 캘린더 그리드(7x5)의 각 날짜 셀을 구성
+  - 일기 작성 여부 및 감정 상태를 시각적으로 표시
+기능:
+  - 일기가 작성된 날: 감정 아이콘 표시 (visible)
+  - 일기가 없는 날: 날짜 숫자만 표시 (아이콘 gone)
+  - 클릭 시: 해당 날짜의 일기 상세보기 또는 작성 화면으로 이동
+사용처: fragment_calendar_grid.xml의 GridView Adapter에서 사용
+크기: 60dp x 60dp (GridView의 7열 구조에 맞춤)
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
