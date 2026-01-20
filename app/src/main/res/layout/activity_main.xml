@@ -30,3 +30,4 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!--앱의 메인 화면이자 하단 메뉴(홈/캘린더 등)를 가지고 있는 틀-->

@@ -57,15 +57,32 @@
                 app:layout_constraintTop_toTopOf="@id/iv_current_profile"
                 app:layout_constraintBottom_toBottomOf="@id/iv_current_profile">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="닉네임"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/handwriting_font"/>
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
+                    <TextView
+                        android:id="@+id/tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="닉네임"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/handwriting_font"/>
+
+                    <ImageView
+                        android:id="@+id/btn_edit_nickname"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_edit"
+                        android:layout_marginStart="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:tint="#8C857B" />
+                </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -248,40 +265,47 @@
                     android:id="@+id/layout_badge_4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="5"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:layout_marginBottom="20dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/ic_badge_traveler"/>
+                            android:src="@drawable/ic_badge_traveler" />
+
                         <ImageView
                             android:id="@+id/iv_check_4"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@android:drawable/checkbox_on_background"
-                            app:tint="#5D7663"
                             android:layout_gravity="top|end"
-                            android:visibility="gone"/>
+                            android:src="@android:drawable/checkbox_on_background"
+                            android:visibility="gone"
+                            app:tint="#5D7663" />
                     </FrameLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="돌아온 여행자"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:layout_marginTop="8dp"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="어플을 오래 비우다..."
-                        android:textSize="12sp"
-                        android:textColor="@color/gray_600"/>
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -383,3 +407,4 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+<!--배지 6개 중 하나를 고르는 화면-->

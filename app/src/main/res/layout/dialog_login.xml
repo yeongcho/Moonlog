@@ -36,3 +36,4 @@
         android:layout_marginBottom="20dp"/>
 
 </LinearLayout>
+<!--아이디/비번을 치는 로그인 창-->

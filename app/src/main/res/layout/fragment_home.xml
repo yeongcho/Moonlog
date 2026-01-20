@@ -293,6 +293,22 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_go_analysis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상세 분석 보러가기"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/handwriting_font"
+            android:background="@drawable/bg_rounded_white"
+            android:backgroundTint="#8FA3B8"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:padding="15dp"
+            android:stateListAnimator="@null"/>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_go_detail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -308,3 +324,4 @@
 
     </LinearLayout>
 </ScrollView>
+<!--앱 켜면 나오는 홈 화면 (날짜, 마음 카드 등)-->

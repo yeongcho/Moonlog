@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B8CDBD"
+    android:padding="20dp"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2026년 2월 6일 금요일"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#5D7663"
+            android:fontFamily="@font/handwriting_font"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_white"
+            android:padding="25dp"
+            android:elevation="2dp">
+
+            <ImageView
+                android:id="@+id/iv_emotion"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_badge_emotion_log"
+                app:tint="#8FA3B8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="태그: 슬픔"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/handwriting_font"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toEndOf="@id/iv_emotion"
+                app:layout_constraintTop_toTopOf="@id/iv_emotion"
+                app:layout_constraintBottom_toBottomOf="@id/iv_emotion"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수정  삭제"
+                android:textSize="14sp"
+                android:textColor="#D98E8E"
+                android:fontFamily="@font/handwriting_font"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_like"
+                app:layout_constraintTop_toTopOf="@id/iv_emotion"
+                app:layout_constraintBottom_toBottomOf="@id/iv_emotion"/>
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_icon_heart"
+                app:tint="#D98E8E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_emotion"
+                app:layout_constraintBottom_toBottomOf="@id/iv_emotion"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="일이 잘 안 풀렸던 날"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#5D7663"
+                android:fontFamily="@font/handwriting_font"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_emotion"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="전공 시험이 이틀 남았는데 진도가 안 나간다. 도서관에 하루종일 앉아는 있었는데, 머리에 들어온 건 없고 멍하니 유튜브만 본 것 같다.\n\n저녁 먹고 에너지 드링크까지 마셨는데도 집중이 안 돼서 그냥 과감하게 책을 덮고 기숙사로 돌아왔다."
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/handwriting_font"
+                android:lineSpacingExtra="6dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_badge_three_days"
+            app:tint="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_white"
+            android:backgroundTint="#2D3A45"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘의 마음 카드 🌙"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/handwriting_font"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#80FFFFFF"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="닉네임님, 오늘은 여기서 멈춰도 괜찮아요.\n충분히 애썼어요. 무거운 마음은 여기에 두고 가요."
+                android:textSize="15sp"
+                android:textColor="#E0E0E0"
+                android:fontFamily="@font/handwriting_font"
+                android:lineSpacingExtra="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="오늘의 미션: 걱정 스위치 끄고 푹 잠들기"
+                android:textSize="14sp"
+                android:textColor="#2D3A45"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="@font/handwriting_font"
+                android:background="@drawable/bg_rounded_white"
+                android:backgroundTint="#D0D0D0"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_go_analysis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상세 분석 보러가기"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/handwriting_font"
+            android:background="@drawable/bg_rounded_white"
+            android:backgroundTint="#8FA3B8"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:stateListAnimator="@null"/>
+
+    </LinearLayout>
+</ScrollView>
+<!--일기 내용과 하늘색 '분석 보러가기' 버튼이 있는 알맹이 화면-->

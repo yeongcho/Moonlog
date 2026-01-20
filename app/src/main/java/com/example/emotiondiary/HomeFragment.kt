@@ -2,10 +2,12 @@ package com.example.emotiondiary
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
@@ -22,12 +24,15 @@ class HomeFragment : Fragment() {
     private lateinit var tvTitle: TextView
     private lateinit var tvContent: TextView
     private lateinit var tvTag: TextView
-    private lateinit var ivEmotion: android.widget.ImageView
+    private lateinit var ivEmotion: ImageView
     private lateinit var btnWrite: AppCompatButton
     private lateinit var btnDelete: TextView
     private lateinit var btnEdit: TextView
     private lateinit var tvAnalysis: TextView
     private lateinit var btnMission: AppCompatButton
+
+    // ★ 추가된 변수: 상세 분석 보러가기 버튼
+    private lateinit var btnGoAnalysis: AppCompatButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +57,9 @@ class HomeFragment : Fragment() {
 
         tvAnalysis = view.findViewById(R.id.tv_analysis_result)
         btnMission = view.findViewById(R.id.btn_mission)
+
+        // ★ 추가된 ID 연결
+        btnGoAnalysis = view.findViewById(R.id.btn_go_analysis)
 
         // 1. "이야기를 들려주세요" 버튼 누르면 작성 화면으로 이동
         btnWrite.setOnClickListener {
@@ -86,6 +94,22 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        // ★ 4. [상세 분석 보러가기] 버튼 클릭 이벤트 (로딩 -> 밤하늘 분석 카드)
+        btnGoAnalysis.setOnClickListener {
+            // (1) 로딩 팝업 띄우기
+            val loadingDialog = LoadingDialog()
+            loadingDialog.show(parentFragmentManager, "LoadingDialog")
+
+            // (2) 2초(2000ms) 뒤에 로딩 끄고 분석 결과 띄우기
+            Handler(Looper.getMainLooper()).postDelayed({
+                loadingDialog.dismiss() // 로딩 닫기
+
+                // 밤하늘 분석 카드 띄우기
+                val analysisDialog = AiAnalysisDialog()
+                analysisDialog.show(parentFragmentManager, "AiAnalysisDialog")
+            }, 2000)
+        }
+
         return view
     }
 
@@ -97,7 +121,7 @@ class HomeFragment : Fragment() {
 
     private fun updateUI() {
         if (DiaryData.isWritten) {
-            // 작성된 상태: 빈 화면 숨기고, 채워진 카드 보여주기
+            // [작성된 상태]
             layoutEmpty.visibility = View.GONE
             layoutFilled.visibility = View.VISIBLE
 
@@ -107,18 +131,31 @@ class HomeFragment : Fragment() {
             tvTag.text = "#${DiaryData.emotionText}"
             ivEmotion.setImageResource(DiaryData.emotionIcon)
 
-            // 분석 결과 멘트 바꾸기 (예시)
+            // 분석 결과 멘트
             tvAnalysis.text = "${DiaryData.emotionText}을(를) 느낀 하루였군요.\n내일은 더 좋은 일이 생길 거예요!"
             btnMission.visibility = View.VISIBLE
             btnMission.text = "오늘의 미션: 따뜻한 차 한 잔 마시기"
 
+            // ★ 상세 분석 버튼 보이기
+            btnGoAnalysis.visibility = View.VISIBLE
+
         } else {
-            // 미작성 상태: 채워진 카드 숨기고, 빈 화면 보여주기
+            // [미작성 상태]
             layoutEmpty.visibility = View.VISIBLE
             layoutFilled.visibility = View.GONE
 
             tvAnalysis.text = "아직 일기를 작성하지 않았어요.\n이야기를 작성하고 마음 답장을 확인해요."
             btnMission.visibility = View.GONE
+
+            // ★ 상세 분석 버튼 숨기기
+            btnGoAnalysis.visibility = View.GONE
+
+            // [상세 분석 보러가기] 버튼 클릭
+            btnGoAnalysis.setOnClickListener {
+                // 바로 초록색 시작 화면을 띄웁니다!
+                val startDialog = AnalysisStartDialog()
+                startDialog.show(parentFragmentManager, "AnalysisStartDialog")
+            }
         }
     }
 }

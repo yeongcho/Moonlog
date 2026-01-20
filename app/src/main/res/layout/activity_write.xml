@@ -382,3 +382,4 @@
         app:layout_constraintTop_toBottomOf="@id/progressBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!--"이야기를 들려주세요"를 누르면 나오는 글쓰기 화면-->
