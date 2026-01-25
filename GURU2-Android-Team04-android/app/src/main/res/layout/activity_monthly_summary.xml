@@ -185,6 +185,7 @@
                         android:gravity="center">
 
                         <TextView
+                            android:id="@+id/tv_one_line_summary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="바쁘고 지친 날도 있었지만, 좋아하는 순간들로 다시 힘을 낸 한 달이에요."
@@ -196,6 +197,7 @@
                     <!-- 상세 요약 본문 -->
                     <!-- Gemini API를 통한 해당 월간 일기들 요약 긴 문단 -->
                     <TextView
+                        android:id="@+id/tv_detail_summary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="좋아하는 영화를 보면서 기분이 환해진 날도 있었고...\n(여기에 긴 요약 내용이 들어갑니다)\n전체적으로 흔들리긴 해도 회복하려는 힘이 보였어요."
@@ -312,6 +314,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/tv_keyword_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="휴식"
@@ -323,6 +326,7 @@
                                 android:layout_marginEnd="8dp"/>
 
                             <TextView
+                                android:id="@+id/tv_keyword_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="재정비"
@@ -334,6 +338,7 @@
                                 android:layout_marginEnd="8dp"/>
 
                             <TextView
+                                android:id="@+id/tv_keyword_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="회복"
@@ -343,7 +348,6 @@
                                 android:fontFamily="@font/nanumsquare_ac_eb"
                                 android:textColor="#FFFFFF"/>
                         </LinearLayout>
-
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -71,9 +71,7 @@ class AnalysisActionsActivity : AppCompatActivity() {
             if (owner.startsWith("ANON_") || owner.isBlank()) {
                 startActivity(Intent(this, LoginActivity::class.java))
             } else {
-                // 너 프로젝트에 캘린더 화면 Activity가 있으면 여기로 바꿔줘.
-                // 예: startActivity(Intent(this, DiaryCalendarActivity::class.java))
-                Toast.makeText(this, "일기 모아보기 화면 Activity로 연결해줘!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, DiaryCalendarActivity::class.java))
             }
         }
 

@@ -183,10 +183,7 @@
 
 
     <!-- 5) 일기 목록 영역(주차별) -->
-
-    <!-- 일기 목록 컨테이너 -->
-    <!-- 선택된 주차에 해당하는 일기 카드들을 리스트로 표시 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDiaryList"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -197,167 +194,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutWeekSelector">
+        app:layout_constraintTop_toBottomOf="@id/layoutWeekSelector" />
 
-        <!-- 첫번째 일기 카드 -->
-        <!-- 카드 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_diary_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="#E3EAE1"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
 
-            <LinearLayout
-                android:id="@+id/layout_card_content_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:gravity="center_vertical">
-
-                <!-- 해당 일기의 감정 이모지 -->
-                <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
-                <ImageView
-                    android:id="@+id/iv_emotion_1"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/emotion_joy" />
-
-                <!-- 일기 제목 -->
-                <TextView
-                    android:id="@+id/tv_diary_title_1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="16dp"
-                    android:text="좋아하는 영화를 본 날"
-                    android:textSize="18sp"
-                    android:textColor="#6D9779"
-                    android:fontFamily="@font/nanumsquare_eb"
-                    android:maxLines="2"
-                    android:ellipsize="end" />
-
-                <!-- 일기 날짜(일 + 요일) -->
-                <LinearLayout
-                    android:id="@+id/layout_date_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <!-- 날짜(일) -->
-                    <TextView
-                        android:id="@+id/tv_day_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="19"
-                        android:textSize="32sp"
-                        android:textColor="#3B3E3C"
-                        android:fontFamily="@font/nanumsquare_eb" />
-
-                    <!-- 요일 -->
-                    <TextView
-                        android:id="@+id/tv_day_of_week_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MON"
-                        android:textSize="17sp"
-                        android:textColor="#3B3E3C"
-                        android:gravity="center"
-                        android:fontFamily="@font/nanumsquare_eb" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- 두번째 일기 카드 -->
-        <!-- 카드 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_diary_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="#E3EAE1"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintTop_toBottomOf="@id/card_diary_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <LinearLayout
-                android:id="@+id/layout_card_content_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:gravity="center_vertical">
-
-                <!-- 해당 일기의 감정 이모지 -->
-                <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
-                <ImageView
-                    android:id="@+id/iv_emotion_2"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/emotion_joy" />
-
-                <!-- 일기 제목 -->
-                <TextView
-                    android:id="@+id/tv_diary_title_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="16dp"
-                    android:text="봉사활동을 하고 온 날"
-                    android:textSize="18sp"
-                    android:textColor="#6D9779"
-                    android:fontFamily="@font/nanumsquare_eb"
-                    android:maxLines="2"
-                    android:ellipsize="end" />
-
-                <!-- 일기 날짜(일 + 요일) -->
-                <LinearLayout
-                    android:id="@+id/layout_date_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <!-- 날짜(일) -->
-                    <TextView
-                        android:id="@+id/tv_day_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20"
-                        android:textSize="32sp"
-                        android:textColor="#3B3E3C"
-                        android:fontFamily="@font/nanumsquare_eb" />
-
-                    <!-- 요일 -->
-                    <TextView
-                        android:id="@+id/tv_day_of_week_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tue"
-                        android:textSize="17sp"
-                        android:textColor="#3B3E3C"
-                        android:gravity="center"
-                        android:fontFamily="@font/nanumsquare_eb" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!--
-            이후 일기 카드들도 동일한 구조로 반복
-            - 감정 이모지 + 제목 + 날짜(일/요일) 표시
-            - 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동
-        -->
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--
+        이후 일기 카드들도 동일한 구조로 반복
+        - 감정 이모지 + 제목 + 날짜(일/요일) 표시
+        - 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,11 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 갤러리 읽기 권한 (이미지) -->
     <uses-permission
-        android:name="android.permission.READ_MEDIA_IMAGES" android:required="false" />
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        android:required="false" />
     <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:name=".MyApp"
@@ -37,12 +44,19 @@
         <activity android:name=".SignupActivity" android:exported="false" />
         <activity android:name=".StartActivity" android:exported="false" />
         <activity android:name=".HomeActivity" android:exported="false" />
-        <activity android:name=".DiaryEditorActivity" />
-        <activity android:name=".TodayDiaryDetailActivity" />
-        <activity android:name=".AnalysisStartActivity" />
-        <activity android:name=".AnalysisDiaryActivity" />
-        <activity android:name=".AnalysisComfortActivity" />
-        <activity android:name=".AnalysisActionsActivity" />
+
+        <activity android:name=".DiaryEditorActivity" android:exported="false" />
+        <activity android:name=".TodayDiaryDetailActivity" android:exported="false" />
+
+        <activity android:name=".AnalysisStartActivity" android:exported="false" />
+        <activity android:name=".AnalysisDiaryActivity" android:exported="false" />
+        <activity android:name=".AnalysisComfortActivity" android:exported="false" />
+        <activity android:name=".AnalysisActionsActivity" android:exported="false" />
+
+        <activity android:name=".DiaryCalendarActivity" android:exported="false" />
+        <activity android:name=".MonthlySummaryActivity" android:exported="false" />
+        <activity android:name=".DiaryListActivity" android:exported="false" />
+        <activity android:name=".ArchiveDiaryDetailActivity" android:exported="false" />
 
     </application>
 
