@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.guru2_android_team04_android.DiaryData
 import com.example.guru2_android_team04_android.R
@@ -21,7 +20,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.activity_home, container, false)
 
         // "이야기를 들려주세요" 버튼 (새 글 쓰기)
         val btnGoWrite = root.findViewById<Button>(R.id.btn_go_write)

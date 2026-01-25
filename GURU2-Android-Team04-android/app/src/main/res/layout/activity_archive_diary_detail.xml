@@ -6,9 +6,28 @@
     android:layout_height="match_parent"
     android:background="#AECAB3">
 
-    <!-- 캘린더 / 리스트에서 일정 날짜를 선택했을 때 보여주는 일기 내용 화면-->
+    <!--
+        Figma: 일기 내용 화면(상세)(activity_archive_diary_detail.xml) (진행순서 20)
+        설명 : 캘린더 / 리스트 / 마음 카드 보관함에서 특정 날짜를 선택했을 때 보여주는 일기 상세 화면
+        구성:
+          - 헤더(날짜 이동)
+            - 이전/다음 아이콘으로 날짜 이동
+          - 본문 스크롤
+            - 일기 카드
+              - 날짜 + 공유 버튼
+              - 감정 이모지 + 감정 태그 + 즐겨찾기(하트)
+              - 일기 제목 + 일기 내용
+            - 오늘의 마음 카드
+              - 위로/격려 문구 2줄 + 오늘의 미션 1개
+            - 마음지기의 분석 카드
+              - 분석 내용 + 해시태그
+            - 오늘의 실천안 카드
+              - 실천안 3개 + 마무리 문장
+              - 이미지 카드로 소장하기 버튼
+                - 선택 시, 이미지 카드 형태로 기기 내 갤러리에 저장
+    -->
 
-    <!-- 헤더 -->
+    <!-- 헤더(날짜 이동 영역) -->
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="0dp"
@@ -20,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- 이전 일기로 이동 -->
         <ImageView
             android:id="@+id/btnPrevMonth"
             android:layout_width="24dp"
@@ -27,6 +47,7 @@
             android:layout_marginStart="100dp"
             android:src="@drawable/ic_arrow_left" />
 
+        <!-- 선택된 날짜 표시 -->
         <TextView
             android:id="@+id/tvMonth"
             android:layout_width="wrap_content"
@@ -38,6 +59,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/nanumsquare_eb" />
 
+        <!-- 다음 일기로 이동 -->
         <ImageView
             android:id="@+id/btnNextMonth"
             android:layout_width="24dp"
@@ -46,7 +68,7 @@
             android:src="@drawable/ic_arrow_right" />
     </LinearLayout>
 
-    <!-- 스크롤 -->
+    <!-- 본문 스크롤 영역 -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/detailScrollView"
         android:layout_width="0dp"
@@ -65,7 +87,7 @@
             android:paddingHorizontal="20dp"
             android:paddingBottom="100dp">
 
-            <!-- 일기 카드(월 아이콘 겹침) -->
+            <!-- 일기 카드(월 스티커 아이콘이 겹쳐 보이도록 구성) -->
             <FrameLayout
                 android:id="@+id/monthCardContainer"
                 android:layout_width="match_parent"
@@ -75,6 +97,7 @@
                 android:clipChildren="false"
                 android:clipToPadding="false">
 
+                <!-- 일기 내용 카드 -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardDiary"
                     android:layout_width="match_parent"
@@ -92,10 +115,12 @@
                         android:orientation="vertical"
                         android:padding="20dp">
 
+                        <!-- 날짜 + 공유 버튼 -->
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+                            <!-- 일기 날짜(요일 포함) -->
                             <TextView
                                 android:id="@+id/tvDiaryDayText"
                                 android:layout_width="wrap_content"
@@ -105,15 +130,6 @@
                                 android:text="8일 목요일"
                                 android:textColor="#536059"
                                 android:textSize="26sp" />
-
-                            <ImageView
-                                android:id="@+id/btnShareDetail"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:elevation="2dp"
-                                android:src="@drawable/ic_share" />
                         </RelativeLayout>
 
                         <View
@@ -122,18 +138,21 @@
                             android:layout_marginVertical="12dp"
                             android:background="#CEDBD6" />
 
+                        <!-- 감정 태그 영역(이모지 + 태그 텍스트 + 즐겨찾기) -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
+                            <!-- 감정 이모지 -->
                             <ImageView
                                 android:id="@+id/ivDetailEmotion"
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
                                 android:src="@drawable/emotion_calm" />
 
+                            <!-- 감정 태그 텍스트 -->
                             <TextView
                                 android:id="@+id/tvDetailEmotionTag"
                                 android:layout_width="wrap_content"
@@ -143,6 +162,8 @@
                                 android:textSize="22sp"
                                 android:textColor="#000000" />
 
+                            <!-- 즐겨찾기(하트) 아이콘 -->
+                            <!-- 클릭 시 즐겨찾기 설정/해제 -->
                             <ImageView
                                 android:id="@+id/ivDetailFavorites"
                                 android:layout_width="30dp"
@@ -151,6 +172,7 @@
                                 android:src="@drawable/ic_favorites_x" />
                         </LinearLayout>
 
+                        <!-- 일기 제목 -->
                         <TextView
                             android:id="@+id/tvDiaryTitle"
                             android:layout_width="match_parent"
@@ -162,6 +184,7 @@
                             android:textSize="20sp"
                             android:fontFamily="@font/nanumsquare_eb" />
 
+                        <!-- 일기 본문 -->
                         <TextView
                             android:id="@+id/tvDiaryContent"
                             android:layout_width="match_parent"
@@ -176,6 +199,7 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- 월 스티커(일기 카드 위에 겹쳐 보이는 장식) -->
                 <ImageView
                     android:id="@+id/ivMonthIcon"
                     android:layout_width="200dp"
@@ -187,6 +211,7 @@
                     android:src="@drawable/month_1" />
             </FrameLayout>
 
+            <!-- 구분용 별 아이콘 -->
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
@@ -194,7 +219,7 @@
                 android:layout_marginVertical="24dp"
                 android:src="@drawable/ic_star_white" />
 
-            <!-- 마음 카드 -->
+            <!-- 오늘의 마음 카드 -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardMind"
                 android:layout_width="match_parent"
@@ -211,6 +236,7 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <!-- 마음 카드 제목 -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -225,6 +251,7 @@
                         android:layout_marginVertical="12dp"
                         android:background="#FFFFFF" />
 
+                    <!-- 위로/격려 문구(첫번째 문장) -->
                     <TextView
                         android:id="@+id/tvNicknameMsg"
                         android:layout_width="wrap_content"
@@ -234,6 +261,7 @@
                         android:fontFamily="@font/nanumsquarez_b"
                         android:textSize="15sp" />
 
+                    <!-- 위로/격려 문구(두번째 문장) -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -243,6 +271,7 @@
                         android:fontFamily="@font/nanumsquare_l"
                         android:textSize="14sp" />
 
+                    <!-- 오늘의 미션 1개 -->
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -265,7 +294,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 마음 분석 카드 -->
+            <!-- 마음지기의 분석 카드 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cardAnalysis"
                 android:layout_width="match_parent"
@@ -274,6 +303,7 @@
                 android:padding="30dp"
                 android:layout_marginTop="16dp">
 
+                <!-- 분석 카드 제목 -->
                 <TextView
                     android:id="@+id/tv_analysis_title"
                     android:layout_width="wrap_content"
@@ -286,6 +316,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <!-- 분석 내용(길어질 수 있어 내부 스크롤) -->
                 <ScrollView
                     android:id="@+id/scrollAnalysis"
                     android:layout_width="0dp"
@@ -309,6 +340,7 @@
                         android:gravity="start"/>
                 </ScrollView>
 
+                <!-- 분석 키워드(해시태그) -->
                 <TextView
                     android:id="@+id/tv_analysis_tags"
                     android:layout_width="0dp"
@@ -334,6 +366,7 @@
                 android:padding="30dp"
                 android:layout_marginTop="16dp">
 
+                <!-- 실천안 카드 제목 -->
                 <TextView
                     android:id="@+id/tv_action_title"
                     android:layout_width="wrap_content"
@@ -346,6 +379,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <!-- 실천안 목록(길어질 수 있어 내부 스크롤) -->
                 <ScrollView
                     android:id="@+id/scrollAction"
                     android:layout_width="0dp"
@@ -362,6 +396,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
+                        <!-- 실천안 1 -->
                         <TextView
                             android:id="@+id/tv_action_1"
                             android:layout_width="match_parent"
@@ -372,6 +407,7 @@
                             android:fontFamily="@font/nanumsquare_r"
                             android:lineSpacingExtra="8dp" />
 
+                        <!-- 실천안 2 -->
                         <TextView
                             android:id="@+id/tv_action_2"
                             android:layout_width="match_parent"
@@ -383,6 +419,7 @@
                             android:fontFamily="@font/nanumsquare_r"
                             android:lineSpacingExtra="8dp" />
 
+                        <!-- 실천안 3 -->
                         <TextView
                             android:id="@+id/tv_action_3"
                             android:layout_width="match_parent"
@@ -396,6 +433,7 @@
                     </LinearLayout>
                 </ScrollView>
 
+                <!-- 실천안 마무리 문구 -->
                 <TextView
                     android:id="@+id/tv_action_footer"
                     android:layout_width="0dp"
@@ -409,6 +447,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <!-- 이미지 카드로 저장하기 버튼 -->
+                <!-- 선택 시, 이미지 카드 형태로 기기 내 갤러리에 저장 -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_save_card"
                     android:layout_width="0dp"

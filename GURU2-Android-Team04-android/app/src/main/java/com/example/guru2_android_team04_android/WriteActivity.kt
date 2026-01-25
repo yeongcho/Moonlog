@@ -23,7 +23,7 @@ class WriteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_write)
+        setContentView(R.layout.activity_diary_editor)
 
         window.statusBarColor = getColor(R.color.main_bg_sage)
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = true

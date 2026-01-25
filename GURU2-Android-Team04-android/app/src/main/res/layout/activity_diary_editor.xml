@@ -7,8 +7,21 @@
     android:background="@color/main_bg_sage"
     android:padding="20dp">
 
-    <!-- 오늘 일기를 작성할 작성 화면 화면(수정화면으로도 공용 사용) -->
-    <!-- 헤더 -->
+    <!--
+        Figma: 오늘 일기 작성 화면(activity_diary_editor.xml) (진행순서 7)
+        설명 : 오늘 일기를 작성하는 화면 (수정 화면으로도 공용 사용)
+        구성:
+          - 상단 안내 문구
+          - 일기 카드(작성 폼)
+            - 오늘 날짜 표시
+            - 감정 태그 선택(라디오)
+            - 제목 입력
+            - 본문 입력
+          - 작성 완료 버튼
+            - 버튼 선택 시, 일기 보기 화면으로 이동
+    -->
+
+    <!-- 화면 안내 문구 -->
     <TextView
         android:id="@+id/tvMonth"
         android:layout_width="wrap_content"
@@ -21,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 작성 모드 전체 영역 -->
+    <!-- 작성 영역(작성 모드 / 수정 모드 공용 컨테이너) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_write_mode"
         android:layout_width="0dp"
@@ -32,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 일기 카드 -->
+        <!-- 일기 작성 카드 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardDiary"
             android:layout_width="0dp"
@@ -46,7 +59,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- 카드 내부는 스크롤: 카드 전체가 아니라 "작성 영역"만 스크롤 -->
+            <!-- 카드 내부 스크롤: 카드 자체가 아니라 작성 내용만 스크롤 -->
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/scroll_write_card"
                 android:layout_width="match_parent"
@@ -60,6 +73,7 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <!-- 오늘 날짜 표시 -->
                     <TextView
                         android:id="@+id/tvDiaryDayText"
                         android:layout_width="match_parent"
@@ -70,13 +84,14 @@
                         android:textColor="#536059"
                         android:textSize="26sp" />
 
+                    <!-- 날짜 아래 구분선 -->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="4dp"
                         android:layout_marginVertical="12dp"
                         android:background="#CEDBD6" />
 
-                    <!-- 작성 카드 -->
+                    <!-- 작성 폼 컨테이너(감정 선택 + 제목/본문 입력) -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_write_card"
                         android:layout_width="match_parent"
@@ -86,7 +101,7 @@
                         android:background="@drawable/bg_rounded_white"
                         android:padding="20dp">
 
-                        <!-- 감정 선택 안내(태그 옆에 미리보기 하나) -->
+                        <!-- 감정 미리보기 아이콘(선택된 감정에 따라 변경) -->
                         <ImageView
                             android:id="@+id/iv_emotion_preview"
                             android:layout_width="24dp"
@@ -95,6 +110,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <!-- 감정 태그 선택 안내 문구 -->
                         <TextView
                             android:id="@+id/tv_tag_guide"
                             android:layout_width="wrap_content"
@@ -108,7 +124,7 @@
                             app:layout_constraintTop_toTopOf="@id/iv_emotion_preview"
                             app:layout_constraintBottom_toBottomOf="@id/iv_emotion_preview" />
 
-                        <!-- 감정 라디오(아이콘 + 텍스트) -->
+                        <!-- 감정 선택 영역(가로 스크롤 라디오 버튼) -->
                         <HorizontalScrollView
                             android:id="@+id/scroll_mood"
                             android:layout_width="0dp"
@@ -122,12 +138,14 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tv_tag_guide">
 
+                            <!-- 감정 라디오 그룹(아이콘 + 텍스트) -->
                             <RadioGroup
                                 android:id="@+id/rg_mood"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
+                                <!-- 기쁨 -->
                                 <RadioButton
                                     android:id="@+id/rb_joy"
                                     android:layout_width="wrap_content"
@@ -142,6 +160,7 @@
                                     android:textColor="@color/text_dark"
                                     android:textSize="12sp" />
 
+                                <!-- 자신감 -->
                                 <RadioButton
                                     android:id="@+id/rb_confidence"
                                     android:layout_width="wrap_content"
@@ -156,6 +175,7 @@
                                     android:textColor="@color/text_dark"
                                     android:textSize="12sp" />
 
+                                <!-- 평온 -->
                                 <RadioButton
                                     android:id="@+id/rb_calm"
                                     android:layout_width="wrap_content"
@@ -170,6 +190,7 @@
                                     android:textColor="@color/text_dark"
                                     android:textSize="12sp" />
 
+                                <!-- 평범 -->
                                 <RadioButton
                                     android:id="@+id/rb_normal"
                                     android:layout_width="wrap_content"
@@ -184,6 +205,7 @@
                                     android:textColor="@color/text_dark"
                                     android:textSize="12sp" />
 
+                                <!-- 우울 -->
                                 <RadioButton
                                     android:id="@+id/rb_depression"
                                     android:layout_width="wrap_content"
@@ -198,6 +220,7 @@
                                     android:textColor="@color/text_dark"
                                     android:textSize="12sp" />
 
+                                <!-- 분노 -->
                                 <RadioButton
                                     android:id="@+id/rb_anger"
                                     android:layout_width="wrap_content"
@@ -212,6 +235,7 @@
                                     android:textColor="@color/text_dark"
                                     android:textSize="12sp" />
 
+                                <!-- 피곤함 -->
                                 <RadioButton
                                     android:id="@+id/rb_fatigue"
                                     android:layout_width="wrap_content"
@@ -238,6 +262,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/scroll_mood" />
 
+                        <!-- 제목 입력 -->
                         <EditText
                             android:id="@+id/et_title"
                             android:layout_width="0dp"
@@ -253,7 +278,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/divider_write" />
 
-                        <!-- 본문은 길어지므로 내부 스크롤 + 충분한 높이 확보 -->
+                        <!-- 본문 입력(길어질 수 있어 충분한 높이 확보 + 내부 스크롤) -->
                         <EditText
                             android:id="@+id/et_content"
                             android:layout_width="0dp"
@@ -282,7 +307,8 @@
             </androidx.core.widget.NestedScrollView>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- 일기 작성 완료하기 버튼 -->
+        <!-- 일기 작성 완료 버튼 -->
+        <!-- 버튼 선택 시, 오늘 일기 보기 화면(activity_today_diary_detail.xml)으로 이동 -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_card"
             android:layout_width="0dp"

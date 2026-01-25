@@ -7,13 +7,13 @@
     android:background="@drawable/bg_start">
 
     <!--
-        Figma: 초기화면
+        Figma: 초기화면(activity_splash.xml) (진행순서 1)
         설명: 앱 실행 시 가장 먼저 보이는 초기 화면
         구성: 달 이미지 + 서브 텍스트 ("당신의 오늘을 가볍게 남겨보세요")
-        용도: 앱 로딩 중 표시되며, 일정 시간 후 자동으로 다음 화면으로 전환
+        용도: 앱 로딩 중 표시되며, 일정 시간 후 자동으로 회원/비회원 화면(activity_onboarding.xml)으로 전환
       -->
 
-    <!-- 로고 이미지 -->
+    <!-- 딜 로고 이미지 -->
     <ImageView
         android:id="@+id/tv_logo"
         android:layout_width="120dp"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="당신의 오늘을\n가볍게 남겨보세요"
         android:textSize="20sp"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:gravity="center"
         android:fontFamily="@font/nanumsquare_ac_r"
         android:layout_marginTop="15dp"

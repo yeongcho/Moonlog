@@ -9,13 +9,38 @@
     android:clipToPadding="false"
     android:clipChildren="false">
 
-    <!--마이페이지-->
+    <!--
+        Figma: 마이페이지 화면(activity_mypage.xml) (진행순서 16)
+        설명 : 사용자 프로필/업적/기록/계정 관련 메뉴를 모아둔 화면
+        구성:
+          - 프로필 카드
+            - 로그인 상태: 닉네임/이메일/뱃지명/D-day 표시
+                - 이미지 지정 전까지는 기본 이미지 제공
+            - 비로그인(게스트) 상태: 안내 문구 표시
+                - 비로그인 상태이면 '업적 확인하기'만 아래 버튼 있음
+                    - 클릭시 화면 이동 없이 토스트 메세지로 로그인 후 이용 안내
+            - 프로필 뱃지 프레임(업적 뱃지) 오버레이 표시
+          - 업적(뱃지) 확인하기 버튼
+            - 클릭 시 업적(뱃지) 프로필 편집 화면으로 이동
+          - 나의 기록
+            - 일기 모아보기(캘린더/리스트) 버튼: 클릭 시 일기 캘린더 화면으로 이동
+            - 마음 카드 보관함 버튼: 클릭 시 마음 카드 보관함 화면으로 이동
+          - 계정 정보
+            - 프로필 편집 버튼: 클릭 시 프로필 편집 화면 으로 이동
+            - 로그아웃 버튼: 클릭 시 로그아웃 처리
+                - 로그인 화면(activity_login.xml)으로 이동
+            - 회원 탈퇴 버튼: 클릭 시 회원 탈퇴 처리
+                - 로그인 화면(activity_login.xml)으로 이동
+    -->
+
+    <!-- 마이페이지 전체 스크롤 영역 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false">
 
+        <!-- 상단 장식용-->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="35dp"
             android:layout_height="20dp"
@@ -35,6 +60,7 @@
             android:clipChildren="false"
             android:clipToPadding="false">
 
+            <!-- 프로필 카드 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_profile_card"
                 android:layout_width="match_parent"
@@ -45,6 +71,7 @@
                 android:clipChildren="false"
                 android:clipToPadding="false">
 
+                <!-- 프로필 이미지 -->
                 <ImageView
                     android:id="@+id/iv_profile_image"
                     android:layout_width="60dp"
@@ -60,6 +87,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
+                <!-- 로그인 상태 정보 영역(닉네임/이메일/뱃지/D-day) -->
                 <LinearLayout
                     android:id="@+id/layout_member_info"
                     android:layout_width="0dp"
@@ -72,6 +100,7 @@
                     app:layout_constraintTop_toTopOf="@id/iv_profile_image"
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile_image">
 
+                    <!-- 닉네임 -->
                     <TextView
                         android:id="@+id/tv_nickname"
                         android:layout_width="wrap_content"
@@ -83,6 +112,7 @@
                         android:clickable="true"
                         android:focusable="true"/>
 
+                    <!-- 이메일 -->
                     <TextView
                         android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
@@ -93,6 +123,8 @@
                         android:fontFamily="@font/nanumsquare_r"
                         android:layout_marginTop="2dp"/>
 
+                    <!-- 현재 장착한 뱃지 이름 -->
+                    <!-- 획득한 뱃지 없을 시 숨김-->
                     <TextView
                         android:id="@+id/tv_badge_name"
                         android:layout_width="wrap_content"
@@ -103,6 +135,7 @@
                         android:fontFamily="@font/nanumsquare_r"
                         android:layout_marginTop="12dp"/>
 
+                    <!-- 앱 사용 D-day -->
                     <TextView
                         android:id="@+id/tv_d_day"
                         android:layout_width="wrap_content"
@@ -114,6 +147,7 @@
                         android:layout_marginTop="3dp"/>
                 </LinearLayout>
 
+                <!-- 비로그인(게스트) 상태 안내 문구 -->
                 <TextView
                     android:id="@+id/tv_guest_info"
                     android:layout_width="0dp"
@@ -129,6 +163,9 @@
                     app:layout_constraintTop_toTopOf="@id/iv_profile_image"
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"/>
 
+                <!-- 프로필 이미지 위에 겹쳐지는 뱃지 프레임 -->
+                <!-- 로그인 상태에서 대표 뱃지/업적 아이콘 표시용 -->
+                <!-- 획득한 뱃지 없을 시 숨김-->
                 <ImageView
                     android:id="@+id/iv_badge_frame_mypage"
                     android:layout_width="80dp"
@@ -142,6 +179,8 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- 업적 확인하기 버튼 -->
+            <!-- 클릭 시 업적(뱃지) 프로필 편집 화면(activity_profile_badge_edit.xml)으로 이동 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btn_achievements"
                 android:layout_width="match_parent"
@@ -174,6 +213,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- 섹션 타이틀: 나의 기록 -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,6 +224,8 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="10dp"/>
 
+            <!-- 일기 모아보기 버튼(캘린더/리스트 진입) -->
+            <!-- 일기 모아보기(캘린더/리스트) 버튼: 클릭 시 일기 캘린더 화면(activity_diary_calendar.xml)으로 이동 -->
             <LinearLayout
                 android:id="@+id/btn_diary_list"
                 android:layout_width="match_parent"
@@ -209,6 +251,8 @@
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
 
+            <!-- 마음 카드 보관함 버튼 -->
+            <!-- 클릭 시 마음 카드 보관함 화면(activity_mindcard_archive.xml)으로 이동 -->
             <LinearLayout
                 android:id="@+id/btn_mind_card"
                 android:layout_width="match_parent"
@@ -235,6 +279,7 @@
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
 
+            <!-- 섹션 타이틀: 계정 정보 -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -245,6 +290,8 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="10dp"/>
 
+            <!-- 프로필 편집 버튼 -->
+            <!-- 클릭 시 프로필 편집 화면(activity_profile_edit.xml) 으로 이동 -->
             <LinearLayout
                 android:id="@+id/btn_edit_profile"
                 android:layout_width="match_parent"
@@ -270,6 +317,9 @@
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
 
+            <!-- 로그아웃 버튼 -->
+            <!-- 클릭 시 로그아웃 처리 -->
+            <!-- 로그아웃 처리후 로그인 화면(activity_login.xml)으로 이동-->
             <LinearLayout
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
@@ -297,6 +347,8 @@
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
 
+            <!-- 회원 탈퇴 버튼 -->
+            <!-- 회원 탈퇴 후 로그인 화면(activity_login.xml)으로 이동 -->
             <LinearLayout
                 android:id="@+id/btn_delete_account"
                 android:layout_width="match_parent"

@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // XML 화면 연결
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.activity_home, container, false)
 
         // ID 찾기
         layoutEmpty = view.findViewById(R.id.layout_empty_state)

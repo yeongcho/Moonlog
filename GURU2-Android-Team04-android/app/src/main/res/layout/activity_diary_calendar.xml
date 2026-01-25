@@ -8,14 +8,38 @@
     android:background="#AECAB3"
     android:fillViewport="true">
 
-    <!-- 감정 캘린더 탭 (일기 모아보기 버튼 클릭 후 -> 이곳으로 이동)-->
+    <!--
+        Figma: 감정 캘린더 화면(activity_diary_calendar.xml) (진행순서 13)
+        설명 : 사용자가 작성한 일기를 달력 형태로 한눈에 확인하는 화면
+        진입 경로:
+          - 마이페이지의 '일기 모아보기' 버튼 클릭 -> 이 화면으로 이동
+          - 상세 분석 화면의 '일기 모아보기' 버튼 클릭 -> 이 화면으로 이동
+        구성:
+          - 월 이동 헤더
+            - 이전/다음 달 버튼으로 월 변경
+            - 현재 월/년도 텍스트 표시
+          - 요약/캘린더/리스트
+            - 선택 시 각 화면으로 이동
+          - 월 스티커(월 표시 디자인)
+            - 선택된 월에 맞는 이미지로 변경
+          - 캘린더 카드
+            - 날짜 박스(숫자 + 감정 이모티콘) 그리드 표시
+            - 날짜 박스 클릭 시 해당 날짜의 일기 상세 화면 제공
+            - 각 줄마다 일~토에 해당
+                - 달에 따른 날짜 배치 변경
+            - 주말은 옅은 회색으로 표시
+          - 월간 마음 그래프
+            - 월간 감정 태그 비율을 파이차트로 시각화
+    -->
 
-    <!-- 월 이동 헤더 -->
+    <!-- 전체 레이아웃 컨테이너 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="80dp">
 
+        <!-- 이전 달 이동 버튼 -->
+        <!-- 클릭 시 이전 달로 변경 -->
         <ImageView
             android:id="@+id/btnPrevMonth"
             android:layout_width="24dp"
@@ -26,6 +50,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- 현재 월/년도 표시 텍스트 -->
+        <!-- 이전/다음 달 버튼 클릭 시 표시 값 변경 -->
         <TextView
             android:id="@+id/tvMonth"
             android:layout_width="wrap_content"
@@ -41,6 +67,8 @@
             app:layout_constraintStart_toEndOf="@id/btnPrevMonth"
             app:layout_constraintTop_toTopOf="@id/btnPrevMonth" />
 
+        <!-- 다음 달 이동 버튼 -->
+        <!-- 클릭 시 다음 달로 변경 -->
         <ImageView
             android:id="@+id/btnNextMonth"
             android:layout_width="24dp"
@@ -50,7 +78,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/btnPrevMonth" />
 
-        <!-- 탭 -->
+        <!-- 상단 (요약/캘린더/리스트) -->
+        <!-- 각 클릭 시 해당 화면으로 이동 -->
         <LinearLayout
             android:id="@+id/tabLayout"
             android:layout_width="wrap_content"
@@ -61,6 +90,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnPrevMonth">
 
+            <!-- 요약 -->
+            <!-- 클릭 시 월간 요약 화면(activity_monthly_summary.xml)으로 이동 -->
             <TextView
                 android:id="@+id/btnTabSummary"
                 android:layout_width="wrap_content"
@@ -71,6 +102,7 @@
                 android:textColor="#829586"
                 android:textSize="18sp" />
 
+            <!-- 캘린더 -->
             <TextView
                 android:id="@+id/btnTabCalendar"
                 android:layout_width="wrap_content"
@@ -81,6 +113,8 @@
                 android:fontFamily="@font/nanumsquare_eb"
                 android:textSize="18sp" />
 
+            <!-- 리스트 -->
+            <!-- 클릭 시 주차별 리스트 화면(activity_diary_list.xml)으로 이동 -->
             <TextView
                 android:id="@+id/btnTabList"
                 android:layout_width="wrap_content"
@@ -91,7 +125,8 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <!-- 월 표시 디자인 -->
+        <!-- 월 표시용 스티커 이미지 -->
+        <!-- 월 변경 시 해당 월 이미지로 변경 -->
         <ImageView
             android:id="@+id/ivMonthSticker"
             android:layout_width="200dp"
@@ -103,7 +138,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
-        <!-- 캘린더 카드 -->
+        <!-- 캘린더 카드 영역 -->
+        <!-- 날짜 박스(숫자 + 감정 이모티콘)들을 그리드 형태로 보여줌 -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/calendarCard"
             android:layout_width="0dp"
@@ -115,7 +151,7 @@
             android:background="@drawable/bg_calendar_panel"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:paddingTop="16dp"
+            android:paddingTop="90dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="20dp"
@@ -123,29 +159,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabLayout">
 
-            <ImageView
-                android:id="@+id/btnShare"
-                android:layout_width="66dp"
-                android:layout_height="66dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_share"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- 캘린더 칸 (숫자 + 감정 이모티콘) -->
+            <!-- 캘린더 그리드(7열 x 6행) -->
+            <!-- 각 칸은 1일~말일 + 다음달 일부 날짜까지 표시 -->
             <GridLayout
                 android:id="@+id/calendarGrid"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:columnCount="7"
                 android:rowCount="6"
                 android:useDefaultMargins="true"
-                app:layout_constraintTop_toBottomOf="@id/btnShare"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- 1 (배경 #F6F6F6) -->
+                <!-- 날짜 박스 (1일) -->
+                <!-- 클릭 시 해당 날짜의 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동 -->
+                <!-- 주말은 옅은 회색으로 표시 -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="60dp"
@@ -162,6 +191,7 @@
                         android:layout_height="match_parent"
                         android:padding="4dp">
 
+                        <!-- 날짜 숫자 -->
                         <TextView
                             android:id="@+id/tvDay1"
                             android:layout_width="wrap_content"
@@ -172,6 +202,8 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"/>
 
+                        <!-- 해당 날짜의 감정 이모티콘 -->
+                        <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
                         <ImageView
                             android:id="@+id/ivEmotion1"
                             android:layout_width="32dp"
@@ -183,6 +215,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+                <!--
+                    2 ~ 35 날짜 박스들도 동일한 구조
+                    - 날짜 숫자
+                    - 감정 이모티콘
+                    - 클릭 시 해당 날짜의 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동
+                    - 말일 이후는 다음 달 날짜(다음달 1~4 등) 표시
+                    - 주말은 옅은 회색으로 표시
+                -->
 
                 <!-- 2 -->
                 <com.google.android.material.card.MaterialCardView
@@ -1514,7 +1555,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- 월간 마음 그래프 -->
+        <!-- 월간 마음 그래프 타이틀 -->
         <TextView
             android:id="@+id/tvGraphTitle"
             android:layout_width="wrap_content"
@@ -1528,6 +1569,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendarCard" />
 
+        <!-- 월간 감정 분포를 보여주는 그래프 카드 -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/graphCard"
             android:layout_width="0dp"
@@ -1539,6 +1581,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGraphTitle">
 
+            <!-- MPAndroidChart 파이차트 -->
+            <!-- 월간 감정 태그 비율을 시각화 -->
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChart"
                 android:layout_width="0dp"

@@ -8,14 +8,27 @@
     android:padding="20dp"
     android:clipToPadding="false">
 
-    <!-- 배지를 프로필에 적용시킬 수 있는 화면-->
+    <!--
+        Figma: 배지 선택/적용 화면 (activity_profile_badge_edit.xml) (진행순서 17)
+        설명 : 사용자가 획득한 배지 중 1개를 선택해서 프로필 대표 배지로 지정하는 화면
+        구성:
+          - 프로필 카드 미리보기
+            - 현재 프로필 정보(닉네임/이메일/현재 배지명/D-day)
+            - 선택한 배지가 프로필 프레임에 반영되도록 표시
+          - 배지 목록(그리드)
+            - 배지 클릭 시 선택 상태 표시(체크 아이콘)
+            - 획득한 배지만 녹색으로 표시, 미획득한 배지는 회색(#9A9A9A)으로 표시
+          - 프로필 배지 지정하기 버튼
+            - 클릭 시 선택한 배지를 저장/적용하고 마이페이지 화면으로 이동
+    -->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false">
 
-        <!-- 상단 책갈피 -->
+        <!-- 상단 장식 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/view_bookmark"
             android:layout_width="35dp"
@@ -27,7 +40,6 @@
             app:cardElevation="6dp"
             app:cardBackgroundColor="#7C6969" />
 
-        <!-- 본문 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +49,7 @@
             android:clipChildren="false"
             android:clipToPadding="false">
 
+            <!-- 프로필 카드(배지 적용 미리보기 영역) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_profile_card"
                 android:layout_width="match_parent"
@@ -47,6 +60,7 @@
                 android:clipChildren="false"
                 android:clipToPadding="false">
 
+                <!-- 프로필 이미지 -->
                 <ImageView
                     android:id="@+id/iv_profile_image"
                     android:layout_width="60dp"
@@ -62,6 +76,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- 프로필 텍스트 정보(닉네임/이메일/배지명/D-day) -->
                 <LinearLayout
                     android:id="@+id/layout_member_info"
                     android:layout_width="0dp"
@@ -74,6 +89,7 @@
                     app:layout_constraintTop_toTopOf="@id/iv_profile_image"
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile_image">
 
+                    <!-- 닉네임 -->
                     <TextView
                         android:id="@+id/tv_nickname"
                         android:layout_width="wrap_content"
@@ -85,6 +101,7 @@
                         android:clickable="true"
                         android:focusable="true" />
 
+                    <!-- 이메일 -->
                     <TextView
                         android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
@@ -95,6 +112,7 @@
                         android:fontFamily="@font/nanumsquare_r"
                         android:layout_marginTop="2dp" />
 
+                    <!-- 현재 선택/적용될 배지 이름 -->
                     <TextView
                         android:id="@+id/tv_badge_name"
                         android:layout_width="wrap_content"
@@ -105,6 +123,7 @@
                         android:fontFamily="@font/nanumsquare_r"
                         android:layout_marginTop="12dp" />
 
+                    <!-- D-day -->
                     <TextView
                         android:id="@+id/tv_d_day"
                         android:layout_width="wrap_content"
@@ -116,6 +135,7 @@
                         android:layout_marginTop="3dp" />
                 </LinearLayout>
 
+                <!-- 프로필 이미지 위에 표시되는 대표 배지(선택 결과 반영) -->
                 <ImageView
                     android:id="@+id/iv_badge_frame_mypage"
                     android:layout_width="80dp"
@@ -129,6 +149,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- 배지 선택 영역(그리드) + 저장 버튼 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,6 +159,8 @@
                 android:layout_marginTop="20dp"
                 android:elevation="2dp">
 
+                <!-- 배지 목록(2열 x 3행) -->
+                <!-- 획득한 배지만 녹색으로 표시, 미획득한 배지는 회색(#9A9A9A)으로 표시 -->
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,6 +169,7 @@
                     android:alignmentMode="alignMargins">
 
                     <!-- badge 1 -->
+                    <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
                     <LinearLayout
                         android:id="@+id/layout_badge_1"
                         android:layout_width="0dp"
@@ -155,6 +179,7 @@
                         android:gravity="center"
                         android:layout_marginBottom="10dp">
 
+                        <!-- 배지 아이콘 + 선택 체크(오버레이) -->
                         <FrameLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
@@ -164,6 +189,7 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/ic_badge_start" />
 
+                            <!-- 선택된 배지일 때만 visible -->
                             <ImageView
                                 android:id="@+id/iv_check_1"
                                 android:layout_width="24dp"
@@ -174,6 +200,7 @@
                                 android:visibility="gone" />
                         </FrameLayout>
 
+                        <!-- 배지 이름 -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -182,6 +209,7 @@
                             android:fontFamily="@font/nanumsquare_ac_eb"
                             android:layout_marginTop="8dp" />
 
+                        <!-- 배지 설명 -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -192,6 +220,7 @@
                     </LinearLayout>
 
                     <!-- badge 2 -->
+                    <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
                     <LinearLayout
                         android:id="@+id/layout_badge_2"
                         android:layout_width="0dp"
@@ -210,6 +239,7 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/ic_badge_three_days" />
 
+                            <!-- 선택된 배지일 때만 visible -->
                             <ImageView
                                 android:id="@+id/iv_check_2"
                                 android:layout_width="24dp"
@@ -238,6 +268,7 @@
                     </LinearLayout>
 
                     <!-- badge 3 -->
+                    <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
                     <LinearLayout
                         android:id="@+id/layout_badge_3"
                         android:layout_width="0dp"
@@ -256,6 +287,7 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/ic_badge_month" />
 
+                            <!-- 선택된 배지일 때만 visible -->
                             <ImageView
                                 android:id="@+id/iv_check_3"
                                 android:layout_width="24dp"
@@ -284,6 +316,7 @@
                     </LinearLayout>
 
                     <!-- badge 4 -->
+                    <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
                     <LinearLayout
                         android:id="@+id/layout_badge_4"
                         android:layout_width="0dp"
@@ -302,6 +335,7 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/ic_badge_traveler" />
 
+                            <!-- 선택된 배지일 때만 visible -->
                             <ImageView
                                 android:id="@+id/iv_check_4"
                                 android:layout_width="24dp"
@@ -330,6 +364,7 @@
                     </LinearLayout>
 
                     <!-- badge 5 -->
+                    <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
                     <LinearLayout
                         android:id="@+id/layout_badge_5"
                         android:layout_width="0dp"
@@ -348,6 +383,7 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/ic_badge_emotion_log" />
 
+                            <!-- 선택된 배지일 때만 visible -->
                             <ImageView
                                 android:id="@+id/iv_check_5"
                                 android:layout_width="24dp"
@@ -376,6 +412,7 @@
                     </LinearLayout>
 
                     <!-- badge 6 -->
+                    <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
                     <LinearLayout
                         android:id="@+id/layout_badge_6"
                         android:layout_width="0dp"
@@ -394,6 +431,7 @@
                                 android:layout_height="80dp"
                                 android:src="@drawable/ic_badge_wine" />
 
+                            <!-- 선택된 배지일 때만 visible -->
                             <ImageView
                                 android:id="@+id/iv_check_6"
                                 android:layout_width="24dp"
@@ -423,6 +461,8 @@
 
                 </GridLayout>
 
+                <!-- 선택한 배지를 프로필 대표 배지로 저장/적용 -->
+                <!-- 클릭 시 마이페이지(activity_mypage.xml)로 이동 -->
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_save_badge"
                     android:layout_width="match_parent"

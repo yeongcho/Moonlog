@@ -8,28 +8,17 @@
     android:padding="24dp">
 
     <!--
-        Figma: 온보딩 화면 / 회원 + 비회원 화면
+        Figma: 온보딩 화면 / 회원 + 비회원 화면(activity_onboarding.xml) (진행순서 2)
         설명: 회원 / 비회원을 선택하는 화면
         구성:
-          - 상단: 캐릭터 이미지
-          - 중앙: 환영 문구 "안녕하세요, 처음이시군요."
-          - 하단: 2개의 버튼
-            - 로그인/회원가입 버튼
-            - 비회원 시작 버튼
-        용도:
-          - 신규 사용자에게 앱 첫 인상 제공
-          - 로그인/회원가입 또는 비회원 모드 선택
-        기능:
-          - "로그인/회원가입" 버튼: 로그인 화면으로 이동
-          - "비회원 시작" 버튼: 메인 화면으로 바로 진입 (로그인 없이 체험 가능)
-        디자인 특징:
-          - 둥근 버튼 (cornerRadius: 50dp)
-          - 버튼에 stroke 테두리 적용
-          - 마스코트 중심의 친근한 디자인
-        화면 전환: 스플래시(activity_splash.xml) → 온보딩(현재 화면) → 로그인/메인
+          - 캐릭터 이미지
+          - 환영 문구 "안녕하세요, 처음이시군요."
+          - 2개의 버튼
+            - 로그인/회원가입 버튼 : 로그인 화면으로 이동
+            - 비회원 시작 버튼 : 홈 화면으로 바로 진입 (로그인 없이 체험 가능)
     -->
 
-    <!-- 마스코트 캐릭터 영역 -->
+    <!-- 캐릭터 이미지 영역 -->
     <ImageView
         android:id="@+id/iv_mascot"
         android:layout_width="300dp"
@@ -49,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="안녕하세요, 처음이시군요."
         android:textSize="23sp"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:fontFamily="@font/seoulhangang_eb"
         android:layout_marginTop="-12dp"
         app:layout_constraintTop_toBottomOf="@id/iv_mascot"
@@ -66,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 로그인 버튼 -->
+        <!-- 로그인 버튼(클릭시 로그인 화면(activity_login.xml)으로 이동) -->
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
@@ -75,13 +64,13 @@
             android:textSize="16sp"
             android:fontFamily="@font/nanumsquare_eb"
             android:backgroundTint="#6E79DB"
-            android:textColor="@color/white"
+            android:textColor="#FFFFFF"
             android:elevation="4dp"
             app:cornerRadius="50dp"
             app:strokeWidth="0.7dp"
-            app:strokeColor="@color/btn_line_navy"/>
+            app:strokeColor="#28339C"/>
 
-        <!-- 비회원 시작-->
+        <!-- 비회원 시작 버튼(클릭시 시작화면(activity_start.xml)으로 바로 이동) -->
         <Button
             android:id="@+id/btn_guest_start"
             android:layout_width="match_parent"
@@ -91,11 +80,11 @@
             android:textSize="16sp"
             android:fontFamily="@font/nanumsquare_eb"
             android:backgroundTint="#BC4C95"
-            android:textColor="@color/white"
+            android:textColor="#FFFFFF"
             android:elevation="4dp"
             app:cornerRadius="50dp"
             app:strokeWidth="0.7dp"
-            app:strokeColor="@color/btn_line_navy"/>
+            app:strokeColor="#28339C"/>
 
     </LinearLayout>
 

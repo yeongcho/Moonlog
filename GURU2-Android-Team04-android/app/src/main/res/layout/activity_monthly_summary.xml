@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AECAB3">
+
+    <!--
+        Figma: 월간 요약 화면(activity_monthly_summary.xml) (진행순서 15)
+        설명 : 선택한 월의 감정/일기 데이터를 기반으로 월간 요약을 보여주는 화면
+        구성:
+          - 월 이동 헤더
+            - 이전/다음 달 버튼으로 월 변경
+            - 현재 월/년도 텍스트 표시
+          - 요약/캘린더/리스트
+            - 선택 시 각 화면으로 이동
+          - 월 스티커
+            - 선택된 월에 맞는 이미지 표시
+          - 월간 요약 콘텐츠(스크롤)
+            - 월간 요약 제목
+            - 한 줄 요약(강조 박스)
+            - 상세 요약 본문
+            - 가장 많이 나온 감정(텍스트 + 이모지)
+            - 감정 흐름(한 줄)
+            - 주요 키워드(칩 형태)
+          - 빈 상태 안내 문구
+            - 해당 월 요약 데이터가 없을 때 안내 텍스트 표시
+    -->
+
+    <!-- 이전 달 이동 버튼 -->
+    <!-- 클릭 시 이전 달로 변경 -->
+    <ImageView
+        android:id="@+id/btnPrevMonth"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 현재 월/년도 표시 -->
+    <!-- 이전/다음 달 버튼 클릭 시 표시 값 변경 -->
+    <TextView
+        android:id="@+id/tvMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="01월 2026"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/nanumsquare_eb"
+        app:layout_constraintBottom_toBottomOf="@id/btnPrevMonth"
+        app:layout_constraintEnd_toStartOf="@id/btnNextMonth"
+        app:layout_constraintStart_toEndOf="@id/btnPrevMonth"
+        app:layout_constraintTop_toTopOf="@id/btnPrevMonth" />
+
+    <!-- 다음 달 이동 버튼 -->
+    <!-- 클릭 시 다음 달로 변경 -->
+    <ImageView
+        android:id="@+id/btnNextMonth"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="100dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnPrevMonth" />
+
+    <!-- 상단 (요약/캘린더/리스트) -->
+    <!-- 각 클릭 시 해당 화면으로 이동 -->
+    <LinearLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPrevMonth">
+
+        <!-- 요약 -->
+        <TextView
+            android:id="@+id/btnTabSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="요약"
+            android:fontFamily="@font/nanumsquare_eb"
+            android:textColor="#0B2F22"
+            android:textSize="18sp" />
+
+        <!-- 캘린더 -->
+        <!-- 클릭 시 캘린더 화면(activity_diary_calendar.xml)으로 이동 -->
+        <TextView
+            android:id="@+id/btnTabCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="캘린더"
+            android:textColor="#829586"
+            android:fontFamily="@font/nanumsquare_eb"
+            android:textSize="18sp" />
+
+        <!-- 리스트 -->
+        <!-- 클릭 시 주차별 리스트 화면(activity_diary_list.xml)으로 이동 -->
+        <TextView
+            android:id="@+id/btnTabList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리스트"
+            android:fontFamily="@font/nanumsquare_eb"
+            android:textColor="#829586"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- 월 스티커(월 표시 디자인) -->
+    <!-- 월 변경 시 해당 월 이미지로 변경 -->
+    <ImageView
+        android:id="@+id/ivMonthSticker"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="-20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/month_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    <!-- 월간 요약 콘텐츠 스크롤 -->
+    <!-- 요약 데이터가 있을 때 표시 -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-30dp"
+        app:layout_constraintTop_toBottomOf="@id/ivMonthSticker"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingBottom="50dp">
+
+            <!-- 월간 요약 카드 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#E3EAE1"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center_horizontal">
+
+                    <!-- 월간 요약 제목 -->
+                    <!-- 선택된 월에 맞춰 텍스트 변경 -->
+                    <TextView
+                        android:id="@+id/tv_summary_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1월 월간 요약"
+                        android:textSize="26sp"
+                        android:fontFamily="@font/nanumsquare_eb"
+                        android:textColor="#5A8F7B"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- 한 줄 요약(강조 박스) -->
+                    <!-- Gemini API를 통한 해당 월간 일기들 요약 한줄 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_rounded_dark_green"
+                        android:padding="16dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="바쁘고 지친 날도 있었지만, 좋아하는 순간들로 다시 힘을 낸 한 달이에요."
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <!-- 상세 요약 본문 -->
+                    <!-- Gemini API를 통한 해당 월간 일기들 요약 긴 문단 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="좋아하는 영화를 보면서 기분이 환해진 날도 있었고...\n(여기에 긴 요약 내용이 들어갑니다)\n전체적으로 흔들리긴 해도 회복하려는 힘이 보였어요."
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nanumsquare_r"
+                        android:lineSpacingExtra="6dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"/>
+
+                    <!-- 구분용 별 아이콘 -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/btn_star_big_on"
+                        app:tint="#3E5F4E"
+                        android:layout_marginBottom="20dp"/>
+
+                    <!-- 요약 하단 정보 카드 -->
+                    <!-- 가장 많이 나온 감정 / 감정 흐름 / 주요 키워드 표시 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_rounded_gray"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+
+                        <!-- 가장 많이 나온 감정 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="이번 달엔 "
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:textColor="#000000"
+                                android:textSize="15sp"/>
+
+                            <!-- 가장 많이 나온 감정 텍스트 -->
+                            <TextView
+                                android:id="@+id/tv_most_emotion"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="평온"
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:textColor="#799FFF"
+                                android:textSize="15sp"/>
+
+                            <!-- 가장 많이 나온 감정 이모지 -->
+                            <ImageView
+                                android:id="@+id/iv_most_emotion"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/emotion_calm"
+                                android:layout_marginHorizontal="4dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="이 가장 자주 나왔어요."
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:textColor="#000000"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <!-- 감정 흐름 요약 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="14dp">
+
+                            <TextView
+                                android:id="@+id/iv_most_flow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="'안정 → 지침 → 회복'"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:textColor="#818181" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="  흐름이 주로 반복되었어요."
+                                android:textSize="13sp"
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:textColor="#000000" />
+
+                        </LinearLayout>
+
+                        <!-- 주요 키워드 타이틀 -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="이번 달 주요 키워드"
+                            android:textSize="15sp"
+                            android:textColor="#6D6D6D"
+                            android:fontFamily="@font/nanumsquare_ac_eb"
+                            android:layout_marginBottom="8dp"/>
+
+                        <!-- 주요 키워드 칩(태그) -->
+                        <!-- Gemini API를 통한 월간 요약 키워드 3개 표시 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="휴식"
+                                android:background="@drawable/bg_rounded_pill_gray"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="6dp"
+                                android:textColor="#FFFFFF"
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:layout_marginEnd="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="재정비"
+                                android:background="@drawable/bg_rounded_pill_gray"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="6dp"
+                                android:textColor="#FFFFFF"
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:layout_marginEnd="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="회복"
+                                android:background="@drawable/bg_rounded_pill_gray"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="6dp"
+                                android:fontFamily="@font/nanumsquare_ac_eb"
+                                android:textColor="#FFFFFF"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 빈 상태 안내 문구 -->
+    <!-- 해당 월 요약 데이터가 없을 때 표시(ScrollView는 숨김 처리) -->
+    <TextView
+        android:id="@+id/tv_empty_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2월 요약이 아직 작성되지 않았어요.\n일기를 더 써보세요!"
+        android:textColor="#5A8F7B"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:lineSpacingExtra="8dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

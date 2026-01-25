@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_analysis_start">
+
+    <!--
+        Figma: 상세 분석 시작 화면(activity_analysis_start.xml) (진행순서 9)
+        설명 : 일기 기반으로 상세 분석을 시작하기 전 안내 화면
+        구성:
+          - 화면 타이틀(오늘의 마음 분석)
+          - 분석 대상 날짜 표시
+          - 분석 시작하기 버튼
+            - 버튼 선택 시, 상세 분석 일기 보기 화면으로 이동
+    -->
+
+    <!-- 화면 중앙에 안내 문구 + 버튼을 세로로 배치 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 상세 분석 시작 화면 타이틀 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘의 마음 분석"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/handwriting_font"/>
+
+        <!-- 분석 대상 날짜 표시(오늘 날짜/선택 날짜 반영) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2026년 2월 6일 금요일"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/handwriting_font"
+            android:layout_marginTop="5dp" />
+
+        <!-- 분석 시작 버튼 -->
+        <!-- 버튼 선택 시, 상세 분석 일기 보기 화면(activity_analysis_diary.xml)으로 이동 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start_analysis"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="분석 시작하기"
+            android:textSize="16sp"
+            android:textColor="#A9CEA8"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nanumsquare_eb"
+            app:backgroundTint="#445146"
+            app:strokeColor="#C0F6B5"
+            app:strokeWidth="3dp"
+            app:cornerRadius="12dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

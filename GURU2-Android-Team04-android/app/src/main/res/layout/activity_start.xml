@@ -6,9 +6,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_start2">
 
-    <!--일기 시작(메인 화면 진입) 화면-->
-    <!-- 서브 텍스트 -->
-    <!--오늘 요일로 바꾸는 기능 필요-->
+    <!--
+        Figma: 홈화면 진입(시작)화면(activity_start.xml) (진행순서 5)
+        설명:
+        구성: 텍스트 ("좋은 -요일이에요! \n오늘 당신의 하루는 어떤 색이었나요?")
+        용도: 일정 시간 후 자동으로 홈 화면(activity_home.xml)으로 전환
+      -->
+    <!-- 텍스트 -->
+    <!--기능 추가 : 오늘 요일에 따라 요일을 삽입하여 문구 변경-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +23,7 @@
         android:maxLines="2"
         android:singleLine="false"
         android:text="좋은 화요일이에요! \n오늘 당신의 하루는 어떤 색이었나요?"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

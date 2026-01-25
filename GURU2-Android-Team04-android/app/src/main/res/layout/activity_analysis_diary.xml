@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_analysis_detail">
+
+    <!--
+        Figma: 상세 분석 화면 - 일기 보기 화면(activity_analysis_diary.xml) (진행순서 10)
+        설명 : 상세 분석을 시작하면, 먼저 분석할 일기 내용을 카드 형태로 보여주는 화면
+        구성:
+          - 일기 작성 날짜 표시
+          - 감정 태그/아이콘 표시
+          - 일기 제목 + 본문 표시
+          - 하단 Tap 버튼
+            - 선택 시, 상세 분석을 통한 위로와 격려의 내용을 보여주는 화면으로 이동
+    -->
+
+    <!-- 일기 내용 카드(중앙 배치) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDiary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:strokeWidth="6dp"
+        app:strokeColor="#7AA68E"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 카드 내부 구성(세로 정렬) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <!-- 일기 작성 날짜 표시 -->
+            <TextView
+                android:id="@+id/tvDiaryDayText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/handwriting_font"
+                android:text="2026년 2월 6일 금요일"
+                android:textColor="#536059"
+                android:textSize="26sp" />
+
+            <!-- 구분선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginVertical="12dp"
+                android:background="#CEDBD6" />
+
+            <!-- 감정 아이콘 + 태그 표시 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- 선택한 감정 아이콘 -->
+                <ImageView
+                    android:id="@+id/ivDetailEmotion"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/emotion_calm" />
+
+                <!-- 선택한 감정 태그 텍스트 -->
+                <TextView
+                    android:id="@+id/tvDetailEmotionTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="태그: 평온"
+                    android:textSize="22sp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <!-- 일기 제목 -->
+            <TextView
+                android:id="@+id/tvDiaryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="8dp"
+                android:text="일이 잘 안 풀렸던 날"
+                android:textColor="#6D9779"
+                android:textSize="20sp"
+                android:fontFamily="@font/nanumsquare_eb" />
+
+            <!-- 일기 본문 -->
+            <TextView
+                android:id="@+id/tvDiaryContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="8dp"
+                android:text="오랜만에 고등학교 때 친구들을 만났다. ... (생략)"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:fontFamily="@font/handwriting_font" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 하단 Tap 안내 버튼 -->
+    <!-- 선택 시, 상세 분석을 통한 위로와 격려의 내용을 보여주는 화면(activity_analysis_comfort.xml)으로 이동 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnTapContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp">
+
+        <!-- 텍스트 + 아래 방향 화살표 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap해서 이어보세요"
+                android:layout_marginTop="4dp"
+                android:textColor="#435241"
+                android:textSize="16sp"
+                android:fontFamily="@font/nanumsquare_eb" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="-6dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_arrow_down_24" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,2 @@
 <resources>
-    <string name="app_name">MoonLog</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-
-    <string name="guest_title">게스트로 시작하기</string>
-    <string name="guest_info">게스트 모드에서는 데이터가 기기에만 저장됩니다.</string>
-    <string name="btn_back">뒤로 가기</string>
-    <string name="signup_link">아직 회원이 아니신가요? 회원가입</string>
-    <string name="onboarding_title">당신의 마음을 기록하세요</string>
-    <string name="hint_password_confirm">비밀번호 확인</string>
-
-    <string name="cd_prev_month">이전 달</string>
-    <string name="cd_next_month">다음 달</string>
 </resources>

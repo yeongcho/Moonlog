@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AECAB3">
+
+    <!--
+        Figma: 오늘 일기 보기 화면(activity_today_diary_detail.xml) (진행순서 8)
+        설명 : 오늘 작성된 일기 내용을 보여주는 화면
+        구성:
+          - 상단 헤더(화면 제목)
+          - 오늘 일기 카드
+            - 오늘 날짜 표시
+            - 감정 태그(아이콘 + 텍스트)
+            - 수정 / 삭제 / 즐겨찾기(하트)
+            - 제목 / 본문 내용
+          - 오늘의 마음 카드
+            - 위로/격려 문구 + 오늘의 미션
+          - 상세 분석 보러가기 버튼
+            - 버튼 선택 시, 상세 분석 시작 화면으로 이동
+    -->
+
+    <!-- 일기 화면 안내 문구 -->
+    <TextView
+        android:id="@+id/tvMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="오늘의 감정 일기"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 전체 스크롤 영역(일기 카드 + 마음 카드 + 버튼까지 세로 스크롤) -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detailScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/tvMonth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="100dp">
+
+            <!-- 오늘 일기 카드 컨테이너 -->
+            <FrameLayout
+                android:id="@+id/monthCardContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="24dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <!-- 오늘 작성된 일기 카드 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDiary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <!-- 오늘 날짜 표시 -->
+                        <TextView
+                            android:id="@+id/tvDiaryDayText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/handwriting_font"
+                            android:text="2026년 2월 6일 금요일"
+                            android:textColor="#536059"
+                            android:textSize="26sp" />
+
+                        <!-- 날짜 아래 구분선 -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"
+                            android:layout_marginVertical="12dp"
+                            android:background="#CEDBD6" />
+
+                        <!-- 감정 태그 + 수정/삭제/즐겨찾기 영역 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- 감정 태그 아이콘 -->
+                            <ImageView
+                                android:id="@+id/ivDetailEmotion"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:src="@drawable/emotion_calm" />
+
+                            <!-- 감정 태그 텍스트 -->
+                            <TextView
+                                android:id="@+id/tvDetailEmotionTag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:text="태그: 평온"
+                                android:textSize="22sp"
+                                android:textColor="#000000" />
+
+                            <!-- 수정 버튼(선택 시, 일기 수정(작성)화면(activity_diary_editor.xml)으로 이동) -->
+                            <TextView
+                                android:id="@+id/tvDetailEdit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:text="수정"
+                                android:textSize="16sp"
+                                android:textColor="#446D5F"
+                                android:fontFamily="@font/nanumsquare_eb" />
+
+                            <!-- 삭제 버튼(선택 시, 삭제 처리 + 홈 화면(activity_home.xml)으로 이동) -->
+                            <TextView
+                                android:id="@+id/tvDetailDelete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="삭제"
+                                android:textSize="16sp"
+                                android:textColor="#BB3451"
+                                android:fontFamily="@font/nanumsquare_eb" />
+
+                            <!-- 즐겨찾기(하트) 버튼 -->
+                            <!-- 선택 시, ic_favorites_o 아이콘으로 변하며, 해당 일기의 마음카드가 마음카드 보관함에 저장됨-->
+                            <ImageView
+                                android:id="@+id/ivDetailFavorites"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_favorites_x" />
+                        </LinearLayout>
+
+                        <!-- 일기 제목 -->
+                        <TextView
+                            android:id="@+id/tvDiaryTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:lineSpacingExtra="8dp"
+                            android:text="일이 잘 안 풀렸던 날"
+                            android:textColor="#6D9779"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/nanumsquare_eb" />
+
+                        <!-- 일기 본문 -->
+                        <TextView
+                            android:id="@+id/tvDiaryContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:lineSpacingExtra="8dp"
+                            android:text="오랜만에 고등학교 때 친구들을 만났다. ... (생략)"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/handwriting_font" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+            <!-- 구분 아이콘(별) -->
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="24dp"
+                android:src="@drawable/ic_star_white" />
+
+            <!-- 오늘의 마음 카드 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#1E3448"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- 오늘의 마음 카드 안내 문구 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="오늘의 마음 카드🌙"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/nanumsquare_eb" />
+
+                    <!-- 구분선 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="12dp"
+                        android:background="#FFFFFF" />
+
+                    <!-- Gemini API를 통한 위로 또는 격려의 문구 요약(첫번째 문장) -->
+                    <TextView
+                        android:id="@+id/tvNicknameMsg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="닉네임님, 오늘은 여기서 멈춰도 괜찮아요."
+                        android:textColor="#92B9E2"
+                        android:fontFamily="@font/nanumsquarez_b"
+                        android:textSize="15sp" />
+
+                    <!-- Gemini API를 통한 위로 또는 격려의 문구 요약(두번째 문장)) -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="충분히 애썼어요. 무거운 마음은 여기에 두고 가요."
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/nanumsquare_l"
+                        android:textSize="14sp" />
+
+                    <!-- Gemini API를 통한 오늘의 미션 1개 -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        app:cardBackgroundColor="#D9D9D9"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <TextView
+                            android:id="@+id/tvMissionText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="오늘의 미션: 걱정 스위치 끄고 푹 잠들기"
+                            android:textColor="#535996"
+                            android:textSize="13sp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 상세 분석 보러가기 버튼 -->
+            <!-- 버튼 선택 시, 상세 분석 시작 화면(activity_analysis_start.xml)으로 이동 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_card"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:text="상세 분석 보러가기"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/nanumsquare_eb"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="24dp"
+                app:backgroundTint="#80ACD2"
+                app:strokeColor="#FEFFED"
+                app:strokeWidth="3dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

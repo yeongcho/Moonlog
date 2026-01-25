@@ -6,8 +6,29 @@
     android:layout_height="match_parent"
     android:background="#AECAB3">
 
-    <!-- 일기 모아보기 (주차별 리스트 목록함)-->
-    <!-- 이전 달 -->
+    <!--
+        Figma: 일기 리스트 화면(activity_diary_list.xml) (진행순서 14)
+        설명 : 작성한 일기를 '주차별 리스트' 형태로 모아서 보여주는 화면
+        구성:
+          - 월 이동 헤더
+            - 이전/다음 달 버튼으로 월 변경
+            - 현재 월/년도 텍스트 표시
+          - 요약/캘린더/리스트
+            - 선택 시 각 화면으로 이동
+          - 월 스티커
+            - 선택된 월에 맞는 이미지로 변경
+          - 주 선택(주차 이동)
+            - 이전/다음 주 버튼으로 주차 변경
+            - 현재 선택된 주차 텍스트 표시
+          - 일기 목록(주차별)
+            - 해당 주차에 속한 일기 카드들을 리스트로 표시
+            - 일기 카드 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동
+    -->
+
+    <!-- 1) 월 이동 -->
+
+    <!-- 이전 달 이동 버튼 -->
+    <!-- 클릭 시 이전 달로 변경 -->
     <ImageView
         android:id="@+id/btnPrevMonth"
         android:layout_width="24dp"
@@ -18,7 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 월 표시 -->
+    <!-- 현재 월/년도 표시 -->
+    <!-- 이전/다음 달 버튼 클릭 시 표시 값 변경 -->
     <TextView
         android:id="@+id/tvMonth"
         android:layout_width="wrap_content"
@@ -34,7 +56,8 @@
         app:layout_constraintStart_toEndOf="@id/btnPrevMonth"
         app:layout_constraintTop_toTopOf="@id/btnPrevMonth" />
 
-    <!-- 다음 달 -->
+    <!-- 다음 달 이동 버튼 -->
+    <!-- 클릭 시 다음 달로 변경 -->
     <ImageView
         android:id="@+id/btnNextMonth"
         android:layout_width="24dp"
@@ -44,7 +67,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/btnPrevMonth" />
 
-    <!-- 탭 -->
+
+    <!-- 2) 상단 (요약/캘린더/리스트) -->
+    <!-- 각 클릭 시 해당 화면으로 이동 -->
     <LinearLayout
         android:id="@+id/tabLayout"
         android:layout_width="wrap_content"
@@ -55,6 +80,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnPrevMonth">
 
+        <!-- 요약 -->
+        <!-- 클릭 시 월간 요약 화면(activity_monthly_summary.xml)으로 이동 -->
         <TextView
             android:id="@+id/btnTabSummary"
             android:layout_width="wrap_content"
@@ -65,6 +92,8 @@
             android:textColor="#829586"
             android:textSize="18sp" />
 
+        <!-- 캘린더 -->
+        <!-- 클릭 시 캘린더 화면(activity_diary_calendar.xml)으로 이동 -->
         <TextView
             android:id="@+id/btnTabCalendar"
             android:layout_width="wrap_content"
@@ -75,6 +104,7 @@
             android:fontFamily="@font/nanumsquare_eb"
             android:textSize="18sp" />
 
+        <!-- 리스트 -->
         <TextView
             android:id="@+id/btnTabList"
             android:layout_width="wrap_content"
@@ -85,7 +115,11 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!-- 월 스티커 -->
+
+    <!-- 3) 월 스티커 영역-->
+
+    <!-- 월 스티커(월 표시 디자인) -->
+    <!-- 월 변경 시 해당 월 이미지로 변경 -->
     <ImageView
         android:id="@+id/ivMonthSticker"
         android:layout_width="200dp"
@@ -97,7 +131,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
-    <!-- 주 선택 -->
+
+    <!-- 4) 주 선택 영역(주차 이동) -->
+
+    <!-- 주 선택 컨테이너 -->
+    <!-- 이전/다음 주 버튼으로 주차 변경 -->
     <LinearLayout
         android:id="@+id/layoutWeekSelector"
         android:layout_width="wrap_content"
@@ -111,6 +149,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivMonthSticker">
 
+        <!-- 이전 주 이동 버튼 -->
+        <!-- 클릭 시 이전 주차로 변경 -->
         <ImageView
             android:id="@+id/btnPrevWeek"
             android:layout_width="24dp"
@@ -119,6 +159,8 @@
             android:rotation="180"
             android:src="@drawable/ic_week_arrow_24" />
 
+        <!-- 현재 주차 표시 -->
+        <!-- 이전/다음 주 버튼 클릭 시 표시 값 변경 -->
         <TextView
             android:id="@+id/tvWeek"
             android:layout_width="wrap_content"
@@ -129,6 +171,8 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
+        <!-- 다음 주 이동 버튼 -->
+        <!-- 클릭 시 다음 주차로 변경 -->
         <ImageView
             android:id="@+id/btnNextWeek"
             android:layout_width="24dp"
@@ -137,20 +181,11 @@
             android:src="@drawable/ic_week_arrow_24" />
     </LinearLayout>
 
-    <!-- 공유 버튼 -->
-    <ImageView
-        android:id="@+id/btnShare"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_share"
-        app:layout_constraintBottom_toBottomOf="@id/layoutWeekSelector"
-        app:layout_constraintStart_toEndOf="@id/layoutWeekSelector"
-        app:layout_constraintTop_toTopOf="@id/layoutWeekSelector"
-        app:layout_constraintVertical_bias="0.4" />
+
+    <!-- 5) 일기 목록 영역(주차별) -->
 
     <!-- 일기 목록 컨테이너 -->
+    <!-- 선택된 주차에 해당하는 일기 카드들을 리스트로 표시 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rvDiaryList"
         android:layout_width="0dp"
@@ -165,6 +200,7 @@
         app:layout_constraintTop_toBottomOf="@id/layoutWeekSelector">
 
         <!-- 첫번째 일기 카드 -->
+        <!-- 카드 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_diary_1"
             android:layout_width="0dp"
@@ -184,14 +220,15 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-                <!-- 감정 이모지 -->
+                <!-- 해당 일기의 감정 이모지 -->
+                <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
                 <ImageView
                     android:id="@+id/iv_emotion_1"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:src="@drawable/emotion_joy" />
 
-                <!-- 제목 -->
+                <!-- 일기 제목 -->
                 <TextView
                     android:id="@+id/tv_diary_title_1"
                     android:layout_width="0dp"
@@ -205,7 +242,7 @@
                     android:maxLines="2"
                     android:ellipsize="end" />
 
-                <!-- 날짜 -->
+                <!-- 일기 날짜(일 + 요일) -->
                 <LinearLayout
                     android:id="@+id/layout_date_1"
                     android:layout_width="wrap_content"
@@ -213,6 +250,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
+                    <!-- 날짜(일) -->
                     <TextView
                         android:id="@+id/tv_day_1"
                         android:layout_width="wrap_content"
@@ -222,6 +260,7 @@
                         android:textColor="#3B3E3C"
                         android:fontFamily="@font/nanumsquare_eb" />
 
+                    <!-- 요일 -->
                     <TextView
                         android:id="@+id/tv_day_of_week_1"
                         android:layout_width="wrap_content"
@@ -237,6 +276,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- 두번째 일기 카드 -->
+        <!-- 카드 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_diary_2"
             android:layout_width="0dp"
@@ -257,14 +297,15 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-                <!-- 감정 이모지 -->
+                <!-- 해당 일기의 감정 이모지 -->
+                <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
                 <ImageView
                     android:id="@+id/iv_emotion_2"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:src="@drawable/emotion_joy" />
 
-                <!-- 제목 -->
+                <!-- 일기 제목 -->
                 <TextView
                     android:id="@+id/tv_diary_title_2"
                     android:layout_width="0dp"
@@ -278,7 +319,7 @@
                     android:maxLines="2"
                     android:ellipsize="end" />
 
-                <!-- 날짜 -->
+                <!-- 일기 날짜(일 + 요일) -->
                 <LinearLayout
                     android:id="@+id/layout_date_2"
                     android:layout_width="wrap_content"
@@ -286,6 +327,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
+                    <!-- 날짜(일) -->
                     <TextView
                         android:id="@+id/tv_day_2"
                         android:layout_width="wrap_content"
@@ -295,6 +337,7 @@
                         android:textColor="#3B3E3C"
                         android:fontFamily="@font/nanumsquare_eb" />
 
+                    <!-- 요일 -->
                     <TextView
                         android:id="@+id/tv_day_of_week_2"
                         android:layout_width="wrap_content"
@@ -308,6 +351,12 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!--
+            이후 일기 카드들도 동일한 구조로 반복
+            - 감정 이모지 + 제목 + 날짜(일/요일) 표시
+            - 클릭 시 해당 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동
+        -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
