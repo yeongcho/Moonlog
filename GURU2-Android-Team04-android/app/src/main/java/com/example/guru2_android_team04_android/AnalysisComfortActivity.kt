@@ -54,18 +54,14 @@ class AnalysisComfortActivity : AppCompatActivity() {
                         tvContent.text = r.data.fullText
 
                         // 해시태그: ["시험기간", "마음챙김"] -> "#시험기간 #마음챙김"
-                        tvTags.text = r.data.hashtags
-                            .map { it.trim().removePrefix("#") }
-                            .filter { it.isNotBlank() }
-                            .joinToString(" ") { "#$it" }
+                        tvTags.text = r.data.hashtags.map { it.trim().removePrefix("#") }
+                            .filter { it.isNotBlank() }.joinToString(" ") { "#$it" }
                     }
 
                     is AppResult.Failure -> {
                         // 예외처리) 분석 결과를 가져오지 못하면 이 화면은 의미가 없으므로 에러 메시지를 안내하고 종료한다.
                         Toast.makeText(
-                            this@AnalysisComfortActivity,
-                            r.error.userMessage,
-                            Toast.LENGTH_SHORT
+                            this@AnalysisComfortActivity, r.error.userMessage, Toast.LENGTH_SHORT
                         ).show()
                         finish()
                     }

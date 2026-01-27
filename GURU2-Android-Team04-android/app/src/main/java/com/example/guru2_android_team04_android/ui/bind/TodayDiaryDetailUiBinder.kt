@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// TodayDiaryDetailUiBinder : activity_today_diary_detail.xml <-> AppService 연동 전담 클래스
+// TodayDiaryDetailUiBinder : 오늘의 일기 보기 화면(activity_today_diary_detail.xml) <-> AppService 연동 전담 클래스
 // 용도:
 // - entryId로 DB에서 일기 원문을 읽어 화면에 표시한다.
 // - 마음 카드 프리뷰(위로 2줄 + 미션 1개)를 조회해 화면에 표시한다.

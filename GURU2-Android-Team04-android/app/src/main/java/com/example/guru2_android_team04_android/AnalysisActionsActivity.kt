@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 // AnalysisActionsActivity : 상세 분석 화면(3/3) - 오늘의 실천안 제공 화면 Activity
-// 용도(XML 기준):
+// 용도:
 // - Gemini가 제안한 오늘의 실천안(미션) 1~3개를 보여준다.
 // - 실천안을 아우르는 요약 메시지를 보여준다.
 // - 기능 버튼:
@@ -77,9 +77,7 @@ class AnalysisActionsActivity : AppCompatActivity() {
                     is AppResult.Failure -> {
                         // 예외처리) 분석 상세를 불러오지 못하면 실천안을 보여줄 수 없으므로 에러 안내 후 화면을 종료한다.
                         Toast.makeText(
-                            this@AnalysisActionsActivity,
-                            r.error.userMessage,
-                            Toast.LENGTH_SHORT
+                            this@AnalysisActionsActivity, r.error.userMessage, Toast.LENGTH_SHORT
                         ).show()
                         finish()
                     }
@@ -91,15 +89,18 @@ class AnalysisActionsActivity : AppCompatActivity() {
         // - 화면에서 보이는 분석 카드를 Bitmap으로 렌더링해 기기 갤러리에 저장한다.
         findViewById<MaterialButton>(R.id.btn_save_card).setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
-                val r = appService.exportMindCardToGallerySafe(this@AnalysisActionsActivity, entryId)
+                val r =
+                    appService.exportMindCardToGallerySafe(this@AnalysisActionsActivity, entryId)
 
                 withContext(Dispatchers.Main) {
                     when (r) {
-                        is AppResult.Success ->
-                            Toast.makeText(this@AnalysisActionsActivity, "갤러리에 저장했어요!", Toast.LENGTH_SHORT).show()
+                        is AppResult.Success -> Toast.makeText(
+                            this@AnalysisActionsActivity, "갤러리에 저장했어요!", Toast.LENGTH_SHORT
+                        ).show()
 
-                        is AppResult.Failure ->
-                            Toast.makeText(this@AnalysisActionsActivity, r.error.userMessage, Toast.LENGTH_SHORT).show()
+                        is AppResult.Failure -> Toast.makeText(
+                            this@AnalysisActionsActivity, r.error.userMessage, Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }

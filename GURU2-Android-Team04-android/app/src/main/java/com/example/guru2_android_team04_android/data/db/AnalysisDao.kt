@@ -6,8 +6,7 @@ import com.example.guru2_android_team04_android.data.model.AiAnalysis
 import com.example.guru2_android_team04_android.util.JsonMini
 
 // AnalysisDao : AI 분석 결과(ai_analysis 테이블)에 접근하는 DAO(Data Access Object)
-// 일기 1개(entry_id)당 AI 분석 1개 구조이므로,
-// ai_analysis는 entry_id를 UNIQUE로 갖고(중복 불가) 분석을 캐싱한다.
+// 일기 1개(entry_id)당 AI 분석 1개 구조이므로, ai_analysis는 entry_id를 UNIQUE로 갖고(중복 불가) 분석을 캐싱한다.
 class AnalysisDao(private val db: SQLiteDatabase) {
 
     // 특정 일기(entryId)에 대한 AI 분석 결과를 1개 조회한다.
@@ -25,8 +24,7 @@ class AnalysisDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.ANALYSIS}
             WHERE entry_id=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(entryId.toString())
+            """.trimIndent(), arrayOf(entryId.toString())
         ).use { c ->
 
             // 예외처리) 조회 결과가 없으면 null 반환
@@ -74,10 +72,7 @@ class AnalysisDao(private val db: SQLiteDatabase) {
         // 1) 먼저 entry_id 기준으로 update 시도
         // 예외처리) entry_id가 존재하지 않으면 updated=0이 나오며 insert로 넘어간다.
         val updated = db.update(
-            AppDb.T.ANALYSIS,
-            cv,
-            "entry_id=?",
-            arrayOf(analysis.entryId.toString())
+            AppDb.T.ANALYSIS, cv, "entry_id=?", arrayOf(analysis.entryId.toString())
         )
 
         // 2) update가 되었으면 해당 entry_id의 analysis_id를 다시 조회해 반환

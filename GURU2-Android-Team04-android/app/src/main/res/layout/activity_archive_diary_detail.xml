@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,9 +34,9 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 이전 일기로 이동 -->
         <ImageView
@@ -53,10 +52,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/nanumsquare_eb"
             android:text="2026년 01일 08일"
             android:textColor="#000000"
-            android:textSize="20sp"
-            android:fontFamily="@font/nanumsquare_eb" />
+            android:textSize="20sp" />
 
         <!-- 다음 일기로 이동 -->
         <ImageView
@@ -74,10 +73,10 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/headerLayout"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/headerLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,9 +91,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:paddingTop="24dp"
                 android:clipChildren="false"
-                android:clipToPadding="false">
+                android:clipToPadding="false"
+                android:paddingTop="24dp">
 
                 <!-- 일기 내용 카드 -->
                 <com.google.android.material.card.MaterialCardView
@@ -102,11 +101,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
-                    app:strokeWidth="6dp"
                     app:strokeColor="#7AA68E"
-                    app:cardBackgroundColor="@android:color/white">
+                    app:strokeWidth="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -114,16 +113,16 @@
                         android:orientation="vertical"
                         android:padding="20dp">
 
-                            <!-- 일기 날짜(요일 포함) -->
-                            <TextView
-                                android:id="@+id/tvDiaryDayText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="120dp"
-                                android:fontFamily="@font/handwriting_font"
-                                android:text="8일 목요일"
-                                android:textColor="#536059"
-                                android:textSize="26sp" />
+                        <!-- 일기 날짜(요일 포함) -->
+                        <TextView
+                            android:id="@+id/tvDiaryDayText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="120dp"
+                            android:fontFamily="@font/handwriting_font"
+                            android:text="8일 목요일"
+                            android:textColor="#536059"
+                            android:textSize="26sp" />
 
                         <View
                             android:layout_width="match_parent"
@@ -152,8 +151,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="태그: 자신감"
-                                android:textSize="18sp"
-                                android:textColor="#000000" />
+                                android:textColor="#000000"
+                                android:textSize="18sp" />
 
                             <!-- 즐겨찾기(하트) 아이콘 -->
                             <!-- 클릭 시 즐겨찾기 설정/해제 -->
@@ -171,11 +170,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nanumsquare_eb"
                             android:lineSpacingExtra="8dp"
                             android:text="일이 잘 안 풀렸던 날"
                             android:textColor="#6D9779"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/nanumsquare_eb" />
+                            android:textSize="20sp" />
 
                         <!-- 일기 본문 -->
                         <TextView
@@ -183,11 +182,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/handwriting_font"
                             android:lineSpacingExtra="8dp"
                             android:text="오랜만에 고등학교 때 친구들을 만났다. ... (생략)"
                             android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/handwriting_font" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -198,8 +197,8 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_gravity="top|start"
-                    android:layout_marginTop="-74dp"
                     android:layout_marginStart="-30dp"
+                    android:layout_marginTop="-74dp"
                     android:elevation="8dp"
                     android:src="@drawable/month_1" />
             </FrameLayout>
@@ -233,10 +232,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumsquare_eb"
                         android:text="오늘의 마음 카드🌙"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/nanumsquare_eb" />
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -249,9 +248,9 @@
                         android:id="@+id/tvNicknameMsg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumsquarez_b"
                         android:text="닉네임님, 오늘은 여기서 멈춰도 괜찮아요."
                         android:textColor="#92B9E2"
-                        android:fontFamily="@font/nanumsquarez_b"
                         android:textSize="15sp" />
 
                     <!-- 위로/격려 문구(두번째 문장) -->
@@ -260,9 +259,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nanumsquare_l"
                         android:text="충분히 애썼어요. 무거운 마음은 여기에 두고 가요."
                         android:textColor="#FFFFFF"
-                        android:fontFamily="@font/nanumsquare_l"
                         android:textSize="14sp" />
 
                     <!-- 오늘의 미션 1개 -->
@@ -282,7 +281,7 @@
                             android:padding="5dp"
                             android:text="오늘의 미션: 걱정 스위치 끄고 푹 잠들기"
                             android:textColor="#535996"
-                            android:textSize="13sp"/>
+                            android:textSize="13sp" />
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
@@ -293,22 +292,22 @@
                 android:id="@+id/cardAnalysis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_analysis_card_dark"
-                android:padding="30dp"
-                android:layout_marginTop="16dp">
+                android:padding="30dp">
 
                 <!-- 분석 카드 제목 -->
                 <TextView
                     android:id="@+id/tv_analysis_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="- 마음지기의 분석 -"
-                    android:textSize="23sp"
-                    android:textColor="#7BA68E"
                     android:fontFamily="@font/handwriting_font"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="- 마음지기의 분석 -"
+                    android:textColor="#7BA68E"
+                    android:textSize="23sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- 분석 내용(길어질 수 있어 내부 스크롤) -->
                 <ScrollView
@@ -317,21 +316,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:layout_constrainedHeight="true"
-                    app:layout_constraintTop_toBottomOf="@id/tv_analysis_title"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tv_analysis_tags"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tv_analysis_tags">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_analysis_title">
 
                     <TextView
                         android:id="@+id/tv_analysis_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" 잘하고 싶은 마음은 굴뚝같은데 진도가 나가지 않을 때의 그 막막함..."
-                        android:textSize="14sp"
-                        android:textColor="#E7FFE9"
                         android:fontFamily="@font/nanumsquare_r"
+                        android:gravity="start"
                         android:lineSpacingExtra="8dp"
-                        android:gravity="start"/>
+                        android:text=" 잘하고 싶은 마음은 굴뚝같은데 진도가 나가지 않을 때의 그 막막함..."
+                        android:textColor="#E7FFE9"
+                        android:textSize="14sp" />
                 </ScrollView>
 
                 <!-- 분석 키워드(해시태그) -->
@@ -340,15 +339,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="#시험기간 #오늘은_여기까지 #마음챙김\n#긍정회로"
-                    android:textSize="16sp"
-                    android:textColor="#9CBAFA"
                     android:fontFamily="@font/handwriting_font"
                     android:gravity="start"
-                    app:layout_constraintTop_toBottomOf="@id/scrollAnalysis"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="#시험기간 #오늘은_여기까지 #마음챙김\n#긍정회로"
+                    android:textColor="#9CBAFA"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/scrollAnalysis" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 오늘의 실천안 카드 -->
@@ -356,22 +355,22 @@
                 android:id="@+id/cardActionPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_analysis_card_dark"
-                android:padding="30dp"
-                android:layout_marginTop="16dp">
+                android:padding="30dp">
 
                 <!-- 실천안 카드 제목 -->
                 <TextView
                     android:id="@+id/tv_action_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="오늘의 실천안"
-                    android:textSize="23sp"
-                    android:textColor="#7BA68E"
                     android:fontFamily="@font/handwriting_font"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="오늘의 실천안"
+                    android:textColor="#7BA68E"
+                    android:textSize="23sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- 실천안 목록(길어질 수 있어 내부 스크롤) -->
                 <ScrollView
@@ -380,10 +379,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:layout_constrainedHeight="true"
-                    app:layout_constraintTop_toBottomOf="@id/tv_action_title"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tv_action_footer"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tv_action_footer">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_action_title">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -395,11 +394,11 @@
                             android:id="@+id/tv_action_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="1. 내일 망설임없게 공부할 페이지 펼쳐두기"
-                            android:textSize="14sp"
-                            android:textColor="#E7FFE9"
                             android:fontFamily="@font/nanumsquare_r"
-                            android:lineSpacingExtra="8dp" />
+                            android:lineSpacingExtra="8dp"
+                            android:text="1. 내일 망설임없게 공부할 페이지 펼쳐두기"
+                            android:textColor="#E7FFE9"
+                            android:textSize="14sp" />
 
                         <!-- 실천안 2 -->
                         <TextView
@@ -407,11 +406,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="2. 시원한 물 한 마시기."
-                            android:textSize="14sp"
-                            android:textColor="#E7FFE9"
                             android:fontFamily="@font/nanumsquare_r"
-                            android:lineSpacingExtra="8dp" />
+                            android:lineSpacingExtra="8dp"
+                            android:text="2. 시원한 물 한 마시기."
+                            android:textColor="#E7FFE9"
+                            android:textSize="14sp" />
 
                         <!-- 실천안 3 -->
                         <TextView
@@ -419,11 +418,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="3. 내일의 할일들은 플래너에 모두 적기."
-                            android:textSize="14sp"
-                            android:textColor="#E7FFE9"
                             android:fontFamily="@font/nanumsquare_r"
-                            android:lineSpacingExtra="8dp" />
+                            android:lineSpacingExtra="8dp"
+                            android:text="3. 내일의 할일들은 플래너에 모두 적기."
+                            android:textColor="#E7FFE9"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </ScrollView>
 
@@ -433,13 +432,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="오늘의 꿀잠은 도망치는 게 아니라, 내일 더 높이 뛰기 위한 도움닫기입니다. 오늘은 이만 주무세요."
-                    android:textSize="16sp"
-                    android:textColor="#FFFFFF"
                     android:fontFamily="@font/handwriting_font"
-                    app:layout_constraintTop_toBottomOf="@id/scrollAction"
+                    android:text="오늘의 꿀잠은 도망치는 게 아니라, 내일 더 높이 뛰기 위한 도움닫기입니다. 오늘은 이만 주무세요."
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/scrollAction" />
 
                 <!-- 이미지 카드로 저장하기 버튼 -->
                 <!-- 선택 시, 이미지 카드 형태로 기기 내 갤러리에 저장 -->
@@ -448,20 +447,20 @@
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="16dp"
-                    android:text="이미지 카드로 소장하기"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
                     android:fontFamily="@font/nanumsquare_eb"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    app:cornerRadius="24dp"
+                    android:text="이미지 카드로 소장하기"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
                     app:backgroundTint="#9C8882"
-                    app:strokeColor="#FEFFED"
-                    app:strokeWidth="3dp"
-                    app:layout_constraintTop_toBottomOf="@id/tv_action_footer"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:cornerRadius="24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_action_footer"
+                    app:strokeColor="#FEFFED"
+                    app:strokeWidth="3dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -474,6 +473,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

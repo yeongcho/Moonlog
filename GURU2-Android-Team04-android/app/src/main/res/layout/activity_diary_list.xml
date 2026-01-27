@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -46,11 +45,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/nanumsquare_eb"
         android:text="01월 2026"
         android:textColor="#000000"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:fontFamily="@font/nanumsquare_eb"
         app:layout_constraintBottom_toBottomOf="@id/btnPrevMonth"
         app:layout_constraintEnd_toStartOf="@id/btnNextMonth"
         app:layout_constraintStart_toEndOf="@id/btnPrevMonth"
@@ -87,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="요약"
             android:fontFamily="@font/nanumsquare_eb"
+            android:text="요약"
             android:textColor="#829586"
             android:textSize="18sp" />
 
@@ -99,9 +98,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+            android:fontFamily="@font/nanumsquare_eb"
             android:text="캘린더"
             android:textColor="#829586"
-            android:fontFamily="@font/nanumsquare_eb"
             android:textSize="18sp" />
 
         <!-- 리스트 -->
@@ -109,8 +108,8 @@
             android:id="@+id/btnTabList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="리스트"
             android:fontFamily="@font/nanumsquare_eb"
+            android:text="리스트"
             android:textColor="#0B2F22"
             android:textSize="18sp" />
     </LinearLayout>
@@ -165,8 +164,8 @@
             android:id="@+id/tvWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="넷째 주"
             android:fontFamily="@font/nanumsquare_eb"
+            android:text="넷째 주"
             android:textColor="#345141"
             android:textSize="23sp"
             android:textStyle="bold" />
@@ -187,8 +186,8 @@
         android:id="@+id/rvDiaryList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
         android:clipToPadding="false"
         android:paddingBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,6 +202,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

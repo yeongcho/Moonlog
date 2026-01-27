@@ -9,7 +9,7 @@ import com.example.guru2_android_team04_android.llm.GeminiClient
 // - 여기서는 AppService를 싱글톤처럼 만들어, Activity/Fragment 어디서든 동일한 서비스 인스턴스를 사용하게 한다.
 // 동작 시점:
 // - Android 시스템이 앱 프로세스를 만들고, 가장 먼저 Application.onCreate()를 호출한다.
-// 설계 포인트:
+// 설계:
 // - appService를 MyApp이 소유하게 해서 앱 전역 상태를 한 곳에서 관리한다.
 // - Activity는 화면/이벤트만 담당하고, 비즈니스 로직은 AppService로 위임한다.
 class MyApp : Application() {
@@ -47,8 +47,9 @@ class MyApp : Application() {
         // 예외처리) SeedData 내부 로직이 실패하면 디버그에서만 문제로 드러나며,
         // - 릴리즈 빌드에서는 실행되지 않으므로 사용자 앱에는 영향을 주지 않는다.
         if (BuildConfig.DEBUG) {
-            com.example.guru2_android_team04_android.debug.SeedData
-                .ensureSeedUserAndPastDiaries(this)
+            com.example.guru2_android_team04_android.debug.SeedData.ensureSeedUserAndPastDiaries(
+                this
+            )
         }
     }
 }

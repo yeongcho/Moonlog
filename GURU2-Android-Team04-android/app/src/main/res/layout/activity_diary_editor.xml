@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,10 +25,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="20dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/include_bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 화면 안내 문구 -->
         <TextView
@@ -40,9 +39,9 @@
             android:text="당신의 오늘을 기록해주세요."
             android:textColor="#FFFFFF"
             android:textSize="32sp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- 작성 영역(작성 모드 / 수정 모드 공용 컨테이너) -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,31 +50,31 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@id/tvMonth"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tvMonth">
 
             <!-- 일기 작성 카드 -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDiary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/btn_save_card"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <!-- 카드 내부 스크롤: 카드 자체가 아니라 작성 내용만 스크롤 -->
                 <androidx.core.widget.NestedScrollView
                     android:id="@+id/scroll_write_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true"
-                    android:clipToPadding="false">
+                    android:clipToPadding="false"
+                    android:fillViewport="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -88,8 +87,8 @@
                             android:id="@+id/tvDiaryDayText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:fontFamily="@font/handwriting_font"
+                            android:gravity="center"
                             android:text="2026년 2월 6일 금요일"
                             android:textColor="#536059"
                             android:textSize="26sp" />
@@ -128,9 +127,9 @@
                                 android:text="오늘의 감정을 선택해주세요"
                                 android:textColor="#000000"
                                 android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@id/iv_emotion_preview"
                                 app:layout_constraintStart_toEndOf="@id/iv_emotion_preview"
-                                app:layout_constraintTop_toTopOf="@id/iv_emotion_preview"
-                                app:layout_constraintBottom_toBottomOf="@id/iv_emotion_preview" />
+                                app:layout_constraintTop_toTopOf="@id/iv_emotion_preview" />
 
                             <!-- 감정 선택 영역(가로 스크롤 라디오 버튼) -->
                             <HorizontalScrollView
@@ -139,8 +138,8 @@
                                 android:layout_height="wrap_content"
                                 android:clipToPadding="false"
                                 android:scrollbars="none"
-                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/tv_tag_guide">
 
                                 <!-- 감정 라디오 그룹(아이콘 + 텍스트) -->
@@ -248,38 +247,41 @@
                                 android:id="@+id/et_title"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:paddingTop="12dp"
+                                android:paddingBottom="12dp"
                                 android:background="@null"
+                                android:fontFamily="@font/nanumsquare_eb"
                                 android:hint="제목을 입력해주세요."
                                 android:textColor="#6D9779"
                                 android:textColorHint="#6D9779"
                                 android:textSize="20sp"
-                                android:fontFamily="@font/nanumsquare_eb"
-                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/scroll_mood" />
+
 
                             <!-- 본문 입력(길어질 수 있어 충분한 높이 확보 + 내부 스크롤) -->
                             <EditText
                                 android:id="@+id/et_content"
                                 android:layout_width="0dp"
                                 android:layout_height="200dp"
-                                android:layout_marginTop="15dp"
                                 android:background="@null"
+                                android:fontFamily="@font/handwriting_font"
                                 android:gravity="top|start"
                                 android:hint="글을 작성해주세요."
-                                android:overScrollMode="always"
-                                android:scrollbars="vertical"
+                                android:inputType="textMultiLine"
                                 android:maxLines="10"
                                 android:minLines="6"
-                                android:inputType="textMultiLine"
+                                android:overScrollMode="always"
+                                android:scrollbars="vertical"
                                 android:textColor="#000000"
                                 android:textColorHint="#CECECE"
                                 android:textSize="18sp"
-                                android:fontFamily="@font/handwriting_font"
-                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/et_title"
-                                app:layout_constraintBottom_toBottomOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/et_title" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </LinearLayout>
@@ -294,20 +296,19 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="12dp"
-                android:text="일기 작성 완료하기"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
                 android:fontFamily="@font/nanumsquare_eb"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                app:cornerRadius="24dp"
+                android:text="일기 작성 완료하기"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 app:backgroundTint="#C077A4"
-                app:strokeColor="#FEFFED"
-                app:strokeWidth="3dp"
-                app:layout_constraintTop_toBottomOf="@id/cardDiary"
-                app:layout_constraintBottom_toTopOf="@id/include_bottom_nav"
+                app:cornerRadius="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/cardDiary"
+                app:strokeColor="#FEFFED"
+                app:strokeWidth="3dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -320,6 +321,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

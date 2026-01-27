@@ -9,7 +9,7 @@ import com.example.guru2_android_team04_android.util.DateUtil
 // 용도:
 // - 사용자가 작성한 일기를 달력(그리드) 형태로 한눈에 보여준다.
 // - 월 이동(이전/다음), 탭 전환(요약/캘린더/리스트), 월 스티커, 월간 감정 파이차트를 제공한다.
-// 설계 포인트:
+// 설계:
 // - 화면(View)과 데이터(AppService) 연결은 DiaryCalendarUiBinder가 담당한다.
 // - Activity는 "화면 시작 + 파라미터 준비 + binder 호출"만 담당해서 역할을 단순화한다.
 class DiaryCalendarActivity : AppCompatActivity() {
@@ -30,7 +30,9 @@ class DiaryCalendarActivity : AppCompatActivity() {
 
         // 하단 네비게이션 바를 캘린더 탭 상태로 바인딩한다.
         // - 사용자가 다른 탭을 누르면 해당 화면으로 이동하게 된다.
-        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(this, R.id.navigation_calendar)
+        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(
+            this, R.id.navigation_calendar
+        )
 
         // 화면 진입 시 표시할 월 결정
         // - MonthlySummaryActivity/DiaryListActivity에서 넘어오면 yearMonth를 전달해 같은 달을 유지한다.

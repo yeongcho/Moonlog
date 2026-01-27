@@ -12,6 +12,9 @@ import com.example.guru2_android_team04_android.ui.bind.MindCardArchiveUiBinder
 // 1) onCreate에서 레이아웃(activity_mindcard_archive.xml)을 세팅한다.
 // 2) UiBinder를 생성하고 bind()를 호출하여 RecyclerView 세팅 + 데이터 로딩을 시작한다.
 // 3) 상세 화면에서 돌아오거나 즐겨찾기 변경 후에는 갱신이 필요할 수 있어 onResume에서 재로딩 여지가 있다.
+// 설계:
+// - Activity는 화면 시작과 파라미터 결정만 담당한다.
+// - DB 조회/캐시/생성 로직은 Binder로 분리해 책임을 명확히 한다.
 class MindCardArchiveActivity : AppCompatActivity() {
 
     // appService : 앱 전역 서비스(AppService) 접근

@@ -67,9 +67,7 @@ class LoginActivity : AppCompatActivity() {
                         // - AppError에 표준화된 userMessage를 Toast로 표시한다.
                         is AppResult.Failure -> {
                             Toast.makeText(
-                                this@LoginActivity,
-                                r.error.userMessage,
-                                Toast.LENGTH_SHORT
+                                this@LoginActivity, r.error.userMessage, Toast.LENGTH_SHORT
                             ).show()
                         }
                     }

@@ -41,8 +41,7 @@ class ProfileEditActivity : AppCompatActivity() {
             // - 앱이 종료되거나 재시작되어도 해당 이미지 URI를 다시 읽을 수 있게 하기 위함이다.
             runCatching {
                 contentResolver.takePersistableUriPermission(
-                    uri,
-                    android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    uri, android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
                 )
             }
 

@@ -20,7 +20,6 @@ import java.util.Locale
 // SeedData : 디버그/데모(채점) 환경에서 "테스트 계정 + 예시 일기/분석 데이터"를 자동으로 채워주는 유틸 객체
 // 용도:
 // - 로그인 계정 1개를 미리 만들고, 과거 날짜 일기와 AI 분석 캐시까지 함께 넣어 캘린더/목록/월간요약/마음카드(분석) 기능을 바로 확인할 수 있게 한다.
-//
 // 설계:
 // - object로 선언해 전역에서 1개 인스턴스만 사용한다.
 // - 이미 데이터가 있으면 다시 넣지 않기 정책으로 중복 시드를 방지한다.
@@ -89,8 +88,7 @@ object SeedData {
     // - 시드 데이터 중복 삽입을 방지하기 위한 사전 체크 함수
     private fun hasAnyEntries(db: SQLiteDatabase, ownerId: String): Boolean {
         return db.rawQuery(
-            "SELECT COUNT(*) FROM ${AppDb.T.ENTRIES} WHERE owner_id=?",
-            arrayOf(ownerId)
+            "SELECT COUNT(*) FROM ${AppDb.T.ENTRIES} WHERE owner_id=?", arrayOf(ownerId)
         ).use { c ->
 
             // 예외처리) COUNT(*)는 항상 1행이 나오므로 moveToFirst() 후 0번째 컬럼을 읽는다.
@@ -224,7 +222,9 @@ object SeedData {
         // 목적:
         // - 실제 Gemini 호출 없이도 분석 화면/마음카드 UI가 동작하는지 검증 가능하게 한다.
         // - fullText는 프리뷰 카드에서 일부만 노출되므로, 첫 문장이 위로/격려 톤으로 시작하도록 구성한다.
-        fun makeSeedAnalysis(entryId: Long, mood: Mood, tags: List<String>, ymd: String, idx: Int): AiAnalysis {
+        fun makeSeedAnalysis(
+            entryId: Long, mood: Mood, tags: List<String>, ymd: String, idx: Int
+        ): AiAnalysis {
 
             // comfortFirst : 화면에서 바로 보이는 첫 문단(위로/격려)을 감정별로 분기한다.
             val comfortFirst = when (mood) {
@@ -261,39 +261,33 @@ object SeedData {
             // actions : 사용자가 바로 실행할 수 있는 미션 제안 리스트
             val actions = when (mood) {
                 Mood.TIRED -> listOf(
-                    "내일 바로 시작할 페이지만 펼쳐두기",
-                    "시원한 물 한 잔 마시고 어깨 힘 빼기",
-                    "내일 할 일을 3개만 적고 나머지는 ‘보류’로 두기"
+                    "내일 바로 시작할 페이지만 펼쳐두기", "시원한 물 한 잔 마시고 어깨 힘 빼기", "내일 할 일을 3개만 적고 나머지는 ‘보류’로 두기"
                 )
+
                 Mood.DEPRESSED -> listOf(
-                    "오늘 마음을 한 단어로만 정리해보기",
-                    "10분만 산책하거나 창문 열고 바람 쐬기",
-                    "내가 해낸 작은 일 1개를 적고 스스로 인정하기"
+                    "오늘 마음을 한 단어로만 정리해보기", "10분만 산책하거나 창문 열고 바람 쐬기", "내가 해낸 작은 일 1개를 적고 스스로 인정하기"
                 )
+
                 Mood.ANGRY -> listOf(
-                    "숨 4초 들이마시고 6초 내쉬기 5번",
-                    "짜증 포인트를 ‘사실/해석’으로 나눠 적기",
-                    "스트레칭 2분으로 몸의 열 빼기"
+                    "숨 4초 들이마시고 6초 내쉬기 5번", "짜증 포인트를 ‘사실/해석’으로 나눠 적기", "스트레칭 2분으로 몸의 열 빼기"
                 )
+
                 Mood.CONFIDENCE -> listOf(
                     "오늘 잘한 점 2개를 적어 근거 있는 자신감 만들기",
                     "내일의 가장 중요한 1개 목표만 먼저 정하기",
                     "집중을 깨는 요소 1개 치우기(알림/책상)"
                 )
+
                 Mood.CALM -> listOf(
-                    "5분만 조용히 앉아서 몸 감각 체크하기",
-                    "따뜻한 차/물로 루틴 만들기",
-                    "잠들기 전, 고마운 순간 1개 적기"
+                    "5분만 조용히 앉아서 몸 감각 체크하기", "따뜻한 차/물로 루틴 만들기", "잠들기 전, 고마운 순간 1개 적기"
                 )
+
                 Mood.JOY -> listOf(
-                    "좋았던 일을 한 문장으로 기록해 ‘기쁨 저장’하기",
-                    "고마웠던 사람에게 짧게 메시지 보내기",
-                    "내일 기대되는 것 1개 정해보기"
+                    "좋았던 일을 한 문장으로 기록해 ‘기쁨 저장’하기", "고마웠던 사람에게 짧게 메시지 보내기", "내일 기대되는 것 1개 정해보기"
                 )
+
                 Mood.NORMAL -> listOf(
-                    "오늘 컨디션을 10점 만점으로 체크하기",
-                    "내일을 위한 작은 준비 1개 해두기",
-                    "하루 마무리 루틴 만들기(정리 5분)"
+                    "오늘 컨디션을 10점 만점으로 체크하기", "내일을 위한 작은 준비 1개 해두기", "하루 마무리 루틴 만들기(정리 5분)"
                 )
             }
 
@@ -407,11 +401,7 @@ object SeedData {
             // 2) 저장 직후 상세 분석도 같이 저장(캐시)
             // - 분석 화면은 entryId 기준으로 ai_analysis를 조회하므로, 미리 넣어두면 즉시 확인 가능하다.
             val analysis = makeSeedAnalysis(
-                entryId = savedEntryId,
-                mood = mood,
-                tags = tags,
-                ymd = ymd,
-                idx = idx
+                entryId = savedEntryId, mood = mood, tags = tags, ymd = ymd, idx = idx
             )
             analysisDao.upsert(analysis)
         }

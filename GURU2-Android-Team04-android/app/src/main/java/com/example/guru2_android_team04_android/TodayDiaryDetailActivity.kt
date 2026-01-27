@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.guru2_android_team04_android.ui.bind.TodayDiaryDetailUiBinder
 
-// TodayDiaryDetailActivity : 오늘 일기 보기 화면 Activity
+// TodayDiaryDetailActivity : 오늘의 일기 보기 화면 Activity
 // 용도:
 // - 오늘 작성된 일기(날짜/감정/제목/본문)를 보여준다.
 // - 수정/삭제/즐겨찾기(하트) 기능을 제공한다.
@@ -25,7 +25,9 @@ class TodayDiaryDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_today_diary_detail)
 
         // 하단 네비게이션 바 연결(현재 탭: diary)
-        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(this, R.id.navigation_diary)
+        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(
+            this, R.id.navigation_diary
+        )
 
         // entryId : 상세로 보여줄 일기 PK
         // - 이전 화면(Home/Editor 등)에서 putExtra("entryId", ...)로 전달받는다.

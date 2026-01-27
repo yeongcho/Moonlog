@@ -5,13 +5,11 @@ import java.util.UUID
 
 // SessionManager : 앱의 "현재 사용자 세션"을 관리하는 클래스
 // 이 앱은 로그인 사용자(USER_xxx)와 비회원 사용자(ANON_xxx)를 모두 지원하므로, 현재 사용자가 누구인지(ownerId)를 항상 추적
-//
-// 해당 클래스는 SharedPreferences를 이용해
-// 1) 현재 세션의 ownerId
-// 2) 익명 사용자 고유 ID
-// 3) 익명 사용자 최초 생성 시각
-// 을 로컬에 영구 저장/관리한다.
-//
+// 목적:
+//  해당 클래스는 SharedPreferences를 이용해
+//  1) 현재 세션의 ownerId
+//  2) 익명 사용자 고유 ID
+//  3) 익명 사용자 최초 생성 시각을 로컬에 영구 저장/관리한다.
 // 서버 없이 SQLite 기반 앱이므로 ownerId는 모든 데이터(일기, 배지 등)의 "소유자 키" 역할을 한다.
 class SessionManager(context: Context) {
 
@@ -25,8 +23,7 @@ class SessionManager(context: Context) {
     // - "USER_3"   : 로그인한 회원
     // - "ANON_xxx" : 비회원(익명 사용자)
     // - null       : 아직 세션이 시작되지 않은 상태
-    fun currentOwnerId(): String? =
-        prefs.getString(KEY_OWNER, null)
+    fun currentOwnerId(): String? = prefs.getString(KEY_OWNER, null)
 
     // 현재 세션의 ownerId를 저장한다.
     // 사용 시점:
@@ -34,9 +31,7 @@ class SessionManager(context: Context) {
     // - 회원가입 직후
     // - 비회원 세션 시작 시
     fun setOwnerId(ownerId: String) {
-        prefs.edit()
-            .putString(KEY_OWNER, ownerId)
-            .apply()
+        prefs.edit().putString(KEY_OWNER, ownerId).apply()
     }
 
     // 현재 세션(ownerId)만 제거한다.
@@ -46,9 +41,7 @@ class SessionManager(context: Context) {
     // - 익명 사용자 정보(KEY_ANON, KEY_ANON_CREATED_AT)는 삭제하지 않는다.
     // - 따라서 로그아웃 후 다시 비회원으로 시작하면 이전과 동일한 ANON_xxx가 재사용된다.
     fun clear() {
-        prefs.edit()
-            .remove(KEY_OWNER)
-            .apply()
+        prefs.edit().remove(KEY_OWNER).apply()
     }
 
     // 익명 사용자(ownerId)를 가져오거나, 아직 없다면 새로 생성해서 저장한 뒤 반환한다.
@@ -67,9 +60,7 @@ class SessionManager(context: Context) {
 
         // 익명 사용자 ID 저장
         // 앱 재실행 이후에도 동일한 익명 사용자로 인식된다.
-        prefs.edit()
-            .putString(KEY_ANON, newId)
-            .apply()
+        prefs.edit().putString(KEY_ANON, newId).apply()
 
         return newId
     }
@@ -91,9 +82,7 @@ class SessionManager(context: Context) {
         val now = System.currentTimeMillis()
 
         // 익명 사용자 최초 생성 시각 저장
-        prefs.edit()
-            .putLong(KEY_ANON_CREATED_AT, now)
-            .apply()
+        prefs.edit().putLong(KEY_ANON_CREATED_AT, now).apply()
 
         return now
     }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,10 +37,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/include_bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- NestedScrollView는 직계 자식 1개만 가능 -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,11 +67,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/nanumsquare_eb"
                 android:text="01월 2026"
                 android:textColor="#000000"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/nanumsquare_eb"
                 app:layout_constraintBottom_toBottomOf="@id/btnPrevMonth"
                 app:layout_constraintEnd_toStartOf="@id/btnNextMonth"
                 app:layout_constraintStart_toEndOf="@id/btnPrevMonth"
@@ -108,8 +107,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text="요약"
                     android:fontFamily="@font/nanumsquare_eb"
+                    android:text="요약"
                     android:textColor="#829586"
                     android:textSize="18sp" />
 
@@ -119,9 +118,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/nanumsquare_eb"
                     android:text="캘린더"
                     android:textColor="#0B2F22"
-                    android:fontFamily="@font/nanumsquare_eb"
                     android:textSize="18sp" />
 
                 <!-- 리스트 -->
@@ -130,8 +129,8 @@
                     android:id="@+id/btnTabList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="리스트"
                     android:fontFamily="@font/nanumsquare_eb"
+                    android:text="리스트"
                     android:textColor="#829586"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -155,15 +154,15 @@
                 android:id="@+id/calendarCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_calendar_panel"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                android:paddingTop="90dp"
                 android:paddingStart="10dp"
+                android:paddingTop="90dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -179,9 +178,9 @@
                     android:columnCount="7"
                     android:rowCount="6"
                     android:useDefaultMargins="true"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <!-- 날짜 박스 (1일) -->
                     <!-- 클릭 시 해당 날짜의 일기 상세 화면(activity_archive_diary_detail.xml)으로 이동 -->
@@ -193,9 +192,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -207,11 +206,11 @@
                                 android:id="@+id/tvDay1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="1"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="1" />
 
                             <!-- 해당 날짜의 감정 이모티콘 -->
                             <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
@@ -220,9 +219,9 @@
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay1"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay1" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -244,9 +243,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -257,20 +256,20 @@
                                 android:id="@+id/tvDay2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="2"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion2"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay2"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay2" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -283,9 +282,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -296,20 +295,20 @@
                                 android:id="@+id/tvDay3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="3"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="3" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion3"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay3"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay3" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -322,9 +321,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -335,20 +334,20 @@
                                 android:id="@+id/tvDay4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="4"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="4" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion4"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay4"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay4" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -361,9 +360,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -374,20 +373,20 @@
                                 android:id="@+id/tvDay5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="5"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="5" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion5"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay5"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay5" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -400,9 +399,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -413,20 +412,20 @@
                                 android:id="@+id/tvDay6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="6"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="6" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion6"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay6"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay6" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -439,9 +438,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -452,20 +451,20 @@
                                 android:id="@+id/tvDay7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="7"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="7" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion7"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay7"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay7" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -478,9 +477,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -491,20 +490,20 @@
                                 android:id="@+id/tvDay8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="8"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="8" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion8"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay8"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay8" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -517,9 +516,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -530,20 +529,20 @@
                                 android:id="@+id/tvDay9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="9"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="9" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion9"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay9"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay9" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -556,9 +555,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -569,20 +568,20 @@
                                 android:id="@+id/tvDay10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="10"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="10" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion10"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay10"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay10" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -595,9 +594,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -608,20 +607,20 @@
                                 android:id="@+id/tvDay11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="11"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="11" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion11"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay11"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay11" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -634,9 +633,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -647,20 +646,20 @@
                                 android:id="@+id/tvDay12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="12"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="12" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion12"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay12"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay12" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -673,9 +672,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -686,20 +685,20 @@
                                 android:id="@+id/tvDay13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="13"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="13" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion13"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay13"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay13" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -712,9 +711,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -725,20 +724,20 @@
                                 android:id="@+id/tvDay14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="14"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="14" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion14"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay14"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay14" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -751,9 +750,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -764,20 +763,20 @@
                                 android:id="@+id/tvDay15"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="15"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="15" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion15"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay15"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay15" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -790,9 +789,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -803,20 +802,20 @@
                                 android:id="@+id/tvDay16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="16"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="16" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion16"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay16"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay16" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -829,9 +828,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -842,20 +841,20 @@
                                 android:id="@+id/tvDay17"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="17"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="17" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion17"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay17"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay17" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -868,9 +867,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -881,20 +880,20 @@
                                 android:id="@+id/tvDay18"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="18"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="18" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion18"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay18"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay18" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -907,9 +906,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -920,20 +919,20 @@
                                 android:id="@+id/tvDay19"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="19"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="19" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion19"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay19"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay19" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -946,9 +945,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -959,20 +958,20 @@
                                 android:id="@+id/tvDay20"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="20"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="20" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion20"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay20"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay20" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -985,9 +984,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -998,20 +997,20 @@
                                 android:id="@+id/tvDay21"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="21"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="21" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion21"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay21"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay21" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1024,9 +1023,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1037,20 +1036,20 @@
                                 android:id="@+id/tvDay22"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="22"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="22" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion22"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay22"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay22" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1063,9 +1062,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1076,20 +1075,20 @@
                                 android:id="@+id/tvDay23"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="23"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="23" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion23"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay23"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay23" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1102,9 +1101,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1115,20 +1114,20 @@
                                 android:id="@+id/tvDay24"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="24"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="24" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion24"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay24"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay24" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1141,9 +1140,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1154,20 +1153,20 @@
                                 android:id="@+id/tvDay25"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="25"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="25" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion25"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay25"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay25" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1180,9 +1179,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1193,20 +1192,20 @@
                                 android:id="@+id/tvDay26"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="26"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="26" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion26"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay26"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay26" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1219,9 +1218,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1232,20 +1231,20 @@
                                 android:id="@+id/tvDay27"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="27"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="27" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion27"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay27"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay27" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1258,9 +1257,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1271,20 +1270,20 @@
                                 android:id="@+id/tvDay28"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="28"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="28" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion28"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay28"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay28" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1297,9 +1296,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1310,20 +1309,20 @@
                                 android:id="@+id/tvDay29"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="29"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="29" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion29"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay29"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay29" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1336,9 +1335,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1349,20 +1348,20 @@
                                 android:id="@+id/tvDay30"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="30"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="30" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion30"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay30"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay30" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1375,9 +1374,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1388,20 +1387,20 @@
                                 android:id="@+id/tvDay31"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="31"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="31" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion31"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay31"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay31" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1414,9 +1413,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1427,20 +1426,20 @@
                                 android:id="@+id/tvDay32"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="1"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="1" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion32"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay32"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay32" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1453,9 +1452,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1466,20 +1465,20 @@
                                 android:id="@+id/tvDay33"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="2"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion33"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay33"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay33" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1492,9 +1491,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1505,20 +1504,20 @@
                                 android:id="@+id/tvDay34"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="3"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="3" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion34"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay34"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay34" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1531,9 +1530,9 @@
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="#F6F6F6"
                         app:cardCornerRadius="10dp"
-                        app:strokeWidth="0.7dp"
+                        app:cardElevation="0dp"
                         app:strokeColor="#C2C2C2"
-                        app:cardElevation="0dp">
+                        app:strokeWidth="0.7dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -1544,20 +1543,20 @@
                                 android:id="@+id/tvDay35"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#0B2F22"
                                 android:fontFamily="@font/outfit_bold"
-                                tools:text="4"
+                                android:textColor="#0B2F22"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="4" />
 
                             <ImageView
                                 android:id="@+id/ivEmotion35"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:src="@drawable/emotion_calm"
-                                app:layout_constraintTop_toBottomOf="@id/tvDay35"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
+                                app:layout_constraintTop_toBottomOf="@id/tvDay35" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
@@ -1572,8 +1571,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="월간 마음 그래프"
                 android:fontFamily="@font/nanumsquare_eb"
+                android:text="월간 마음 그래프"
                 android:textColor="#45694B"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -1615,6 +1614,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,15 +22,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:strokeWidth="6dp"
-        app:strokeColor="#7AA68E"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#7AA68E"
+        app:strokeWidth="6dp">
 
         <!-- 카드 내부 구성(세로 정렬) -->
         <LinearLayout
@@ -44,8 +44,8 @@
                 android:id="@+id/tvDiaryDayText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:fontFamily="@font/handwriting_font"
+                android:gravity="center"
                 android:text="2026년 2월 6일 금요일"
                 android:textColor="#536059"
                 android:textSize="26sp" />
@@ -78,8 +78,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:text="태그: 평온"
-                    android:textSize="22sp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="22sp" />
             </LinearLayout>
 
             <!-- 일기 제목 -->
@@ -88,11 +88,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/nanumsquare_eb"
                 android:lineSpacingExtra="8dp"
                 android:text="일이 잘 안 풀렸던 날"
                 android:textColor="#6D9779"
-                android:textSize="20sp"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:textSize="20sp" />
 
             <!-- 일기 본문 -->
             <TextView
@@ -100,15 +100,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginTop="10dp"
-                android:overScrollMode="always"
-                android:scrollbars="vertical"
+                android:fontFamily="@font/handwriting_font"
+                android:lineSpacingExtra="8dp"
                 android:maxLines="10"
                 android:minLines="6"
-                android:lineSpacingExtra="8dp"
+                android:overScrollMode="always"
+                android:scrollbars="vertical"
                 android:text="오랜만에 고등학교 때 친구들을 만났다. ... (생략)"
                 android:textColor="#000000"
-                android:textSize="18sp"
-                android:fontFamily="@font/handwriting_font" />
+                android:textSize="18sp" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -119,34 +119,34 @@
         android:id="@+id/btnTapContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
+        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="24dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- 텍스트 + 아래 방향 화살표 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingHorizontal="18dp"
             android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap해서 이어보세요"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/nanumsquare_eb"
+                android:text="Tap해서 이어보세요"
                 android:textColor="#435241"
-                android:textSize="16sp"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="40dp"

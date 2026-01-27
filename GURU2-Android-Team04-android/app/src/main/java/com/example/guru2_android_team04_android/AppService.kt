@@ -28,8 +28,7 @@ import com.example.guru2_android_team04_android.util.PasswordPolicy
 // - AppDbHelper로 SQLite 접근을 통일한다.
 // - 외부 I/O(네트워크/DB)는 실패 가능하므로, 대부분 AppResult로 감싸 UI에서 처리 가능하게 한다.
 class AppService(
-    context: Context,
-    private val geminiClient: GeminiClient
+    context: Context, private val geminiClient: GeminiClient
 ) {
     // applicationContext를 보관하여 Activity 생명주기와 무관하게 안전하게 사용한다.
     private val appContext = context.applicationContext
@@ -82,10 +81,7 @@ class AppService(
     // 4) 기본 프로필 이미지 값(settings) 저장
     // 5) 성공 시 세션 ownerId를 USER_xxx로 전환
     fun signUp(
-        email: String,
-        password: CharArray,
-        passwordConfirm: CharArray,
-        nickname: String
+        email: String, password: CharArray, passwordConfirm: CharArray, nickname: String
     ): AppResult<Long> {
         val normalizedEmail = EmailPolicy.normalize(email)
         val nick = nickname.trim()
@@ -144,7 +140,10 @@ class AppService(
                 AppResult.Success(userId)
             } catch (t: Throwable) {
                 // 예외처리) 트랜잭션이 열린 상태에서 예외가 나면 종료를 보장
-                try { db.endTransaction() } catch (_: Exception) {}
+                try {
+                    db.endTransaction()
+                } catch (_: Exception) {
+                }
                 throw t
             }
         } catch (e: SQLiteConstraintException) {
@@ -268,10 +267,20 @@ class AppService(
     // 비회원 ownerId(ANON_xxx)로 저장된 데이터를 회원 ownerId(USER_xxx)로 일괄 변경한다.
     // - 여러 테이블에서 owner_id 컬럼을 동일하게 사용하므로, 한번에 "사용자 소유권"을 이전할 수 있다.
     private fun migrateOwnerId(db: SQLiteDatabase, fromOwner: String, toOwner: String) {
-        db.execSQL("UPDATE ${AppDb.T.ENTRIES} SET owner_id=? WHERE owner_id=?", arrayOf(toOwner, fromOwner))
-        db.execSQL("UPDATE ${AppDb.T.MONTHLY} SET owner_id=? WHERE owner_id=?", arrayOf(toOwner, fromOwner))
-        db.execSQL("UPDATE ${AppDb.T.USER_BADGES} SET owner_id=? WHERE owner_id=?", arrayOf(toOwner, fromOwner))
-        db.execSQL("UPDATE ${AppDb.T.SETTINGS} SET owner_id=? WHERE owner_id=?", arrayOf(toOwner, fromOwner))
+        db.execSQL(
+            "UPDATE ${AppDb.T.ENTRIES} SET owner_id=? WHERE owner_id=?", arrayOf(toOwner, fromOwner)
+        )
+        db.execSQL(
+            "UPDATE ${AppDb.T.MONTHLY} SET owner_id=? WHERE owner_id=?", arrayOf(toOwner, fromOwner)
+        )
+        db.execSQL(
+            "UPDATE ${AppDb.T.USER_BADGES} SET owner_id=? WHERE owner_id=?",
+            arrayOf(toOwner, fromOwner)
+        )
+        db.execSQL(
+            "UPDATE ${AppDb.T.SETTINGS} SET owner_id=? WHERE owner_id=?",
+            arrayOf(toOwner, fromOwner)
+        )
     }
 
     // Diary CRUD
@@ -298,7 +307,9 @@ class AppService(
     }
 
     // 주 단위(기간) 일기 목록 조회
-    fun getEntriesByWeek(ownerId: String, weekStartYmd: String, weekEndYmd: String): List<DiaryEntry> {
+    fun getEntriesByWeek(
+        ownerId: String, weekStartYmd: String, weekEndYmd: String
+    ): List<DiaryEntry> {
         val db = helper.readableDatabase
         return DiaryDao(db).getByRange(ownerId, weekStartYmd, weekEndYmd)
     }
@@ -334,10 +345,7 @@ class AppService(
         }
 
         val toSave = entry.copy(
-            dateYmd = ymd,
-            title = title,
-            content = content,
-            isTemporary = isAnon
+            dateYmd = ymd, title = title, content = content, isTemporary = isAnon
         )
 
         val entryId = try {
@@ -374,7 +382,8 @@ class AppService(
     // 분석(fullText)이 있으면 앞쪽 일부를 프리뷰로 만들고, 분석이 없으면 기본 위로 문구를 반환한다.
     private fun makeShortComfortMessage(analysis: AiAnalysis?): String {
         if (analysis == null) return "아직 일기를 작성하지 않았어요. 이야기를 작성하고 마음 답장을 확인해요."
-        val preview = MindCardTextUtil.makePreview(analysis.fullText, maxSentences = 2, maxChars = 90)
+        val preview =
+            MindCardTextUtil.makePreview(analysis.fullText, maxSentences = 2, maxChars = 90)
         return if (preview.isBlank()) analysis.summary else preview
     }
 
@@ -388,8 +397,7 @@ class AppService(
             FROM ${AppDb.T.ENTRIES}
             WHERE entry_id=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(entryId.toString())
+            """.trimIndent(), arrayOf(entryId.toString())
         ).use { c ->
             // 예외처리) 해당 entry_id가 없으면 null
             if (!c.moveToFirst()) return null
@@ -400,7 +408,11 @@ class AppService(
                 title = c.getString(3),
                 content = c.getString(4),
                 mood = Mood.fromDb(c.getInt(5)),
-                tags = com.example.guru2_android_team04_android.util.JsonMini.jsonToList(c.getString(6)),
+                tags = com.example.guru2_android_team04_android.util.JsonMini.jsonToList(
+                    c.getString(
+                        6
+                    )
+                ),
                 isFavorite = c.getInt(7) == 1,
                 isTemporary = c.getInt(8) == 1,
                 createdAt = c.getLong(9),
@@ -489,8 +501,7 @@ class AppService(
             FROM ${AppDb.T.ENTRIES}
             WHERE entry_id=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(entryId.toString())
+            """.trimIndent(), arrayOf(entryId.toString())
         ).use { c ->
             // 예외처리) entry가 없으면 분석 불가
             if (!c.moveToFirst()) throw IllegalArgumentException("Entry not found: $entryId")
@@ -502,7 +513,11 @@ class AppService(
                 title = c.getString(2),
                 content = c.getString(3),
                 mood = Mood.fromDb(c.getInt(4)),
-                tags = com.example.guru2_android_team04_android.util.JsonMini.jsonToList(c.getString(5)),
+                tags = com.example.guru2_android_team04_android.util.JsonMini.jsonToList(
+                    c.getString(
+                        5
+                    )
+                ),
                 isFavorite = c.getInt(6) == 1,
                 isTemporary = c.getInt(7) == 1,
                 createdAt = c.getLong(8),
@@ -512,9 +527,7 @@ class AppService(
 
         // 외부 API 호출(Gemini)
         val result = geminiClient.analyzeDiary(
-            moodLabel = entry.mood.name,
-            tags = entry.tags,
-            diaryText = entry.content
+            moodLabel = entry.mood.name, tags = entry.tags, diaryText = entry.content
         )
 
         val analysis = AiAnalysis(
@@ -549,18 +562,17 @@ class AppService(
             val msg = e.message.orEmpty()
             when {
                 msg.contains("LLM API failed") -> {
-                    val code = Regex("LLM API failed: (\\d+)").find(msg)?.groupValues?.get(1)?.toInt() ?: -1
+                    val code =
+                        Regex("LLM API failed: (\\d+)").find(msg)?.groupValues?.get(1)?.toInt()
+                            ?: -1
                     AppResult.Failure(AppError.ApiError(code))
                 }
 
-                msg.contains("JSON", ignoreCase = true) ->
-                    AppResult.Failure(AppError.ParseError)
+                msg.contains("JSON", ignoreCase = true) -> AppResult.Failure(AppError.ParseError)
 
-                msg.contains("Entry not found") ->
-                    AppResult.Failure(AppError.NotFound)
+                msg.contains("Entry not found") -> AppResult.Failure(AppError.NotFound)
 
-                else ->
-                    AppResult.Failure(AppError.Unknown(msg))
+                else -> AppResult.Failure(AppError.Unknown(msg))
             }
         } catch (e: Exception) {
             // 예외처리) 그 외 알 수 없는 오류
@@ -588,7 +600,8 @@ class AppService(
     // 마음 카드를 이미지(Bitmap)로 렌더링한 뒤 갤러리에 저장한다.
     // - 저장 실패 시 예외를 던질 수 있다(unsafe).
     fun exportMindCardToGallery(context: Context, entryId: Long): Uri {
-        val entry = loadEntryByIdOrNull(entryId) ?: throw IllegalArgumentException("Entry not found")
+        val entry =
+            loadEntryByIdOrNull(entryId) ?: throw IllegalArgumentException("Entry not found")
         val db = helper.readableDatabase
         val analysis = AnalysisDao(db).getByEntryId(entryId)
 
@@ -618,7 +631,8 @@ class AppService(
     // - render는 테마/리소스 영향을 받으므로 Activity context를 그대로 전달한다.
     // - 저장은 applicationContext로 진행한다.
     fun exportAnalysisScreensToGallery(context: Context, entryId: Long): List<Uri> {
-        val entry = loadEntryByIdOrNull(entryId) ?: throw IllegalArgumentException("Entry not found")
+        val entry =
+            loadEntryByIdOrNull(entryId) ?: throw IllegalArgumentException("Entry not found")
         val db = helper.readableDatabase
         val analysis = AnalysisDao(db).getByEntryId(entryId)
 
@@ -791,9 +805,7 @@ class AppService(
         }
 
         val monthlyR = geminiClient.summarizeMonth(
-            yearMonth = lastYm,
-            dominantMoodLabel = dominantMood.name,
-            entriesBrief = brief
+            yearMonth = lastYm, dominantMoodLabel = dominantMood.name, entriesBrief = brief
         )
 
         val ms = MonthlySummary(

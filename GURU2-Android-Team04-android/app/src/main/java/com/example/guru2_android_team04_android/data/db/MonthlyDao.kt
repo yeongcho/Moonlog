@@ -27,8 +27,7 @@ class MonthlyDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.MONTHLY}
             WHERE owner_id=? AND year_month=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(ownerId, yearMonth)
+            """.trimIndent(), arrayOf(ownerId, yearMonth)
         ).use { c ->
 
             // 예외처리) 조회 결과가 없으면 null 반환
@@ -106,8 +105,7 @@ class MonthlyDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.MONTHLY}
             WHERE owner_id=? AND year_month BETWEEN ? AND ?
             ORDER BY year_month ASC
-            """.trimIndent(),
-            arrayOf(ownerId, start, end)
+            """.trimIndent(), arrayOf(ownerId, start, end)
         ).use { c ->
             while (c.moveToNext()) {
                 out.add(

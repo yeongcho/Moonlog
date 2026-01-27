@@ -30,8 +30,7 @@ class BadgeDao(private val db: SQLiteDatabase) {
             LEFT JOIN ${AppDb.T.USER_BADGES} ub
               ON b.badge_id = ub.badge_id AND ub.owner_id = ?
             ORDER BY b.badge_id ASC
-            """.trimIndent(),
-            arrayOf(ownerId)
+            """.trimIndent(), arrayOf(ownerId)
         ).use { c ->
 
             // Cursor를 한 줄씩 읽으며 BadgeStatus로 변환
@@ -76,8 +75,7 @@ class BadgeDao(private val db: SQLiteDatabase) {
               ON b.badge_id = ub.badge_id
             WHERE ub.owner_id=? AND ub.is_selected=1
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(ownerId)
+            """.trimIndent(), arrayOf(ownerId)
         ).use { c ->
 
             // 선택된 배지가 없으면 결과가 비어 있으므로 null 반환

@@ -11,7 +11,7 @@ import javax.crypto.spec.PBEKeySpec
 // - 로그인 시 입력된 비밀번호를 동일한 방식으로 해시하여 저장된 값과 비교한다.
 // 설계:
 // - 단순 해시(SHA-256 등)는 무차별 대입 공격에 취약
-// - PBKDF2는 반복 연산(iteration)과 salt를 사용해 공격 비용을 크게 높임
+// - PBKDF2는 반복 연산과 salt를 사용해 공격 비용을 크게 높임
 object Pbkdf2 {
 
     // 해시 반복 횟수
@@ -82,10 +82,7 @@ object Pbkdf2 {
     // 반환:
     // - 생성된 키(ByteArray)
     private fun pbkdf2(
-        pw: CharArray,
-        salt: ByteArray,
-        iter: Int,
-        keyLenBits: Int
+        pw: CharArray, salt: ByteArray, iter: Int, keyLenBits: Int
     ): ByteArray {
 
         // PBEKeySpec: 비밀번호 기반 키 생성 스펙
@@ -99,12 +96,10 @@ object Pbkdf2 {
 
     // ByteArray -> Base64 문자열
     // - DB 저장 및 문자열 처리 편의성을 위해 사용
-    private fun b64(b: ByteArray): String =
-        Base64.encodeToString(b, Base64.NO_WRAP)
+    private fun b64(b: ByteArray): String = Base64.encodeToString(b, Base64.NO_WRAP)
 
     // Base64 문자열 -> ByteArray
-    private fun b64d(s: String): ByteArray =
-        Base64.decode(s, Base64.NO_WRAP)
+    private fun b64d(s: String): ByteArray = Base64.decode(s, Base64.NO_WRAP)
 
     // constant-time byte array 비교
     // 목적:

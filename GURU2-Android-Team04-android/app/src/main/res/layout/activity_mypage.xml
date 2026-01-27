@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -35,13 +34,13 @@
         android:id="@+id/scroll_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="20dp"
-        android:clipToPadding="false"
         android:clipChildren="false"
-        app:layout_constraintTop_toTopOf="parent"
+        android:clipToPadding="false"
+        android:padding="20dp"
         app:layout_constraintBottom_toTopOf="@id/include_bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 마이페이지 전체 스크롤 영역 -->
         <FrameLayout
@@ -54,21 +53,21 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="35dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginStart="20dp"
                 android:layout_gravity="top|start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="42dp"
+                app:cardBackgroundColor="#7C6969"
                 app:cardCornerRadius="4dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="#7C6969" />
+                app:cardElevation="6dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingTop="50dp"
-                android:paddingBottom="50dp"
-                android:clipChildren="false"
-                android:clipToPadding="false">
+                android:paddingBottom="50dp">
 
                 <!-- 프로필 카드 -->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,25 +75,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_rounded_white"
-                    android:padding="25dp"
-                    android:elevation="2dp"
                     android:clipChildren="false"
-                    android:clipToPadding="false">
+                    android:clipToPadding="false"
+                    android:elevation="2dp"
+                    android:padding="25dp">
 
                     <!-- 프로필 이미지 -->
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/iv_profile_image"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/ic_icon_profile"
-                        android:scaleType="centerCrop"
-                        android:padding="2dp"
+                        android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
-                        android:layout_marginTop="10dp"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay_App_Circle"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_icon_profile"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay_App_Circle" />
 
 
                     <!-- 로그인 상태 정보 영역(닉네임/이메일/뱃지/D-day) -->
@@ -102,36 +101,36 @@
                         android:id="@+id/layout_member_info"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginStart="30dp"
+                        android:orientation="vertical"
                         android:visibility="visible"
-                        app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/iv_profile_image"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_profile_image">
+                        app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                        app:layout_constraintTop_toTopOf="@id/iv_profile_image">
 
                         <!-- 닉네임 -->
                         <TextView
                             android:id="@+id/tv_nickname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="닉네임"
-                            android:textSize="22sp"
-                            android:textColor="#000000"
-                            android:fontFamily="@font/nanumsquare_eb"
                             android:clickable="true"
-                            android:focusable="true"/>
+                            android:focusable="true"
+                            android:fontFamily="@font/nanumsquare_eb"
+                            android:text="닉네임"
+                            android:textColor="#000000"
+                            android:textSize="22sp" />
 
                         <!-- 이메일 -->
                         <TextView
                             android:id="@+id/tv_email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="example@swu.ac.kr"
-                            android:textSize="14sp"
-                            android:textColor="#9A9A9A"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="@font/nanumsquare_r"
-                            android:layout_marginTop="2dp"/>
+                            android:text="example@swu.ac.kr"
+                            android:textColor="#9A9A9A"
+                            android:textSize="14sp" />
 
                         <!-- 현재 장착한 뱃지 이름 -->
                         <!-- 획득한 뱃지 없을 시 숨김-->
@@ -139,22 +138,22 @@
                             android:id="@+id/tv_badge_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="감정 로그 수집가"
-                            android:textSize="15sp"
-                            android:textColor="#68A684"
+                            android:layout_marginTop="12dp"
                             android:fontFamily="@font/nanumsquare_r"
-                            android:layout_marginTop="12dp"/>
+                            android:text="감정 로그 수집가"
+                            android:textColor="#68A684"
+                            android:textSize="15sp" />
 
                         <!-- 앱 사용 D-day -->
                         <TextView
                             android:id="@+id/tv_d_day"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="나와 마주한 지 D+127일 째"
-                            android:textSize="15sp"
-                            android:textColor="#565656"
+                            android:layout_marginTop="3dp"
                             android:fontFamily="@font/nanumsquare_r"
-                            android:layout_marginTop="3dp"/>
+                            android:text="나와 마주한 지 D+127일 째"
+                            android:textColor="#565656"
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <!-- 비로그인(게스트) 상태 안내 문구 -->
@@ -162,19 +161,19 @@
                         android:id="@+id/tv_guest_info"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
                         android:clickable="true"
                         android:focusable="true"
+                        android:fontFamily="@font/nanumsquare_eb"
                         android:foreground="?attr/selectableItemBackground"
                         android:text="로그인하고 업적을 달성하세요"
-                        android:textSize="16sp"
                         android:textColor="#565656"
-                        android:fontFamily="@font/nanumsquare_eb"
-                        android:layout_marginStart="20dp"
+                        android:textSize="16sp"
                         android:visibility="gone"
-                        app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/iv_profile_image"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"/>
+                        app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                        app:layout_constraintTop_toTopOf="@id/iv_profile_image" />
 
                     <!-- 프로필 이미지 위에 겹쳐지는 뱃지 프레임 -->
                     <!-- 로그인 상태에서 대표 뱃지/업적 아이콘 표시용 -->
@@ -183,8 +182,8 @@
                         android:id="@+id/iv_badge_frame_mypage"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_badge_emotion_log"
                         android:elevation="5dp"
+                        android:src="@drawable/ic_badge_emotion_log"
                         app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"
                         app:layout_constraintEnd_toEndOf="@id/iv_profile_image"
                         app:layout_constraintStart_toStartOf="@id/iv_profile_image"
@@ -198,31 +197,31 @@
                     android:id="@+id/btn_achievements"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rounded_white"
-                    android:padding="15dp"
                     android:layout_marginTop="20dp"
-                    android:elevation="1dp">
+                    android:background="@drawable/bg_rounded_white"
+                    android:elevation="1dp"
+                    android:padding="15dp">
 
                     <ImageView
                         android:id="@+id/iv_badge_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_badge_achievement"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="업적 확인하기"
-                        android:textSize="16sp"
-                        android:textColor="#686871"
-                        android:fontFamily="@font/nanumsquare_eb"
                         android:layout_marginStart="15dp"
+                        android:fontFamily="@font/nanumsquare_eb"
+                        android:text="업적 확인하기"
+                        android:textColor="#686871"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/iv_badge_icon"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -231,12 +230,12 @@
                     android:id="@+id/tv_section_my_records"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="나의 기록"
-                    android:textSize="18sp"
-                    android:textColor="#000000"
-                    android:fontFamily="@font/nanumsquare_eb"
                     android:layout_marginTop="25dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/nanumsquare_eb"
+                    android:text="나의 기록"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <!-- 일기 모아보기 버튼(캘린더/리스트 진입) -->
                 <!-- 일기 모아보기(캘린더/리스트) 버튼: 클릭 시 일기 캘린더 화면(activity_diary_calendar.xml)으로 이동 -->
@@ -245,10 +244,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_rounded_white"
-                    android:padding="15dp"
-                    android:orientation="horizontal"
+                    android:elevation="1dp"
                     android:gravity="center_vertical"
-                    android:elevation="1dp">
+                    android:orientation="horizontal"
+                    android:padding="15dp">
 
                     <ImageView
                         android:layout_width="24dp"
@@ -258,11 +257,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="일기 모아보기 (캘린더 / 리스트)"
-                        android:textSize="16sp"
-                        android:textColor="#3F3F3F"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="@font/nanumsquare_eb"
-                        android:layout_marginStart="15dp"/>
+                        android:text="일기 모아보기 (캘린더 / 리스트)"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- 마음 카드 보관함 버튼 -->
@@ -271,12 +270,12 @@
                     android:id="@+id/btn_mind_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rounded_white"
-                    android:padding="15dp"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
+                    android:background="@drawable/bg_rounded_white"
+                    android:elevation="1dp"
                     android:gravity="center_vertical"
-                    android:elevation="1dp">
+                    android:orientation="horizontal"
+                    android:padding="15dp">
 
                     <ImageView
                         android:layout_width="24dp"
@@ -286,11 +285,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="마음 카드 보관함"
-                        android:textSize="16sp"
-                        android:textColor="#3F3F3F"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="@font/nanumsquare_eb"
-                        android:layout_marginStart="15dp"/>
+                        android:text="마음 카드 보관함"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- 섹션 타이틀: 계정 정보 -->
@@ -298,12 +297,12 @@
                     android:id="@+id/tv_section_account_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="계정 정보"
-                    android:textSize="18sp"
-                    android:textColor="#000000"
-                    android:fontFamily="@font/nanumsquare_eb"
                     android:layout_marginTop="25dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/nanumsquare_eb"
+                    android:text="계정 정보"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <!-- 프로필 편집 버튼 -->
                 <!-- 클릭 시 프로필 편집 화면(activity_profile_edit.xml) 으로 이동 -->
@@ -312,10 +311,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_rounded_white"
-                    android:padding="15dp"
-                    android:orientation="horizontal"
+                    android:elevation="1dp"
                     android:gravity="center_vertical"
-                    android:elevation="1dp">
+                    android:orientation="horizontal"
+                    android:padding="15dp">
 
                     <ImageView
                         android:layout_width="24dp"
@@ -325,11 +324,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="프로필 편집"
-                        android:textSize="16sp"
-                        android:textColor="#3F3F3F"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="@font/nanumsquare_eb"
-                        android:layout_marginStart="15dp"/>
+                        android:text="프로필 편집"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- 로그아웃 버튼 -->
@@ -339,12 +338,12 @@
                     android:id="@+id/btn_logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rounded_white"
-                    android:padding="15dp"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_rounded_white"
                     android:elevation="1dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
                     android:visibility="visible">
 
                     <ImageView
@@ -355,11 +354,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="로그아웃"
-                        android:textSize="16sp"
-                        android:textColor="#3F3F3F"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="@font/nanumsquare_eb"
-                        android:layout_marginStart="15dp"/>
+                        android:text="로그아웃"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- 회원 탈퇴 버튼 -->
@@ -368,29 +367,29 @@
                     android:id="@+id/btn_delete_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_rounded_white"
                     android:backgroundTint="#874242"
-                    android:padding="15dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
                     android:elevation="1dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
                     android:visibility="visible">
 
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_icon_withdraw"
-                        app:tint="@color/white"/>
+                        app:tint="@color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="회원 탈퇴"
-                        android:textSize="16sp"
-                        android:textColor="#FFC5C5"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="@font/nanumsquare_eb"
-                        android:layout_marginStart="15dp"/>
+                        android:text="회원 탈퇴"
+                        android:textColor="#FFC5C5"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -404,6 +403,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

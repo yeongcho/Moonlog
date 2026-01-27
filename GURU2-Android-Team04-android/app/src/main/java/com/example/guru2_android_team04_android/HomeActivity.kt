@@ -41,7 +41,9 @@ class HomeActivity : AppCompatActivity() {
 
         // 하단 네비게이션 바 연결
         // - 현재 탭을 Home으로 활성화한다.
-        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(this, R.id.navigation_home)
+        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(
+            this, R.id.navigation_home
+        )
 
         // 오늘 날짜 영역(activity_home.xml의 tvDiaryDayText)
         val tvDiaryDayText = findViewById<TextView>(R.id.tvDiaryDayText)
@@ -87,8 +89,8 @@ class HomeActivity : AppCompatActivity() {
             // 3) 그 중 오늘 날짜와 일치하는 entry를 찾는다.
             val todayYmd = DateUtil.todayYmd()
             val ym = todayYmd.take(7)
-            val todayEntry = appService.getEntriesByMonth(ownerId, ym)
-                .firstOrNull { it.dateYmd == todayYmd }
+            val todayEntry =
+                appService.getEntriesByMonth(ownerId, ym).firstOrNull { it.dateYmd == todayYmd }
 
             // 마음 카드 프리뷰 로드:
             // - 오늘 일기가 존재할 때만 entryId 기반으로 프리뷰를 요청한다.
@@ -120,19 +122,26 @@ class HomeActivity : AppCompatActivity() {
                 // 배너 화살표 클릭 시 월간 요약 화면으로 이동
                 // - yearMonth를 extra로 전달해 해당 월 데이터를 보여주도록 한다.
                 ivMonthlySummary.setOnClickListener {
+                    // 비회원(ANON_...)은 월간 요약 화면 진입 불가
+                    if (ownerId.startsWith("ANON_")) {
+                        android.widget.Toast.makeText(
+                            this@HomeActivity,
+                            "회원만 월간 요약을 볼 수 있어요. 로그인 후 이용해주세요!",
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
                     startActivity(
                         Intent(this@HomeActivity, MonthlySummaryActivity::class.java).apply {
                             putExtra("yearMonth", lastYm)
-                        }
-                    )
+                        })
                 }
 
                 // 마음 카드 위로/격려 문구 구성
                 // - comfortPreview가 없으면 기본 문구를 내부 로직에서 구성할 수 있다.
                 val nickname = profile.nickname
                 val (line1, line2) = MindCardTextUtil.makeComfortLines(
-                    nickname = nickname,
-                    comfortPreview = preview?.comfortPreview
+                    nickname = nickname, comfortPreview = preview?.comfortPreview
                 )
 
                 // XML에 tvConsoleText가 존재하는 디자인(2줄 분리)과 없을 수도 있는 디자인(1개 TextView에 줄바꿈) 모두 대응한다.
@@ -156,7 +165,8 @@ class HomeActivity : AppCompatActivity() {
                 // 이야기 들려주기 버튼:
                 // - 오늘 일기가 없으면 오늘 일기 작성 화면(DiaryEditorActivity)으로 이동
                 // - 오늘 일기가 있으면 오늘 일기 화면(TodayDiaryDetailActivity)으로 이동(entryId 전달)
-                val btn = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.btn_today_write)
+                val btn =
+                    findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.btn_today_write)
                 btn.setOnClickListener {
                     if (todayEntry == null) {
                         startActivity(Intent(this@HomeActivity, DiaryEditorActivity::class.java))
@@ -164,8 +174,7 @@ class HomeActivity : AppCompatActivity() {
                         startActivity(
                             Intent(this@HomeActivity, TodayDiaryDetailActivity::class.java).apply {
                                 putExtra("entryId", todayEntry.entryId)
-                            }
-                        )
+                            })
                     }
                 }
             }

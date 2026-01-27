@@ -25,19 +25,12 @@ data class User(
 // 설계:
 // - SQLite에는 enum을 직접 저장하지 못하므로 Int(dbValue)로 매핑한다.
 enum class Mood(val dbValue: Int) {
-    JOY(1),
-    CONFIDENCE(2),
-    CALM(3),
-    NORMAL(4),
-    DEPRESSED(5),
-    ANGRY(6),
-    TIRED(7);
+    JOY(1), CONFIDENCE(2), CALM(3), NORMAL(4), DEPRESSED(5), ANGRY(6), TIRED(7);
 
     companion object {
         // DB에 저장된 Int 값을 Mood enum으로 복원한다.
         // 예외처리) 알 수 없는 값이 들어오면 앱이 죽지 않도록 NORMAL로 대체한다.
-        fun fromDb(v: Int): Mood =
-            values().firstOrNull { it.dbValue == v } ?: NORMAL
+        fun fromDb(v: Int): Mood = values().firstOrNull { it.dbValue == v } ?: NORMAL
     }
 }
 
@@ -169,6 +162,5 @@ data class MonthlySummary(
 // 용도:
 // - 월별 감정 분포 그래프(막대/원 그래프) 등을 그릴 때 사용된다.
 data class MoodStat(
-    val mood: Mood,
-    val count: Int
+    val mood: Mood, val count: Int
 )

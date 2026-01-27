@@ -20,26 +20,26 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:background="@drawable/bg_analysis_card_dark"
         android:padding="30dp"
-        android:layout_margin="30dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 분석 타이틀 -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="- 마음지기의 분석 -"
-            android:textSize="23sp"
-            android:textColor="#7BA68E"
             android:fontFamily="@font/handwriting_font"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="- 마음지기의 분석 -"
+            android:textColor="#7BA68E"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- 분석 내용(긴 문장: 내부 스크롤) -->
         <ScrollView
@@ -47,21 +47,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toTopOf="@id/tv_tags"
-            app:layout_constrainedHeight="true">
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
 
             <!-- Gemini 분석 텍스트(위로/격려 메시지) -->
             <TextView
                 android:id="@+id/tv_analysis_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" 잘하고 싶은 마음은 굴뚝같은데 진도가 나가지 않을 때의 그 막막함, 누구나 겪을 수 있는 감정입니다.\n뇌과학적으로도 스트레스가 극에 달했을 때는 억지로 정보를 주입하기보다 잠을 자는 것이 기억 정리에 훨씬 효과적이에요.\n닉네임님은 그 한계점에서 '전략적 후퇴'라는 최선의 답을 스스로 잘 찾아내셨습니다. 오늘의 후회는 내일 새벽의 폭발적인 집중력을 위한 도움닫기가 될 겁니다.\n지금은 아무 걱정 말고 뇌를 완전히 쉬게 해주세요. 내일의 당신은 생각보다 훨씬 강하니까요."
-                android:textSize="14sp"
-                android:textColor="#E7FFE9"
                 android:fontFamily="@font/nanumsquare_r"
+                android:gravity="start"
                 android:lineSpacingExtra="8dp"
-                android:gravity="start"/>
+                android:text=" 잘하고 싶은 마음은 굴뚝같은데 진도가 나가지 않을 때의 그 막막함, 누구나 겪을 수 있는 감정입니다.\n뇌과학적으로도 스트레스가 극에 달했을 때는 억지로 정보를 주입하기보다 잠을 자는 것이 기억 정리에 훨씬 효과적이에요.\n닉네임님은 그 한계점에서 '전략적 후퇴'라는 최선의 답을 스스로 잘 찾아내셨습니다. 오늘의 후회는 내일 새벽의 폭발적인 집중력을 위한 도움닫기가 될 겁니다.\n지금은 아무 걱정 말고 뇌를 완전히 쉬게 해주세요. 내일의 당신은 생각보다 훨씬 강하니까요."
+                android:textColor="#E7FFE9"
+                android:textSize="14sp" />
         </ScrollView>
 
         <!-- 분석 핵심 요약 태그(해시태그) -->
@@ -69,16 +69,16 @@
             android:id="@+id/tv_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#시험기간 #오늘은_여기까지 #마음챙김\n#긍정회로"
-            android:textSize="16sp"
-            android:textColor="#9CBAFA"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/handwriting_font"
             android:gravity="start"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/scrollView"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="#시험기간 #오늘은_여기까지 #마음챙김\n#긍정회로"
+            android:textColor="#9CBAFA"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,34 +88,34 @@
         android:id="@+id/btnTapContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
+        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="24dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- 텍스트 + 아래 방향 화살표 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingHorizontal="18dp"
             android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap해서 이어보세요"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/nanumsquare_eb"
+                android:text="Tap해서 이어보세요"
                 android:textColor="#435241"
-                android:textSize="16sp"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="40dp"

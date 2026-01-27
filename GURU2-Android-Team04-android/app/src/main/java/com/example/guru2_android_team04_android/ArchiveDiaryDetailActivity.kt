@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.guru2_android_team04_android.ui.bind.ArchiveDiaryDetailUiBinder
 import com.example.guru2_android_team04_android.ui.bind.BottomNavBinder
 
-// ArchiveDiaryDetailActivity : 보관함/캘린더/리스트에서 선택한 일기 1개의 상세 화면 Activity
+// ArchiveDiaryDetailActivity : 마음 카드 보관함/캘린더/리스트에서 선택한 일기 1개의 상세 화면 Activity
 // 용도:
 // - entryId(일기 PK)를 전달받아 상세 화면을 보여준다.
 // - 화면 구성은 XML(activity_archive_diary_detail.xml)로 하고, 데이터 조회/바인딩/클릭 이벤트 연결은 ArchiveDiaryDetailUiBinder에 위임한다.

@@ -16,9 +16,7 @@ import java.util.concurrent.TimeUnit
 // 설계:
 // - actions는 "미션" 성격의 행동 제안 목록이며, 앱 UI는 3개를 기본으로 기대한다.
 data class GeminiResult(
-    val summary: String,
-    val triggerPattern: String,
-    val actions: List<String>,     // 1~3
+    val summary: String, val triggerPattern: String, val actions: List<String>,     // 1~3
     val hashtags: List<String>,    // 0~N
     val missionSummary: String,    // 1줄
     val fullText: String
@@ -41,17 +39,14 @@ data class MonthlyGeminiResult(
 // 3) 응답(raw JSON)에서 실제 텍스트를 extractTextFromGeminiResponse()로 뽑는다.
 // 4) parseStrictJson()으로 텍스트를 엄격 JSON으로 파싱하여 GeminiResult로 반환한다.
 class GeminiClient(
-    private val apiKey: String,
-    private val endpointUrl: String
+    private val apiKey: String, private val endpointUrl: String
 ) {
 
     // OkHttpClient를 싱글 인스턴스로 재사용하여 연결/스레드 자원을 효율적으로 관리한다.
     // - connectTimeout: 연결까지 최대 20초
     // - readTimeout: 응답 본문 수신까지 최대 40초
-    private val http = OkHttpClient.Builder()
-        .connectTimeout(20, TimeUnit.SECONDS)
-        .readTimeout(40, TimeUnit.SECONDS)
-        .build()
+    private val http = OkHttpClient.Builder().connectTimeout(20, TimeUnit.SECONDS)
+        .readTimeout(40, TimeUnit.SECONDS).build()
 
     // 일기 분석 요청(동기 호출)
     // 입력:
@@ -62,9 +57,7 @@ class GeminiClient(
     // - GeminiResult(앱에서 쓰기 좋은 구조로 정제된 분석 결과)
     // 예외처리) HTTP 실패(2xx 아님) 시 RuntimeException을 던져 호출부(AppService)에서 에러로 처리하게 한다.
     fun analyzeDiary(
-        moodLabel: String,
-        tags: List<String>,
-        diaryText: String
+        moodLabel: String, tags: List<String>, diaryText: String
     ): GeminiResult {
 
         val prompt = buildPrompt(moodLabel, tags, diaryText)
@@ -72,11 +65,9 @@ class GeminiClient(
         // Gemini API 요청 포맷에 맞춰 contents/parts 구조로 텍스트 프롬프트를 담는다.
         val bodyJson = JSONObject().apply {
             put(
-                "contents",
-                JSONArray().put(
+                "contents", JSONArray().put(
                     JSONObject().put(
-                        "parts",
-                        JSONArray().put(JSONObject().put("text", prompt))
+                        "parts", JSONArray().put(JSONObject().put("text", prompt))
                     )
                 )
             )
@@ -84,15 +75,10 @@ class GeminiClient(
 
         // API Key는 헤더(x-goog-api-key)로 전달한다.
         // Content-Type은 JSON으로 설정한다.
-        val req = Request.Builder()
-            .url(endpointUrl)
-            .addHeader("x-goog-api-key", apiKey)
-            .addHeader("Content-Type", "application/json")
-            .post(
-                bodyJson.toString()
-                    .toRequestBody("application/json; charset=utf-8".toMediaType())
-            )
-            .build()
+        val req = Request.Builder().url(endpointUrl).addHeader("x-goog-api-key", apiKey)
+            .addHeader("Content-Type", "application/json").post(
+                bodyJson.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
+            ).build()
 
         // 동기 네트워크 호출(백그라운드 스레드에서 실행되어야 함)
         http.newCall(req).execute().use { resp ->
@@ -118,9 +104,7 @@ class GeminiClient(
     // - 출력 스키마를 명시하여 파싱 가능한 구조를 강제한다.
     // - actions / hashtags / full_text 등 UI에서 바로 쓰는 요소를 포함한다.
     private fun buildPrompt(
-        moodLabel: String,
-        tags: List<String>,
-        diaryText: String
+        moodLabel: String, tags: List<String>, diaryText: String
     ): String {
         return """
         너는 감정 일기 코치야.
@@ -179,11 +163,7 @@ class GeminiClient(
     // - 호출부(AppService.runAnalysisSafe)에서 ParseError로 처리할 수 있게 예외를 그대로 위로 올린다.
     private fun parseStrictJson(text: String): GeminiResult {
 
-        val cleaned = text
-            .removePrefix("```json")
-            .removePrefix("```")
-            .removeSuffix("```")
-            .trim()
+        val cleaned = text.removePrefix("```json").removePrefix("```").removeSuffix("```").trim()
 
         val obj = JSONObject(cleaned)
 
@@ -195,15 +175,14 @@ class GeminiClient(
         }
 
         val safeActions = when {
-            actions.isEmpty() ->
-                listOf("물 한 잔 천천히 마시기", "5분 가볍게 걷기", "숨 3번 길게 내쉬기")
-            actions.size >= 3 ->
-                actions.take(3)
-            else ->
-                buildList {
-                    addAll(actions)
-                    while (size < 3) add("숨 3번 길게 내쉬기")
-                }
+            actions.isEmpty() -> listOf("물 한 잔 천천히 마시기", "5분 가볍게 걷기", "숨 3번 길게 내쉬기")
+
+            actions.size >= 3 -> actions.take(3)
+
+            else -> buildList {
+                addAll(actions)
+                while (size < 3) add("숨 3번 길게 내쉬기")
+            }
         }
 
         // hashtags 파싱 및 보정
@@ -218,10 +197,8 @@ class GeminiClient(
 
         // mission_summary 보정
         val missionSummary = obj.optString("mission_summary", "").trim()
-        val safeMissionSummary =
-            if (missionSummary.isBlank())
-                "작게라도 몸과 마음을 돌보는 하루로 만들어봐요."
-            else missionSummary
+        val safeMissionSummary = if (missionSummary.isBlank()) "작게라도 몸과 마음을 돌보는 하루로 만들어봐요."
+        else missionSummary
 
         return GeminiResult(
             summary = obj.getString("summary"),
@@ -239,30 +216,24 @@ class GeminiClient(
     // - dominantMoodLabel: 최빈 감정 라벨(문자열)
     // - entriesBrief: 월 일기 요약 입력(길이 제한된 텍스트)
     fun summarizeMonth(
-        yearMonth: String,
-        dominantMoodLabel: String,
-        entriesBrief: String
+        yearMonth: String, dominantMoodLabel: String, entriesBrief: String
     ): MonthlyGeminiResult {
         val prompt = buildMonthlyPrompt(yearMonth, dominantMoodLabel, entriesBrief)
 
         val bodyJson = JSONObject().apply {
             put(
-                "contents",
-                JSONArray().put(
+                "contents", JSONArray().put(
                     JSONObject().put(
-                        "parts",
-                        JSONArray().put(JSONObject().put("text", prompt))
+                        "parts", JSONArray().put(JSONObject().put("text", prompt))
                     )
                 )
             )
         }
 
-        val req = okhttp3.Request.Builder()
-            .url(endpointUrl)
-            .addHeader("x-goog-api-key", apiKey)
-            .addHeader("Content-Type", "application/json")
-            .post(bodyJson.toString().toRequestBody("application/json; charset=utf-8".toMediaType()))
-            .build()
+        val req = okhttp3.Request.Builder().url(endpointUrl).addHeader("x-goog-api-key", apiKey)
+            .addHeader("Content-Type", "application/json").post(
+                bodyJson.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
+            ).build()
 
         http.newCall(req).execute().use { resp ->
             if (!resp.isSuccessful) throw RuntimeException("LLM API failed: ${resp.code}")
@@ -272,7 +243,9 @@ class GeminiClient(
         }
     }
 
-    private fun buildMonthlyPrompt(yearMonth: String, dominantMoodLabel: String, entriesBrief: String): String {
+    private fun buildMonthlyPrompt(
+        yearMonth: String, dominantMoodLabel: String, entriesBrief: String
+    ): String {
         return """
         너는 감정 일기 코치야.
         아래 한 달치 일기 요약 입력을 바탕으로 반드시 "JSON만" 출력해. 다른 문장은 절대 금지.
@@ -301,10 +274,7 @@ class GeminiClient(
     }
 
     private fun parseMonthlyStrictJson(text: String): MonthlyGeminiResult {
-        val cleaned = text
-            .removePrefix("```json").removePrefix("```")
-            .removeSuffix("```")
-            .trim()
+        val cleaned = text.removePrefix("```json").removePrefix("```").removeSuffix("```").trim()
 
         val obj = JSONObject(cleaned)
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
             - 카드 본문: 위로/격려 문구 2줄 + 오늘의 미션 1개
             - 마음 분석 상세 보기
               - 클릭 시 클릭 시 각 날짜의 일기 상세 보기 화면(activity_archive_diary_detail.xml)으로 이동-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,18 +28,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <!-- 마음 카드 날짜 -->
             <TextView
                 android:id="@+id/tvDayMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquare_eb"
                 android:text="2026년 1월 18일 마음 카드🌙"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:textSize="18sp" />
 
             <!-- 즐겨찾기(하트) 아이콘 -->
             <!-- 클릭 시 즐겨찾기 해제 -->
@@ -62,9 +62,9 @@
             android:id="@+id/tvNicknameMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquarez_b"
             android:text="닉네임님, 오늘은 여기서 멈춰도 괜찮아요."
             android:textColor="#92B9E2"
-            android:fontFamily="@font/nanumsquarez_b"
             android:textSize="15sp" />
 
         <!-- 위로/격려 문구(두번째 문장) -->
@@ -73,9 +73,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquare_l"
             android:text="충분히 애썼어요. 무거운 마음은 여기에 두고 가요."
             android:textColor="#FFFFFF"
-            android:fontFamily="@font/nanumsquare_l"
             android:textSize="14sp" />
 
         <com.google.android.material.card.MaterialCardView
@@ -104,11 +104,11 @@
             android:id="@+id/tvLookAnalysis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_gravity="end"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/nanumsquare_eb"
             android:text="마음 분석 상세 보기 →"
             android:textColor="#9BAAFF"
-            android:fontFamily="@font/nanumsquare_eb"
             android:textSize="13sp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

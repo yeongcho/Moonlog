@@ -36,8 +36,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
         debug {
@@ -56,7 +55,6 @@ android {
 }
 
 dependencies {
-
     // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -65,6 +63,9 @@ dependencies {
     // UI
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
 
     // Lifecycle
     implementation(libs.androidx.lifecycle.livedata.ktx)
@@ -77,10 +78,8 @@ dependencies {
     // Network
     implementation(libs.okhttp)
 
-    implementation(libs.androidx.viewpager2)
-    implementation(libs.androidx.recyclerview)
+    // Chart
     implementation(libs.mpandroidchart)
-    implementation(libs.androidx.cardview)
 
     // Test
     testImplementation(libs.junit)
@@ -91,6 +90,4 @@ dependencies {
     androidTestImplementation(libs.androidx.test.rules)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.okhttp.mockwebserver)
-
-
 }

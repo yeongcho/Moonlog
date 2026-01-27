@@ -1,6 +1,6 @@
 package com.example.guru2_android_team04_android.util
 
-// MindCardTextUtil : AI 분석 결과 텍스트에서 "마음 카드 프리뷰용 짧은 문장"을 생성하는 텍스트 가공 유틸리티
+// MindCardTextUtil : AI 분석 결과 텍스트에서 마음 카드 짧은 문장을 생성하는 텍스트 가공 유틸리티
 // 용도:
 // - AI가 생성한 긴 분석 텍스트(fullText)를 그대로 카드에 노출하면 UI가 과도하게 길어지므로, 앞부분의 핵심 문장만 잘라서 보여주기 위해 사용한다.
 // 설계:

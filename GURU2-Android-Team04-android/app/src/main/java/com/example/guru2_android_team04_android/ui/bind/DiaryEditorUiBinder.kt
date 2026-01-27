@@ -23,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// DiaryEditorUiBinder : activity_diary_editor.xml <-> AppService 연동 전담 클래스
+// DiaryEditorUiBinder : 일기 작성 화면(activity_diary_editor.xml) <-> AppService 연동 전담 클래스
 // 용도:
 // - 화면에서 입력값을 읽고, 저장 버튼 이벤트를 처리한다.
 // - 신규 작성 모드: 일기 저장 + AI 프리뷰/분석 준비까지 수행한 뒤 상세 화면으로 이동한다.

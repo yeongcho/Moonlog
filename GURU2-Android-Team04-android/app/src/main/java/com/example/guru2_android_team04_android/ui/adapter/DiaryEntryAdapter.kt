@@ -37,8 +37,7 @@ class DiaryEntryAdapter(
 
     // VH(ViewHolder) : 화면에 보이는 1개 카드의 View들을 관리
     class VH(
-        private val b: ItemDiaryEntryBinding,
-        private val onClick: (DiaryEntry) -> Unit
+        private val b: ItemDiaryEntryBinding, private val onClick: (DiaryEntry) -> Unit
     ) : RecyclerView.ViewHolder(b.root) {
 
         // entry 1개 데이터를 카드 UI에 표시

@@ -33,8 +33,7 @@ class BadgeEngine(private val db: SQLiteDatabase) {
 
         // badges(배지 마스터)를 전부 조회해서 규칙 기반으로 지급한다.
         db.rawQuery(
-            "SELECT badge_id, rule_type, rule_value FROM ${AppDb.T.BADGES}",
-            emptyArray()
+            "SELECT badge_id, rule_type, rule_value FROM ${AppDb.T.BADGES}", emptyArray()
         ).use { c ->
             while (c.moveToNext()) {
                 val badgeId = c.getInt(0)
@@ -74,8 +73,7 @@ class BadgeEngine(private val db: SQLiteDatabase) {
                 """
                 INSERT INTO ${AppDb.T.USER_BADGES}(owner_id, badge_id, earned_at, is_selected)
                 VALUES(?, ?, ?, 0)
-                """.trimIndent(),
-                arrayOf(ownerId, badgeId, System.currentTimeMillis())
+                """.trimIndent(), arrayOf(ownerId, badgeId, System.currentTimeMillis())
             )
         }
     }
@@ -90,8 +88,7 @@ class BadgeEngine(private val db: SQLiteDatabase) {
 
         // 한 사용자당 대표 배지는 하나만 유지
         db.execSQL(
-            "UPDATE ${AppDb.T.USER_BADGES} SET is_selected=0 WHERE owner_id=?",
-            arrayOf(ownerId)
+            "UPDATE ${AppDb.T.USER_BADGES} SET is_selected=0 WHERE owner_id=?", arrayOf(ownerId)
         )
 
         db.execSQL(

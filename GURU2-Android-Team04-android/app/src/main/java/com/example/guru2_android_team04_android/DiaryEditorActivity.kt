@@ -29,7 +29,9 @@ class DiaryEditorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_diary_editor)
 
         // 하단 네비게이션 바 연결(현재 탭: diary)
-        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(this, R.id.navigation_diary)
+        com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(
+            this, R.id.navigation_diary
+        )
 
         // 수정 모드 진입 여부 판단:
         // - TodayDiaryDetailActivity 등에서 entryId를 전달하면 수정 화면으로 동작한다.

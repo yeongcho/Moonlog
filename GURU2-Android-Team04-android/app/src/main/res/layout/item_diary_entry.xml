@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardDiary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    app:cardCornerRadius="10dp"
     app:cardBackgroundColor="#E3EAE1"
+    app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true">
 
     <!-- 일기 리스트에서 쓸 아이템 -->
@@ -15,13 +14,14 @@
         - 감정 이모지
         - 일기 제목
         - 일기 날짜 + 요일 -->
+
     <!-- 클릭 시 해당 일기 상세 화면 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:padding="16dp">
 
         <!-- 해당 일기의 감정 이모지 -->
         <!-- 일기 데이터에 따라 감정 아이콘 변경 -->
@@ -36,42 +36,42 @@
             android:id="@+id/tvDiaryTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="16dp"
-            android:text="제목"
-            android:textSize="18sp"
-            android:textColor="#6D9779"
+            android:layout_weight="1"
+            android:ellipsize="end"
             android:fontFamily="@font/nanumsquare_eb"
             android:maxLines="2"
-            android:ellipsize="end" />
+            android:text="제목"
+            android:textColor="#6D9779"
+            android:textSize="18sp" />
 
         <!-- 일기 날짜(일 + 요일) -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <!-- 날짜(일) -->
             <TextView
                 android:id="@+id/tvDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquare_eb"
                 android:text="19"
-                android:textSize="32sp"
                 android:textColor="#3B3E3C"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:textSize="32sp" />
 
             <!-- 날짜(일) -->
             <TextView
                 android:id="@+id/tvDow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MON"
-                android:textSize="17sp"
-                android:textColor="#3B3E3C"
+                android:fontFamily="@font/nanumsquare_eb"
                 android:gravity="center"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:text="MON"
+                android:textColor="#3B3E3C"
+                android:textSize="17sp" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

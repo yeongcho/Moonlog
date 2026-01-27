@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CAC1AE"
-    android:padding="20dp"
     android:clipToPadding="false"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:padding="20dp">
 
     <!--
         Figma: 프로필 편집하기 화면(activity_profile_edit.xml) (진행순서 18)
@@ -33,12 +33,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="50dp"
-            android:paddingBottom="50dp"
+            android:layout_gravity="center"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:layout_gravity="center">
+            android:orientation="vertical"
+            android:paddingTop="50dp"
+            android:paddingBottom="50dp">
 
             <!-- 프로필 카드 -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,10 +46,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_rounded_white"
-                android:padding="25dp"
-                android:elevation="2dp"
                 android:clipChildren="false"
-                android:clipToPadding="false">
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:padding="25dp">
 
                 <!-- 프로필 이미지 -->
                 <!-- 클릭 시 기기 내 갤러리에서 프로필 이미지 설정 가능-->
@@ -57,13 +57,13 @@
                     android:id="@+id/iv_profile_image"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_icon_profile"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
                     android:padding="0dp"
                     android:scaleType="centerCrop"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:elevation="2dp"
-                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_icon_profile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay_App_Circle" />
@@ -74,47 +74,47 @@
                     android:id="@+id/layout_member_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginStart="30dp"
+                    android:orientation="vertical"
                     android:visibility="visible"
-                    app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/iv_profile_image"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_profile_image">
+                    app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                    app:layout_constraintTop_toTopOf="@id/iv_profile_image">
 
                     <!-- 닉네임 -->
                     <EditText
                         android:id="@+id/et_nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="닉네임"
-                        android:textSize="22sp"
-                        android:textColor="#000000"
-                        android:fontFamily="@font/nanumsquare_eb"
                         android:background="@android:color/transparent"
-                        android:inputType="textPersonName" />
+                        android:fontFamily="@font/nanumsquare_eb"
+                        android:inputType="textPersonName"
+                        android:text="닉네임"
+                        android:textColor="#000000"
+                        android:textSize="22sp" />
 
                     <!-- 이메일 -->
                     <TextView
                         android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="example@swu.ac.kr"
-                        android:textSize="14sp"
-                        android:textColor="#9A9A9A"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/nanumsquare_r"
-                        android:layout_marginTop="2dp" />
+                        android:text="example@swu.ac.kr"
+                        android:textColor="#9A9A9A"
+                        android:textSize="14sp" />
 
                     <!-- D-day -->
                     <TextView
                         android:id="@+id/tv_d_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="나와 마주한 지 D+127일 째"
-                        android:textSize="15sp"
-                        android:textColor="#565656"
+                        android:layout_marginTop="3dp"
                         android:fontFamily="@font/nanumsquare_r"
-                        android:layout_marginTop="3dp" />
+                        android:text="나와 마주한 지 D+127일 째"
+                        android:textColor="#565656"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -125,14 +125,14 @@
                 android:id="@+id/btn_save_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="프로필 저장하기"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/nanumsquare_eb"
                 android:background="@drawable/bg_rounded_white"
                 android:backgroundTint="#9C8882"
-                android:padding="12dp" />
+                android:fontFamily="@font/nanumsquare_eb"
+                android:padding="12dp"
+                android:text="프로필 저장하기"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
         </LinearLayout>
     </FrameLayout>
 </ScrollView>

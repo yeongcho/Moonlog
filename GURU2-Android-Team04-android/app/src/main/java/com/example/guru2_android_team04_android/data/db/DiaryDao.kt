@@ -50,10 +50,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
         // 1) 먼저 update 시도
         // - 같은 owner/date가 있으면 해당 row가 갱신된다.
         val updated = db.update(
-            AppDb.T.ENTRIES,
-            cv,
-            "owner_id=? AND date_ymd=?",
-            arrayOf(entry.ownerId, entry.dateYmd)
+            AppDb.T.ENTRIES, cv, "owner_id=? AND date_ymd=?", arrayOf(entry.ownerId, entry.dateYmd)
         )
 
         // 2) update가 성공했으면 entry_id를 다시 조회해서 반환
@@ -87,8 +84,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.ENTRIES}
             WHERE owner_id=? AND date_ymd=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(ownerId, ymd)
+            """.trimIndent(), arrayOf(ownerId, ymd)
         ).use { c ->
 
             // 예외처리) 해당 날짜 데이터가 없으면 null 반환
@@ -150,8 +146,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
               AND is_temporary=0
               AND date_ymd BETWEEN ? AND ?
             ORDER BY date_ymd ASC
-            """.trimIndent(),
-            arrayOf(ownerId, startYmd, endYmd)
+            """.trimIndent(), arrayOf(ownerId, startYmd, endYmd)
         ).use { c ->
             while (c.moveToNext()) {
                 out.add(
@@ -188,8 +183,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.ENTRIES}
             WHERE owner_id=? AND is_temporary=0 AND date_ymd BETWEEN ? AND ?
             GROUP BY mood
-            """.trimIndent(),
-            arrayOf(ownerId, start, end)
+            """.trimIndent(), arrayOf(ownerId, start, end)
         ).use { c ->
             while (c.moveToNext()) {
                 out.add(MoodStat(Mood.fromDb(c.getInt(0)), c.getInt(1)))
@@ -235,8 +229,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
             WHERE owner_id=? AND is_temporary=0
             ORDER BY date_ymd DESC 
             LIMIT 400
-            """.trimIndent(),
-            arrayOf(ownerId)
+            """.trimIndent(), arrayOf(ownerId)
         ).use { c ->
             while (c.moveToNext()) dates.add(c.getString(0))
         }
@@ -263,8 +256,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
             SELECT date_ymd, mood
             FROM ${AppDb.T.ENTRIES}
             WHERE owner_id=? AND is_temporary=0 AND date_ymd BETWEEN ? AND ?
-            """.trimIndent(),
-            arrayOf(ownerId, start, end)
+            """.trimIndent(), arrayOf(ownerId, start, end)
         ).use { c ->
             while (c.moveToNext()) {
                 out[c.getString(0)] = Mood.fromDb(c.getInt(1))
@@ -292,8 +284,7 @@ class DiaryDao(private val db: SQLiteDatabase) {
             SELECT tags_json
             FROM ${AppDb.T.ENTRIES}
             WHERE owner_id=? AND is_temporary=0 AND date_ymd BETWEEN ? AND ?
-            """.trimIndent(),
-            arrayOf(ownerId, start, end)
+            """.trimIndent(), arrayOf(ownerId, start, end)
         ).use { c ->
             while (c.moveToNext()) {
                 val tags = JsonMini.jsonToList(c.getString(0))

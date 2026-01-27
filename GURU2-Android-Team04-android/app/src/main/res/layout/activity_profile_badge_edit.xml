@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CAC1AE"
-    android:padding="20dp"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:padding="20dp">
 
     <!--
         Figma: 배지 선택/적용 화면 (activity_profile_badge_edit.xml) (진행순서 17)
@@ -33,21 +33,21 @@
             android:id="@+id/view_bookmark"
             android:layout_width="35dp"
             android:layout_height="20dp"
-            android:layout_marginTop="42dp"
-            android:layout_marginStart="20dp"
             android:layout_gravity="top|start"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="42dp"
+            app:cardBackgroundColor="#7C6969"
             app:cardCornerRadius="4dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="#7C6969" />
+            app:cardElevation="6dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:orientation="vertical"
             android:paddingTop="50dp"
-            android:paddingBottom="50dp"
-            android:clipChildren="false"
-            android:clipToPadding="false">
+            android:paddingBottom="50dp">
 
             <!-- 프로필 카드(배지 적용 미리보기 영역) -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,83 +55,86 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_rounded_white"
-                android:padding="25dp"
-                android:elevation="2dp"
                 android:clipChildren="false"
-                android:clipToPadding="false">
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:padding="25dp">
 
                 <!-- 프로필 이미지 -->
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_profile_image"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_icon_profile"
-                    android:scaleType="centerCrop"
-                    android:padding="2dp"
+                    android:layout_marginTop="10dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:layout_marginTop="10dp"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay_App_Circle"
+                    android:contentDescription="프로필 이미지"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_icon_profile"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay_App_Circle" />
 
                 <!-- 프로필 텍스트 정보(닉네임/이메일/배지명/D-day) -->
                 <LinearLayout
                     android:id="@+id/layout_member_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginStart="30dp"
+                    android:orientation="vertical"
                     android:visibility="visible"
-                    app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/iv_profile_image"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_profile_image">
+                    app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+                    app:layout_constraintTop_toTopOf="@id/iv_profile_image">
 
                     <!-- 닉네임 -->
                     <TextView
                         android:id="@+id/tv_nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="닉네임"
-                        android:textSize="22sp"
-                        android:textColor="#000000"
-                        android:fontFamily="@font/nanumsquare_eb"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        android:minHeight="48dp"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/nanumsquare_eb"
+                        android:text="닉네임"
+                        android:textColor="#000000"
+                        android:textSize="22sp" />
 
                     <!-- 이메일 -->
                     <TextView
                         android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="example@swu.ac.kr"
-                        android:textSize="14sp"
-                        android:textColor="#9A9A9A"
+                        android:layout_marginTop="-10dp"
                         android:fontFamily="@font/nanumsquare_r"
-                        android:layout_marginTop="2dp" />
+                        android:text="example@swu.ac.kr"
+                        android:textColor="#9A9A9A"
+                        android:textSize="14sp" />
 
                     <!-- 현재 선택/적용될 배지 이름 -->
                     <TextView
                         android:id="@+id/tv_badge_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="감정 로그 수집가"
-                        android:textSize="15sp"
-                        android:textColor="#68A684"
+                        android:layout_marginTop="12dp"
                         android:fontFamily="@font/nanumsquare_r"
-                        android:layout_marginTop="12dp" />
+                        android:text="감정 로그 수집가"
+                        android:textColor="#68A684"
+                        android:textSize="15sp" />
 
                     <!-- D-day -->
                     <TextView
                         android:id="@+id/tv_d_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="나와 마주한 지 D+127일 째"
-                        android:textSize="15sp"
-                        android:textColor="#565656"
+                        android:layout_marginTop="3dp"
                         android:fontFamily="@font/nanumsquare_r"
-                        android:layout_marginTop="3dp" />
+                        android:text="나와 마주한 지 D+127일 째"
+                        android:textColor="#565656"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <!-- 프로필 이미지 위에 표시되는 대표 배지(선택 결과 반영) -->
@@ -139,8 +142,8 @@
                     android:id="@+id/iv_badge_frame_mypage"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_badge_traveler"
                     android:elevation="5dp"
+                    android:src="@drawable/ic_badge_traveler"
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile_image"
                     app:layout_constraintEnd_toEndOf="@id/iv_profile_image"
                     app:layout_constraintStart_toStartOf="@id/iv_profile_image"
@@ -152,20 +155,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rounded_white"
-                android:orientation="vertical"
-                android:padding="20dp"
                 android:layout_marginTop="20dp"
-                android:elevation="2dp">
+                android:background="@drawable/bg_rounded_white"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <!-- 배지 목록(2열 x 3행) -->
                 <!-- 획득한 배지만 녹색으로 표시, 미획득한 배지는 회색(#9A9A9A)으로 표시 -->
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:alignmentMode="alignMargins"
                     android:columnCount="2"
-                    android:rowCount="3"
-                    android:alignmentMode="alignMargins">
+                    android:rowCount="3">
 
                     <!-- badge 1 -->
                     <!-- 배지 클릭 시 선택 상태로 변경되고 체크 아이콘 표시 -->
@@ -174,9 +177,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:layout_marginBottom="10dp">
+                        android:orientation="vertical">
 
                         <!-- 배지 아이콘 + 선택 체크(오버레이) -->
                         <FrameLayout
@@ -194,29 +197,29 @@
                                 android:id="@+id/iv_check_1"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@android:drawable/checkbox_on_background"
-                                app:tint="#5D7663"
                                 android:layout_gravity="top|end"
-                                android:visibility="gone" />
+                                android:src="@android:drawable/checkbox_on_background"
+                                android:visibility="gone"
+                                app:tint="#5D7663" />
                         </FrameLayout>
 
                         <!-- 배지 이름 -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="시작과 꾸준함"
-                            android:textColor="#000000"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/nanumsquare_ac_eb"
-                            android:layout_marginTop="8dp" />
+                            android:text="시작과 꾸준함"
+                            android:textColor="#000000" />
 
                         <!-- 배지 설명 -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanumsquare_ac_l"
                             android:text="첫 번째 일기 작성"
-                            android:textSize="12sp"
                             android:textColor="#000000"
-                            android:fontFamily="@font/nanumsquare_ac_l" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <!-- badge 2 -->
@@ -226,9 +229,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:layout_marginBottom="10dp">
+                        android:orientation="vertical">
 
                         <FrameLayout
                             android:layout_width="wrap_content"
@@ -245,27 +248,27 @@
                                 android:id="@+id/iv_check_2"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@android:drawable/checkbox_on_background"
-                                app:tint="#5D7663"
                                 android:layout_gravity="top|end"
-                                android:visibility="gone" />
+                                android:src="@android:drawable/checkbox_on_background"
+                                android:visibility="gone"
+                                app:tint="#5D7663" />
                         </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="작심삼일 마스터"
-                            android:textColor="#000000"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/nanumsquare_ac_eb"
-                            android:layout_marginTop="8dp" />
+                            android:text="작심삼일 마스터"
+                            android:textColor="#000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanumsquare_ac_l"
                             android:text="3일 연속 일기 작성"
-                            android:textSize="12sp"
                             android:textColor="#000000"
-                            android:fontFamily="@font/nanumsquare_ac_l" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <!-- badge 3 -->
@@ -275,9 +278,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:layout_marginBottom="10dp">
+                        android:orientation="vertical">
 
                         <FrameLayout
                             android:layout_width="wrap_content"
@@ -294,27 +297,27 @@
                                 android:id="@+id/iv_check_3"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@android:drawable/checkbox_on_background"
-                                app:tint="#5D7663"
                                 android:layout_gravity="top|end"
-                                android:visibility="gone" />
+                                android:src="@android:drawable/checkbox_on_background"
+                                android:visibility="gone"
+                                app:tint="#5D7663" />
                         </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="한 달의 조각들"
-                            android:textColor="#000000"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/nanumsquare_ac_eb"
-                            android:layout_marginTop="8dp" />
+                            android:text="한 달의 조각들"
+                            android:textColor="#000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanumsquare_ac_l"
                             android:text="누적 일기 30개 작성"
-                            android:textSize="12sp"
                             android:textColor="#000000"
-                            android:fontFamily="@font/nanumsquare_ac_l" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <!-- badge 4 -->
@@ -324,9 +327,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:layout_marginBottom="10dp">
+                        android:orientation="vertical">
 
                         <FrameLayout
                             android:layout_width="wrap_content"
@@ -343,27 +346,27 @@
                                 android:id="@+id/iv_check_4"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@android:drawable/checkbox_on_background"
-                                app:tint="#5D7663"
                                 android:layout_gravity="top|end"
-                                android:visibility="gone" />
+                                android:src="@android:drawable/checkbox_on_background"
+                                android:visibility="gone"
+                                app:tint="#5D7663" />
                         </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="감정 소믈리에"
-                            android:textColor="#000000"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/nanumsquare_ac_eb"
-                            android:layout_marginTop="8dp" />
+                            android:text="감정 소믈리에"
+                            android:textColor="#000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanumsquare_ac_l"
                             android:text="모든 종류의 감정 태그"
-                            android:textSize="12sp"
                             android:textColor="#000000"
-                            android:fontFamily="@font/nanumsquare_ac_l" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <!-- badge 5 -->
@@ -373,9 +376,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:layout_marginBottom="10dp">
+                        android:orientation="vertical">
 
                         <FrameLayout
                             android:layout_width="wrap_content"
@@ -392,27 +395,27 @@
                                 android:id="@+id/iv_check_5"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@android:drawable/checkbox_on_background"
-                                app:tint="#5D7663"
                                 android:layout_gravity="top|end"
-                                android:visibility="gone" />
+                                android:src="@android:drawable/checkbox_on_background"
+                                android:visibility="gone"
+                                app:tint="#5D7663" />
                         </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="감정 로그 수집가"
-                            android:textColor="#000000"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/nanumsquare_ac_eb"
-                            android:layout_marginTop="8dp" />
+                            android:text="감정 로그 수집가"
+                            android:textColor="#000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanumsquare_ac_l"
                             android:text="누적 일기 100개 작성"
-                            android:textSize="12sp"
                             android:textColor="#000000"
-                            android:fontFamily="@font/nanumsquare_ac_l" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                 </GridLayout>
@@ -423,13 +426,13 @@
                     android:id="@+id/btn_save_badge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="프로필 배지 지정하기"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
-                    android:fontFamily="@font/nanumsquare_eb"
                     android:background="@drawable/bg_rounded_white"
                     android:backgroundTint="#9C8882"
-                    android:padding="12dp" />
+                    android:fontFamily="@font/nanumsquare_eb"
+                    android:padding="12dp"
+                    android:text="프로필 배지 지정하기"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

@@ -10,11 +10,9 @@ import com.example.guru2_android_team04_android.util.JsonMini
 // DiaryEntryReader : 화면(오늘일기/분석)에서 entryId로 "일기 원문"이 필요할 때 사용하는 읽기 전용 헬퍼
 // 용도:
 // - ViewModel/UI에서 entryId만 가지고 DB에서 DiaryEntry 1개를 조회해 올 수 있게 한다.
-//
 // 설계 이유:
 // - AppService 내부에 entryId로 DiaryEntry를 로드하는 함수가 private이라 외부(UI)에서 직접 호출이 불가능하다.
 // - Service 구조를 크게 바꾸지 않고 화면 연동(일기 상세/AI 분석 화면)을 빠르게 하기 위해 DB에서 "최소 조회"만 수행한다.
-//
 // 특징:
 // - 쓰기(INSERT/UPDATE/DELETE)는 하지 않고 조회만 제공한다.
 // - SQLite를 직접 쓰지만 AppDb 테이블 상수(AppDb.T.ENTRIES)를 사용해 SQL 문자열 오타를 줄인다.
@@ -52,8 +50,7 @@ class DiaryEntryReader(context: Context) {
             FROM ${AppDb.T.ENTRIES}
             WHERE entry_id=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(entryId.toString())
+            """.trimIndent(), arrayOf(entryId.toString())
         ).use { c ->
 
             // 예외처리) 조회 결과가 없으면 moveToFirst()가 false이므로 null 반환

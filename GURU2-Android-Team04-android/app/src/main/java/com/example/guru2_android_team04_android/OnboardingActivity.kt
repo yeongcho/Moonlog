@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-// OnboardingActivity : 앱 첫 진입 시 사용자에게 로그인 또는 비회원 시작 선택지를 제공하는 화면
+// OnboardingActivity : 앱 첫 진입 시 사용자에게 로그인 또는 비회원 시작 선택지를 제공하는 화면 Activity
 // 용도:
 // - 회원(로그인) 흐름과 비회원(익명 세션) 흐름을 분기하는 진입점 역할
 // - 사용자가 어떤 방식으로 앱을 사용할지 결정하면, 다음 Activity로 이동한다.
-//
 // 설계:
 // - 로그인 버튼: LoginActivity로 이동(인증 진행)
 // - 비회원 시작 버튼: SessionManager 기반으로 익명 ownerId를 세팅한 뒤(StartAnonymousSession), 메인 시작 화면(StartActivity)로 이동한다.

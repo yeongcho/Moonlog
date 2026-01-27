@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--
+        Figma: 메뉴
+        설명 : 메뉴바 구성
+        구성:
+          - 메뉴 아이콘
+          - 메뉴명
+            - 홈
+            - 일기장
+            - 캘린더
+            - 마이페이지
+    -->
+
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_nav_home"

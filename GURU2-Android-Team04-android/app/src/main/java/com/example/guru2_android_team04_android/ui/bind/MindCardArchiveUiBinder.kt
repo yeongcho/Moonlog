@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// MindCardArchiveUiBinder : 마음 카드 보관함 (activity_mindcard_archive.xml) <-> AppService 연동 전담 클래스
+// MindCardArchiveUiBinder : 마음 카드 보관함(activity_mindcard_archive.xml) <-> AppService 연동 전담 클래스
 // 용도:
 // - 마음 카드 보관함 화면에서 RecyclerView 구성, 클릭 이벤트 처리, 데이터 로딩/갱신을 담당한다.
 // - Activity는 화면 표시(setContentView)와 생명주기만 관리하고, 실제 화면 로직은 Binder가 맡는다.

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,31 +23,31 @@
             - 홈화면으로 이동하는 버튼
     -->
 
-<!-- 분석 카드 컨테이너(중앙 배치) -->
+    <!-- 분석 카드 컨테이너(중앙 배치) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:background="@drawable/bg_analysis_card_dark"
         android:padding="30dp"
-        android:layout_margin="30dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 타이틀 -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오늘의 실천안"
-            android:textSize="23sp"
-            android:textColor="#7BA68E"
             android:fontFamily="@font/handwriting_font"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="오늘의 실천안"
+            android:textColor="#7BA68E"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- 실천안 내용 영역(길어질 수 있어 내부 스크롤) -->
         <ScrollView
@@ -57,10 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:layout_constrainedHeight="true"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_tags"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_tags">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
 
             <!-- 실천안 목록(1~3번 안내 문구) -->
             <LinearLayout
@@ -73,12 +72,12 @@
                     android:id="@+id/tv_analysis_content1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1. 내일 아침 망설임 없이 시작할 수 있도록, 공부할 페이지를 미리 활짝 펼쳐두세요."
-                    android:textSize="14sp"
-                    android:textColor="#E7FFE9"
                     android:fontFamily="@font/nanumsquare_r"
+                    android:gravity="start"
                     android:lineSpacingExtra="8dp"
-                    android:gravity="start"/>
+                    android:text="1. 내일 아침 망설임 없이 시작할 수 있도록, 공부할 페이지를 미리 활짝 펼쳐두세요."
+                    android:textColor="#E7FFE9"
+                    android:textSize="14sp" />
 
                 <!-- 실천안 2 -->
                 <TextView
@@ -86,12 +85,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="2. 시원한 물 한 잔으로 불안을 씻어내고, 스마트폰 전원을 꺼서 뇌에게 온전한 쉼을 선물하세요."
-                    android:textSize="14sp"
-                    android:textColor="#E7FFE9"
                     android:fontFamily="@font/nanumsquare_r"
+                    android:gravity="start"
                     android:lineSpacingExtra="8dp"
-                    android:gravity="start"/>
+                    android:text="2. 시원한 물 한 잔으로 불안을 씻어내고, 스마트폰 전원을 꺼서 뇌에게 온전한 쉼을 선물하세요."
+                    android:textColor="#E7FFE9"
+                    android:textSize="14sp" />
 
                 <!-- 실천안 3 -->
                 <TextView
@@ -99,12 +98,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="3. 머릿속을 맴도는 내일의 할일들은 플래너에 모두 털어놓고, 가벼운 마음으로 잠드세요."
-                    android:textSize="14sp"
-                    android:textColor="#E7FFE9"
                     android:fontFamily="@font/nanumsquare_r"
+                    android:gravity="start"
                     android:lineSpacingExtra="8dp"
-                    android:gravity="start"/>
+                    android:text="3. 머릿속을 맴도는 내일의 할일들은 플래너에 모두 털어놓고, 가벼운 마음으로 잠드세요."
+                    android:textColor="#E7FFE9"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </ScrollView>
@@ -114,15 +113,15 @@
             android:id="@+id/tv_tags"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="오늘의 꿀잠은 도망치는 게 아니라, 내일 더 높이 뛰기 위한 도움닫기입니다. 오늘은 이만 주무세요."
-            android:textSize="16sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/handwriting_font"
             android:gravity="start"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/scrollView"
+            android:text="오늘의 꿀잠은 도망치는 게 아니라, 내일 더 높이 뛰기 위한 도움닫기입니다. 오늘은 이만 주무세요."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
         <!-- 하단 버튼 영역 -->
         <LinearLayout
@@ -131,10 +130,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/tv_tags"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tags">
 
             <!-- 1) 이미지 카드로 소장하기 버튼 -->
             <!-- 선택 시, 이미지 카드 형태로 기기 내 갤러리에 저장 -->
@@ -142,14 +141,14 @@
                 android:id="@+id/btn_save_card"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:text="이미지 카드로 소장하기"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
                 android:fontFamily="@font/nanumsquare_eb"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                app:cornerRadius="24dp"
+                android:text="이미지 카드로 소장하기"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 app:backgroundTint="#9C8882"
+                app:cornerRadius="24dp"
                 app:strokeColor="#FEFFED"
                 app:strokeWidth="3dp" />
 
@@ -162,14 +161,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="18dp"
-                android:text="로그인 후 일기 모아보기"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
                 android:fontFamily="@font/nanumsquare_eb"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                app:cornerRadius="24dp"
+                android:text="로그인 후 일기 모아보기"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 app:backgroundTint="#5C916A"
+                app:cornerRadius="24dp"
                 app:strokeColor="#CCEFE3"
                 app:strokeWidth="3dp" />
 
@@ -183,34 +182,34 @@
         android:id="@+id/btnTapContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
+        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="24dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- 텍스트 + 아래 방향 화살표 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingHorizontal="18dp"
             android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="메인으로 바로가기"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/nanumsquare_eb"
+                android:text="메인으로 바로가기"
                 android:textColor="#435241"
-                android:textSize="16sp"
-                android:fontFamily="@font/nanumsquare_eb" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="40dp"

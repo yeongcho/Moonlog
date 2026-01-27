@@ -7,7 +7,7 @@ import com.example.guru2_android_team04_android.util.JsonMini
 import com.example.guru2_android_team04_android.util.MindCardTextUtil
 
 // FavoriteDao : 즐겨찾기(하트) 기능을 위한 DAO.
-// - "즐겨찾기 여부 변경"과 "즐겨찾기 카드 목록 조회"를 담당한다.
+// - 즐겨찾기 여부 변경과 즐겨찾기 카드 목록 조회를 담당한다.
 // - ownerId + entryId 소유자 검증을 먼저 수행하여 다른 사용자의 데이터를 변경하지 못하도록 방어한다.
 class FavoriteDao(private val db: SQLiteDatabase) {
 
@@ -35,10 +35,7 @@ class FavoriteDao(private val db: SQLiteDatabase) {
         }
 
         val updated = db.update(
-            AppDb.T.ENTRIES,
-            cv,
-            "owner_id=? AND entry_id=?",
-            arrayOf(ownerId, entryId.toString())
+            AppDb.T.ENTRIES, cv, "owner_id=? AND entry_id=?", arrayOf(ownerId, entryId.toString())
         )
 
         // 예외처리) updated가 0이면 조건에 맞는 row가 없거나 업데이트가 반영되지 않은 상태
@@ -82,8 +79,7 @@ class FavoriteDao(private val db: SQLiteDatabase) {
               ON e.entry_id = a.entry_id
             WHERE e.owner_id=? AND e.is_favorite=1
             ORDER BY e.updated_at DESC
-            """.trimIndent(),
-            arrayOf(ownerId)
+            """.trimIndent(), arrayOf(ownerId)
         ).use { c ->
             while (c.moveToNext()) {
                 val entryId = c.getLong(0)
@@ -94,12 +90,11 @@ class FavoriteDao(private val db: SQLiteDatabase) {
 
                 val fullText = c.getString(5).orEmpty().trim()
 
-                val comfortPreview = if (fullText.isBlank()) "" else MindCardTextUtil.makePreview(fullText)
+                val comfortPreview =
+                    if (fullText.isBlank()) "" else MindCardTextUtil.makePreview(fullText)
 
                 val actions = JsonMini.jsonToList(c.getString(6))
-                val mission = actions.firstOrNull()
-                    ?.takeIf { it.isNotBlank() }
-                    ?: "천천히 숨 고르기"
+                val mission = actions.firstOrNull()?.takeIf { it.isNotBlank() } ?: "천천히 숨 고르기"
 
                 out.add(
                     MindCardPreview(
@@ -114,7 +109,6 @@ class FavoriteDao(private val db: SQLiteDatabase) {
                 )
             }
         }
-
         return out
     }
 }

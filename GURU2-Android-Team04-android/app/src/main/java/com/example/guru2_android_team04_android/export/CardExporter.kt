@@ -70,7 +70,8 @@ object CardExporter {
             // - moodKo / iconResOf는 분석 화면(AnalysisDiaryActivity)과 동일한 매핑을 사용한다.
             root.findViewById<TextView>(R.id.tvDiaryDayText).text = entry.dateYmd
             root.findViewById<TextView>(R.id.tvDetailEmotionTag).text = "태그: ${moodKo(entry.mood)}"
-            root.findViewById<ImageView>(R.id.ivDetailEmotion).setImageResource(iconResOf(entry.mood))
+            root.findViewById<ImageView>(R.id.ivDetailEmotion)
+                .setImageResource(iconResOf(entry.mood))
             root.findViewById<TextView>(R.id.tvDiaryTitle).text = entry.title
             root.findViewById<TextView>(R.id.tvDiaryContent).text = entry.content
         }
@@ -81,7 +82,9 @@ object CardExporter {
     // - AI 분석의 상세 텍스트와 해시태그를 카드 형태로 저장한다.
     // 입력:
     // - analysis가 null일 수 있으므로(분석 실패/미생성) null-safe 처리를 포함한다.
-    fun renderAnalysisComfortScreen(context: Context, entry: DiaryEntry, analysis: AiAnalysis?): Bitmap {
+    fun renderAnalysisComfortScreen(
+        context: Context, entry: DiaryEntry, analysis: AiAnalysis?
+    ): Bitmap {
         return renderLayoutToBitmap(context, R.layout.activity_analysis_comfort) { root ->
 
             // 저장 이미지에서는 탭 안내 버튼을 숨긴다.
@@ -89,8 +92,7 @@ object CardExporter {
 
             // analysis가 없으면 안내 문구를 넣어 "빈 화면"을 방지한다.
             // 예외처리) 분석이 null인 경우에도 UI가 깨지지 않도록 기본 텍스트를 사용한다.
-            val content = analysis?.fullText
-                ?: "분석 결과가 없어요. 네트워크 상태를 확인한 후 다시 시도해주세요."
+            val content = analysis?.fullText ?: "분석 결과가 없어요. 네트워크 상태를 확인한 후 다시 시도해주세요."
 
             // 해시태그는 "#태그" 형태로 공백 구분하여 하나의 문자열로 만든다.
             // 예외처리) analysis 또는 hashtags가 null이면 빈 문자열로 처리한다.
@@ -106,7 +108,9 @@ object CardExporter {
     // - 미션 3개 + 미션 요약을 대표 마음 카드 이미지로 저장하기 위해 사용한다.
     // 입력:
     // - analysis가 null일 수 있으므로, actions/missionSummary에 기본값을 제공한다.
-    fun renderAnalysisActionsScreen(context: Context, entry: DiaryEntry, analysis: AiAnalysis?): Bitmap {
+    fun renderAnalysisActionsScreen(
+        context: Context, entry: DiaryEntry, analysis: AiAnalysis?
+    ): Bitmap {
         return renderLayoutToBitmap(context, R.layout.activity_analysis_actions) { root ->
 
             // 저장 이미지에서는 화면 이동 버튼/안내 버튼을 숨겨 카드 자체만 남긴다.
@@ -154,7 +158,9 @@ object CardExporter {
     // renderMindCard3Screens : 일기/위로/실천안 3장의 Bitmap을 한 번에 생성한다.
     // 용도:
     // - 사용자가 "3장 모두 저장"을 선택했을 때 사용한다.
-    fun renderMindCard3Screens(context: Context, entry: DiaryEntry, analysis: AiAnalysis?): List<Bitmap> {
+    fun renderMindCard3Screens(
+        context: Context, entry: DiaryEntry, analysis: AiAnalysis?
+    ): List<Bitmap> {
         return listOf(
             renderAnalysisDiaryScreen(context, entry),
             renderAnalysisComfortScreen(context, entry, analysis),
@@ -168,10 +174,7 @@ object CardExporter {
     // 파일명 규칙:
     // - baseName_1, baseName_2, baseName_3 형태로 저장한다.
     fun save3ScreensToGallery(
-        context: Context,
-        entry: DiaryEntry,
-        analysis: AiAnalysis?,
-        baseName: String
+        context: Context, entry: DiaryEntry, analysis: AiAnalysis?, baseName: String
     ): List<Uri> {
         val bitmaps = renderMindCard3Screens(context, entry, analysis)
         return bitmaps.mapIndexed { idx, bmp ->
@@ -194,8 +197,7 @@ object CardExporter {
 
         // 예외처리) insert 결과가 null이면 저장 공간/권한/MediaStore 문제일 수 있으므로 예외로 처리한다.
         val uri = context.contentResolver.insert(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            values
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values
         ) ?: throw RuntimeException("MediaStore insert failed")
 
         var os: OutputStream? = null

@@ -24,8 +24,7 @@ class SettingsDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.SETTINGS}
             WHERE owner_id=? AND setting_key=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(ownerId, key)
+            """.trimIndent(), arrayOf(ownerId, key)
         ).use { c ->
             // 예외처리) 해당 설정이 없으면 null 반환
             if (!c.moveToFirst()) null else c.getString(0)
@@ -49,10 +48,7 @@ class SettingsDao(private val db: SQLiteDatabase) {
 
         // 1) 먼저 update 시도
         val updated = db.update(
-            AppDb.T.SETTINGS,
-            cv,
-            "owner_id=? AND setting_key=?",
-            arrayOf(ownerId, key)
+            AppDb.T.SETTINGS, cv, "owner_id=? AND setting_key=?", arrayOf(ownerId, key)
         )
 
         // 2) 해당 row가 없으면 insert 수행
@@ -66,9 +62,7 @@ class SettingsDao(private val db: SQLiteDatabase) {
     // - 삭제된 row 수 (1이면 성공, 0이면 해당 설정이 존재하지 않음)
     fun delete(ownerId: String, key: String): Int {
         return db.delete(
-            AppDb.T.SETTINGS,
-            "owner_id=? AND setting_key=?",
-            arrayOf(ownerId, key)
+            AppDb.T.SETTINGS, "owner_id=? AND setting_key=?", arrayOf(ownerId, key)
         )
     }
 

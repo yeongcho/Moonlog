@@ -14,7 +14,6 @@ import com.example.guru2_android_team04_android.data.model.User
 // - email : 로그인 ID 역할 (UNIQUE)
 // - password_hash : 비밀번호 해시값(PBKDF2 결과)
 // - created_at : 회원 가입 시각(epoch millis)
-//
 // 설계:
 // - 비밀번호는 절대 평문 저장하지 않고 hash만 저장한다.
 // - email을 기준으로 로그인/중복 체크를 수행한다.
@@ -47,8 +46,7 @@ class UserDao(private val db: SQLiteDatabase) {
     // - false : 사용 가능
     fun existsByEmail(email: String): Boolean {
         return db.rawQuery(
-            "SELECT 1 FROM ${AppDb.T.USERS} WHERE email=? LIMIT 1",
-            arrayOf(email)
+            "SELECT 1 FROM ${AppDb.T.USERS} WHERE email=? LIMIT 1", arrayOf(email)
         ).use { c ->
             // 예외처리) 결과가 1행이라도 있으면 true
             c.moveToFirst()
@@ -67,8 +65,7 @@ class UserDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.USERS}
             WHERE email=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(email)
+            """.trimIndent(), arrayOf(email)
         ).use { c ->
 
             // 예외처리) 해당 이메일 사용자가 없으면 null 반환
@@ -96,10 +93,7 @@ class UserDao(private val db: SQLiteDatabase) {
             put("nickname", nickname)
         }
         return db.update(
-            AppDb.T.USERS,
-            cv,
-            "user_id=?",
-            arrayOf(userId.toString())
+            AppDb.T.USERS, cv, "user_id=?", arrayOf(userId.toString())
         )
     }
 
@@ -110,9 +104,7 @@ class UserDao(private val db: SQLiteDatabase) {
     // - 삭제된 row 수
     fun deleteUserById(userId: Long): Int {
         return db.delete(
-            AppDb.T.USERS,
-            "user_id=?",
-            arrayOf(userId.toString())
+            AppDb.T.USERS, "user_id=?", arrayOf(userId.toString())
         )
     }
 
@@ -127,8 +119,7 @@ class UserDao(private val db: SQLiteDatabase) {
             FROM ${AppDb.T.USERS}
             WHERE user_id=?
             LIMIT 1
-            """.trimIndent(),
-            arrayOf(userId.toString())
+            """.trimIndent(), arrayOf(userId.toString())
         ).use { c ->
 
             // 예외처리) 해당 user_id가 없으면 null 반환

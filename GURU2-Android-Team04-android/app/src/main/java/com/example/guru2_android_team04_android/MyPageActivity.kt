@@ -33,8 +33,7 @@ class MyPageActivity : AppCompatActivity() {
 
         // 하단 네비게이션에서 마이페이지 탭을 활성화한다.
         com.example.guru2_android_team04_android.ui.bind.BottomNavBinder.bind(
-            this,
-            R.id.navigation_mypage
+            this, R.id.navigation_mypage
         )
 
         // Binder 생성 후 바인딩 실행
